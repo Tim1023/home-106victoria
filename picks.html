@@ -19,18 +19,59 @@
   .g-daily{background:var(--paper);color:var(--ink);border:1px solid var(--rule)}
 
   .pick-card{
-    background:#fff;padding:24px;margin:18px 0;
+    background:#fff;margin:18px 0;
     box-shadow:var(--shadow);border-radius:4px;
     border-left:3px solid transparent;
+    overflow:hidden;
   }
   .pick-card.tier-1{border-left-color:#1a1a1a}
   .pick-card.tier-2{border-left-color:var(--gold)}
   .pick-card.tier-3{border-left-color:#c8bda3}
-  .pick-card h4{
+
+  .pick-image{
+    display:block;height:260px;
+    background:linear-gradient(135deg,#f0ece3 0%,#d9d1bf 100%);
+    overflow:hidden;
+    position:relative;cursor:zoom-in;
+    text-decoration:none;border:none;
+  }
+  .pick-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .4s;display:block;
+  }
+  .pick-image:hover img{transform:scale(1.04)}
+  .pick-image.placeholder{
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;text-align:center;padding:24px;
+    cursor:default;
+  }
+  .placeholder-label{
+    font-family:"Cormorant Garamond",serif;
+    font-size:1.8rem;color:var(--gold);line-height:1.1;
+  }
+  .placeholder-sub{font-size:.78rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin:8px 0 14px}
+  .placeholder-cta{
+    display:inline-block;padding:8px 18px;
+    background:#1a1a1a;color:#fff;font-size:.82rem;
+    letter-spacing:.05em;border-radius:99px;text-decoration:none;
+    transition:background .15s;
+  }
+  .placeholder-cta:hover{background:var(--gold)}
+  .pick-zoom{
+    position:absolute;top:10px;right:10px;
+    background:rgba(0,0,0,.5);color:#fff;
+    padding:4px 10px;font-size:.72rem;
+    letter-spacing:.1em;text-transform:uppercase;border-radius:99px;
+    opacity:0;transition:opacity .2s;
+  }
+  .pick-image:hover .pick-zoom{opacity:1}
+
+  .pick-body{padding:20px 24px 24px}
+  .pick-body h4{
     font-family:"Cormorant Garamond",serif;font-weight:500;
     font-size:1.4rem;margin:0 0 4px;
   }
-  .pick-card .meta{
+  .pick-body .meta{
     color:var(--muted);font-size:.88rem;margin:.2em 0 .8em;
     letter-spacing:.02em;
   }
@@ -60,6 +101,12 @@
   }
   .legend .item{display:flex;align-items:center;gap:8px}
   .legend .swatch{width:16px;height:16px;border-radius:99px;display:inline-block}
+
+  @media (min-width:780px){
+    .pick-card{display:grid;grid-template-columns:340px 1fr;align-items:stretch}
+    .pick-image{height:auto;min-height:260px}
+    .pick-body{padding:24px 28px}
+  }
 </style>
 </head>
 <body>
@@ -82,14 +129,14 @@
   <p class="lead">
     所有候选都符合两个标准之一 ——
     <strong>① 中古真品（vintage authentic）</strong>，有签名 / 出处，二级市场流通稳定；
-    <strong>② 设计经典持续生产款</strong>，原厂或授权重制，70 年以上设计史，价格随原材料每年缓涨。
-    避免快时尚家具与无名复刻。
+    <strong>② 设计经典持续生产款</strong>，原厂或授权重制，70 年以上设计史。
+    避免快时尚家具与无名复刻。点击缩略图放大。
   </p>
 
   <div class="legend">
-    <div class="item"><span class="swatch" style="background:#1a1a1a"></span><strong>投资级 ★★★</strong> 长期升值，传家级</div>
-    <div class="item"><span class="swatch" style="background:#8b6f47"></span><strong>设计经典 ★★</strong> 保值，价随原料涨</div>
-    <div class="item"><span class="swatch" style="background:#c8bda3"></span><strong>日用 ★</strong> 不贬值，性价比好</div>
+    <div class="item"><span class="swatch" style="background:#1a1a1a"></span><strong>投资级 ★★★</strong> 长期升值</div>
+    <div class="item"><span class="swatch" style="background:#8b6f47"></span><strong>设计经典 ★★</strong> 保值</div>
+    <div class="item"><span class="swatch" style="background:#c8bda3"></span><strong>日用 ★</strong> 不贬值</div>
   </div>
 
   <!-- ============ 客厅 ============ -->
@@ -98,124 +145,164 @@
   <h3 style="margin-top:32px">沙发</h3>
 
   <article class="pick-card tier-2">
-    <h4>B&B Italia "Camaleonda"<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Mario Bellini · 1970 设计 / 2020 重新生产 · 意大利</p>
-    <p class="reason">
-      意大利后现代代表作，Compasso d'Oro 候选。模块化最适合 Lounge 5.2×6.8m 这种大空间，能配 L 形或岛式中心。重新生产后市场价稳步攀升，B&B 限量花色每年涨 8-12%。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://matisse.co.nz/camaleonda-sofa/">Matisse NZ（B&B Italia 代理）</a>
-      <a href="https://www.bebitalia.com/en/upholstery/sofas/camaleonda">B&B Italia 官方</a>
-      <a href="https://www.1stdibs.com/buy/camaleonda/">1stDibs 二手</a>
+    <a class="pick-image" data-full="assets/picks/camaleonda.jpg">
+      <img loading="lazy" src="assets/picks/camaleonda.jpg" alt="B&B Italia Camaleonda">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>B&B Italia "Camaleonda"<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Mario Bellini · 1970 设计 / 2020 重新生产 · 意大利</p>
+      <p class="reason">意大利后现代代表作。模块化最适合 Lounge 5.2×6.8m 大空间。重新生产后市场价稳步攀升，B&B 限量花色每年涨 8-12%。</p>
+      <div class="links">
+        <a class="primary" href="https://matisse.co.nz/camaleonda-sofa/" target="_blank">Matisse NZ（B&B Italia 代理）</a>
+        <a href="https://www.bebitalia.com/en/upholstery/sofas/camaleonda" target="_blank">B&B Italia 官方</a>
+        <a href="https://www.1stdibs.com/buy/camaleonda/" target="_blank">1stDibs 二手</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-1">
-    <h4>Mario Bellini "Le Bambole" Vintage<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">Mario Bellini · 1972 · B&B Italia · Compasso d'Oro 获奖</p>
-    <p class="reason">
-      Bellini 上世纪 70 年代另一座高峰，曲面缝纫结构是工艺难点。1970s 原版进入纽约 MoMA 永久馆藏。Mr Bigglesworthy 偶有修复真品；Webb's 季度 Design Sale 是另一个机会。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage">Mr Bigglesworthy（中古真品）</a>
-      <a href="https://www.webbs.co.nz/decorative-arts">Webb's Design Sale</a>
-      <a href="https://www.1stdibs.com/buy/le-bambole/">1stDibs Le Bambole</a>
+    <a class="pick-image" data-full="assets/picks/le-bambole.jpg">
+      <img loading="lazy" src="assets/picks/le-bambole.jpg" alt="Le Bambole">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Mario Bellini "Le Bambole" Vintage<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">Mario Bellini · 1972 · B&B Italia · Compasso d'Oro 获奖</p>
+      <p class="reason">1972 原版进入纽约 MoMA 永久馆藏。曲面缝纫结构工艺难度高。Mr Bigglesworthy 偶有修复真品。</p>
+      <div class="links">
+        <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigglesworthy</a>
+        <a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's Design Sale</a>
+        <a href="https://www.1stdibs.com/buy/le-bambole/" target="_blank">1stDibs Le Bambole</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-2">
-    <h4>Tobia &amp; Afra Scarpa "Soriana"<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Tobia &amp; Afra Scarpa · 1969 · Cassina · Compasso d'Oro 1970</p>
-    <p class="reason">
-      意大利"软家具革命"代表，纯抱枕+不锈钢夹的结构，舒适度顶级。Cassina 重新生产，编号机制保证收藏价值。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.studioitalia.co.nz/">Studio Italia（Cassina NZ 代理）</a>
-      <a href="https://www.cassina.com/en/collection/sofas-and-armchairs/715-soriana.html">Cassina 官方</a>
-      <a href="https://www.1stdibs.com/buy/soriana/">1stDibs 二手</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Soriana</span>
+      <span class="placeholder-sub">Tobia &amp; Afra Scarpa · 1969</span>
+      <a class="placeholder-cta" href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia 查图 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Tobia &amp; Afra Scarpa "Soriana"<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Tobia &amp; Afra Scarpa · 1969 · Cassina · Compasso d'Oro 1970</p>
+      <p class="reason">意大利"软家具革命"代表，纯抱枕+不锈钢夹结构，舒适度顶级。Cassina 重新生产，编号保收藏价值。</p>
+      <div class="links">
+        <a class="primary" href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia（Cassina NZ）</a>
+        <a href="https://www.cassina.com/en/collection/sofas-and-armchairs/715-soriana.html" target="_blank">Cassina 官方</a>
+        <a href="https://www.1stdibs.com/buy/soriana/" target="_blank">1stDibs 二手</a>
+      </div>
     </div>
   </article>
 
   <h3>单椅（重点单品 1-2 把）</h3>
 
   <article class="pick-card tier-1">
-    <h4>Hans J. Wegner "Papa Bear" AP 19<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">Hans J. Wegner · 1951 · 早期 AP Stolen / 现 PP Møbler 重制</p>
-    <p class="reason">
-      丹麦黄金期巅峰之作，1951 原版近十年拍卖价翻 3 倍。新款 PP Møbler 手工，每把可追溯。如果能在 Webb's / Mr Bigg 拿下 1950-60s 原版，是顶级藏品。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage">Mr Bigglesworthy</a>
-      <a href="https://www.webbs.co.nz/decorative-arts">Webb's</a>
-      <a href="https://www.pp.dk/furniture/pp19">PP Møbler 官方（新品）</a>
-      <a href="https://www.1stdibs.com/buy/wegner-papa-bear/">1stDibs</a>
+    <a class="pick-image" data-full="assets/picks/papa-bear.jpg">
+      <img loading="lazy" src="assets/picks/papa-bear.jpg" alt="Wegner Papa Bear">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Hans J. Wegner "Papa Bear" AP 19<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">Hans J. Wegner · 1951 · 早期 AP Stolen / 现 PP Møbler 重制</p>
+      <p class="reason">丹麦黄金期巅峰之作，1951 原版近十年拍卖价翻 3 倍。新款 PP Møbler 手工，每把可追溯。Mr Bigg / Webb's 拿 1950-60s 原版是顶级藏品。</p>
+      <div class="links">
+        <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigglesworthy</a>
+        <a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's</a>
+        <a href="https://www.pp.dk/furniture/pp19" target="_blank">PP Møbler 官方</a>
+        <a href="https://www.1stdibs.com/buy/wegner-papa-bear/" target="_blank">1stDibs</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-2">
-    <h4>Pierre Paulin "Tongue" F577<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Pierre Paulin · 1967 · Artifort</p>
-    <p class="reason">
-      法国流体雕塑感单椅，进入巴黎装饰艺术博物馆。Artifort 持续生产，新品有出厂编号。视觉冲击强，1 把就能撑起整个角落。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.artifort.com/en/products/seating/easy-chairs/tongue-chair">Artifort 官方</a>
-      <a href="https://www.vitrine.co.nz/">Vitrine NZ（欧洲 vintage）</a>
-      <a href="https://www.1stdibs.com/buy/pierre-paulin-tongue/">1stDibs 二手</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Tongue F577</span>
+      <span class="placeholder-sub">Pierre Paulin · 1967 · Artifort</span>
+      <a class="placeholder-cta" href="https://www.artifort.com/en/category/easy-chairs/tongue-chair" target="_blank">Artifort 查图 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Pierre Paulin "Tongue" F577<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Pierre Paulin · 1967 · Artifort</p>
+      <p class="reason">法国流体雕塑感单椅，进入巴黎装饰艺术博物馆。Artifort 持续生产，新品出厂编号。视觉冲击强。</p>
+      <div class="links">
+        <a class="primary" href="https://www.artifort.com/en/category/easy-chairs/tongue-chair" target="_blank">Artifort 官方</a>
+        <a href="https://www.vitrine.co.nz/" target="_blank">Vitrine NZ</a>
+        <a href="https://www.1stdibs.com/buy/pierre-paulin-tongue/" target="_blank">1stDibs 二手</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-1">
-    <h4>Pierre Jeanneret 钱迪加尔单椅<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">Pierre Jeanneret · 1955-60 · 印度柚木 + 藤编</p>
-    <p class="reason">
-      Le Corbusier 表弟为印度钱迪加尔市政设计，编号刻在底部。过去 10 年拍卖价涨 5 倍，已成稳健投资品。NZ 内基本无现货，走国际拍卖 + 集运到 Auckland。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.1stdibs.com/creators/pierre-jeanneret/furniture/">1stDibs Jeanneret</a>
-      <a href="https://www.pamono.com/designers/pierre-jeanneret">Pamono 欧洲</a>
-      <a href="https://www.wright20.com/">Wright Auctions（芝加哥）</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Pierre Jeanneret</span>
+      <span class="placeholder-sub">钱迪加尔单椅 · 1955-60</span>
+      <a class="placeholder-cta" href="https://www.1stdibs.com/creators/pierre-jeanneret/furniture/" target="_blank">1stDibs 查图 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Pierre Jeanneret 钱迪加尔单椅<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">Pierre Jeanneret · 1955-60 · 印度柚木 + 藤编</p>
+      <p class="reason">Le Corbusier 表弟为印度钱迪加尔市政设计，编号刻在底部。过去 10 年拍卖价涨 5 倍。NZ 内基本无现货，走国际拍卖 + 集运到 Auckland。</p>
+      <div class="links">
+        <a class="primary" href="https://www.1stdibs.com/creators/pierre-jeanneret/furniture/" target="_blank">1stDibs Jeanneret</a>
+        <a href="https://www.pamono.com/designers/pierre-jeanneret" target="_blank">Pamono 欧洲</a>
+        <a href="https://www.wright20.com/" target="_blank">Wright Auctions</a>
+      </div>
     </div>
   </article>
 
   <h3>咖啡桌</h3>
 
   <article class="pick-card tier-2">
-    <h4>Isamu Noguchi Coffee Table IN-50<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Isamu Noguchi · 1944 · Herman Miller / Vitra</p>
-    <p class="reason">
-      雕塑家做的家具，木+玻璃自支撑结构。MoMA 馆藏。持续生产 80 年，价格年增。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.hermanmiller.com/en_lac/products/tables/occasional-tables/noguchi-table/">Herman Miller 官方</a>
-      <a href="https://www.vitra.com/en-us/product/noguchi-coffee-table">Vitra 官方</a>
-      <a href="https://www.1stdibs.com/buy/noguchi-coffee-table/">1stDibs vintage</a>
+    <a class="pick-image" data-full="assets/picks/noguchi.jpg">
+      <img loading="lazy" src="assets/picks/noguchi.jpg" alt="Noguchi Coffee Table">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Isamu Noguchi Coffee Table IN-50<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Isamu Noguchi · 1944 · Herman Miller / Vitra</p>
+      <p class="reason">雕塑家做的家具，木+玻璃自支撑结构。MoMA 馆藏。持续生产 80 年，价格年增。</p>
+      <div class="links">
+        <a class="primary" href="https://www.hermanmiller.com/products/tables/occasional-tables/noguchi-table/" target="_blank">Herman Miller 官方</a>
+        <a href="https://www.vitra.com/en-us/product/noguchi-coffee-table" target="_blank">Vitra 官方</a>
+        <a href="https://www.1stdibs.com/buy/noguchi-coffee-table/" target="_blank">1stDibs vintage</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-3">
-    <h4>Vintage 丹麦柚木低桌<span class="grade g-daily">日用 ★</span></h4>
-    <p class="meta">1960-70s · Johannes Andersen / Arne Hovmand-Olsen 等</p>
-    <p class="reason">
-      Mr Bigglesworthy 每月轮换 5-10 张丹麦柚木低桌，1500-4000 NZD 价位的真品，签名 / 厂标可查。日用最实在选项。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage">Mr Bigglesworthy 浏览库存</a>
-      <a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables">Trade Me Antiques</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Vintage 丹麦柚木</span>
+      <span class="placeholder-sub">1960-70s 低桌</span>
+      <a class="placeholder-cta" href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/1/lounge" target="_blank">Mr Bigg 查库存 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Vintage 丹麦柚木低桌<span class="grade g-daily">日用 ★</span></h4>
+      <p class="meta">1960-70s · Johannes Andersen / Arne Hovmand-Olsen 等</p>
+      <p class="reason">Mr Bigglesworthy 每月轮换 5-10 张丹麦柚木低桌，1500-4000 NZD 真品，签名 / 厂标可查。</p>
+      <div class="links">
+        <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/1/lounge" target="_blank">Mr Bigglesworthy 客厅类</a>
+        <a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">Trade Me Antiques</a>
+      </div>
     </div>
   </article>
 
   <h3>客厅灯具</h3>
 
   <article class="pick-card tier-2">
-    <h4>Achille Castiglioni "Arco" 落地灯<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Achille &amp; Pier Giacomo Castiglioni · 1962 · Flos</p>
-    <p class="reason">
-      意大利后现代灯具圣杯，大理石底座 + 弧形不锈钢臂可吊覆沙发上方。Flos 持续生产，原厂编号。新品 NZ$5-7k。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://ecc.co.nz/">ECC NZ（Flos 代理）</a>
-      <a href="https://flos.com/en/us/products/floor/arco/">Flos 官方</a>
+    <a class="pick-image" data-full="assets/picks/arco.jpg">
+      <img loading="lazy" src="assets/picks/arco.jpg" alt="Flos Arco">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Achille Castiglioni "Arco" 落地灯<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Achille &amp; Pier Giacomo Castiglioni · 1962 · Flos</p>
+      <p class="reason">意大利后现代灯具圣杯，大理石底座 + 弧形不锈钢臂可吊覆沙发上方。Flos 持续生产，原厂编号。新品 NZ$5-7k。</p>
+      <div class="links">
+        <a class="primary" href="https://ecc.co.nz/" target="_blank">ECC NZ（Flos 代理）</a>
+        <a href="https://flos.com/en/us/products/floor/arco/" target="_blank">Flos 官方</a>
+      </div>
     </div>
   </article>
 
@@ -225,206 +312,214 @@
   <h3>餐桌</h3>
 
   <article class="pick-card tier-2">
-    <h4>Eero Saarinen Tulip 椭圆餐桌 1.98m<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Eero Saarinen · 1956-58 · Knoll · Carrara 大理石面</p>
-    <p class="reason">
-      1956 设计，"清除餐桌底下椅腿丛林"的革命性方案。与房子拱形门洞、弧形线条天然呼应。Knoll 编号防伪。Studio Italia 是 Knoll NZ 唯一授权。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair">Studio Italia NZ（Knoll 代理）</a>
-      <a href="https://www.knoll.com/shop/en_us/dining-dining-tables/saarinen-dining-table/7204.html">Knoll 官方</a>
-      <a href="https://www.1stdibs.com/buy/saarinen-tulip-dining-table/">1stDibs Vintage Tulip</a>
+    <a class="pick-image" data-full="assets/picks/saarinen-tulip.jpg">
+      <img loading="lazy" src="assets/picks/saarinen-tulip.jpg" alt="Saarinen Tulip">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Eero Saarinen Tulip 椭圆餐桌 1.98m<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Eero Saarinen · 1956-58 · Knoll · Carrara 大理石面</p>
+      <p class="reason">"清除餐桌底下椅腿丛林"的革命性方案。与房子拱形门洞、弧形线条天然呼应。Knoll 编号防伪。Studio Italia 是 Knoll NZ 唯一授权。</p>
+      <div class="links">
+        <a class="primary" href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia NZ（Knoll）</a>
+        <a href="https://www.knoll.com/shop/en_us/dining-dining-tables/saarinen-dining-table/7204.html" target="_blank">Knoll 官方</a>
+        <a href="https://www.1stdibs.com/buy/saarinen-tulip-dining-table/" target="_blank">1stDibs Vintage</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-1">
-    <h4>Vintage Borge Mogensen / Wegner 柚木餐桌<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">Borge Mogensen / Hans Wegner · 1955-65 · 丹麦柚木真品</p>
-    <p class="reason">
-      丹麦黄金期家具，签名 + Møbelfabrik 标可追溯。1.6-2.0m 椭圆/圆形最适合这间 4.7×4.1 餐厅。NZ 内 Mr Bigg 是首选，Webb's 季度拍卖偶有顶级件。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage">Mr Bigglesworthy</a>
-      <a href="https://www.webbs.co.nz/decorative-arts">Webb's Design Sale</a>
-      <a href="https://www.lauritz.com/en/auction/danish-modern/4083/">Lauritz 丹麦拍卖</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Vintage Mogensen / Wegner</span>
+      <span class="placeholder-sub">丹麦柚木餐桌 · 1955-65</span>
+      <a class="placeholder-cta" href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/2/dining" target="_blank">Mr Bigg 餐厅类 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Vintage Borge Mogensen / Wegner 柚木餐桌<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">Borge Mogensen / Hans Wegner · 1955-65 · 丹麦柚木真品</p>
+      <p class="reason">丹麦黄金期家具，签名 + Møbelfabrik 标可追溯。1.6-2.0m 椭圆/圆形最适合 4.7×4.1 餐厅。</p>
+      <div class="links">
+        <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/2/dining" target="_blank">Mr Bigglesworthy 餐厅</a>
+        <a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's Design Sale</a>
+        <a href="https://www.lauritz.com/en/" target="_blank">Lauritz 丹麦拍卖</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-3">
-    <h4>Tim Webber Design 当代 NZ 定制<span class="grade g-daily">日用 ★</span></h4>
-    <p class="meta">Tim Webber · NZ 当代设计 · Grafton 展厅</p>
-    <p class="reason">
-      奥克兰本地设计师，木质活边桌 / 实木长桌，能按尺寸定制。展厅就在 ECC 隔壁（12 Nugent St），扫店顺路。NZ 设计品有本土文化加成。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://timwebberdesign.com/">Tim Webber 主页</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Tim Webber</span>
+      <span class="placeholder-sub">NZ 当代实木定制 · Grafton</span>
+      <a class="placeholder-cta" href="https://timwebberdesign.com/collections/dining-tables" target="_blank">Tim Webber 餐桌 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Tim Webber Design 当代 NZ 定制<span class="grade g-daily">日用 ★</span></h4>
+      <p class="meta">Tim Webber · NZ 当代设计 · 12 Nugent St Grafton 展厅</p>
+      <p class="reason">奥克兰本地设计师，活边桌 / 实木长桌，能按尺寸定制。展厅就在 ECC 隔壁，扫店顺路。</p>
+      <div class="links">
+        <a class="primary" href="https://timwebberdesign.com/collections/dining-tables" target="_blank">Tim Webber 餐桌</a>
+      </div>
     </div>
   </article>
 
   <h3>餐椅（6 把 / 套）</h3>
 
   <article class="pick-card tier-2">
-    <h4>Hans Wegner CH24 "Y Chair / Wishbone"<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Hans Wegner · 1949 · Carl Hansen &amp; Søn · 至今 75 年持续生产</p>
-    <p class="reason">
-      丹麦家具单品销量第一，每把需要 100+ 道工序、4 小时手工编织。Cult Design NZ 是 Carl Hansen 唯一授权。新品 NZ$1.8-2.4k 一把，整组 6 把 NZ$11-14k。二手保值率超 70%。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://cultdesign.co.nz/collections/carl-hansen-son">Cult Design NZ（Carl Hansen 代理）</a>
-      <a href="https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch24">Carl Hansen 官方</a>
-      <a href="https://www.1stdibs.com/buy/ch24-wishbone/">1stDibs Vintage CH24</a>
+    <a class="pick-image" data-full="assets/picks/ch24.jpg">
+      <img loading="lazy" src="assets/picks/ch24.jpg" alt="Wegner CH24 Wishbone">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Hans Wegner CH24 "Y Chair / Wishbone"<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Hans Wegner · 1949 · Carl Hansen &amp; Søn · 至今 75 年持续生产</p>
+      <p class="reason">丹麦家具单品销量第一。100+ 道工序、4 小时手工编织。Cult Design NZ 唯一授权。整组 6 把 NZ$11-14k。二手保值率超 70%。</p>
+      <div class="links">
+        <a class="primary" href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult Design NZ（Carl Hansen）</a>
+        <a href="https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch24" target="_blank">Carl Hansen 官方</a>
+        <a href="https://www.1stdibs.com/buy/ch24-wishbone/" target="_blank">1stDibs Vintage</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-2">
-    <h4>Arne Jacobsen Series 7™ 3107<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Arne Jacobsen · 1955 · Fritz Hansen · 史上销量第一椅</p>
-    <p class="reason">
-      9 层压制单板 + 钢腿，70 年从未停产。Fritz Hansen 底部铜牌编号。Cult Design NZ 是 Fritz Hansen 唯一授权。整组 6 把 NZ$10-12k。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://cultdesign.co.nz/collections/fritz-hansen">Cult Design NZ（Fritz Hansen 代理）</a>
-      <a href="https://www.fritzhansen.com/en/products/chairs/3107-series-7-coloured-ash">Fritz Hansen 官方</a>
-      <a href="https://www.1stdibs.com/buy/series-7-arne-jacobsen/">1stDibs Vintage</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Series 7™ 3107</span>
+      <span class="placeholder-sub">Arne Jacobsen · 1955</span>
+      <a class="placeholder-cta" href="https://cultdesign.co.nz/collections/fritz-hansen" target="_blank">Cult Design 查图 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Arne Jacobsen Series 7™ 3107<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Arne Jacobsen · 1955 · Fritz Hansen · 史上销量第一椅</p>
+      <p class="reason">9 层压制单板 + 钢腿，70 年从未停产。Fritz Hansen 底部铜牌编号。Cult Design NZ 唯一授权。整组 6 把 NZ$10-12k。</p>
+      <div class="links">
+        <a class="primary" href="https://cultdesign.co.nz/collections/fritz-hansen" target="_blank">Cult Design NZ（Fritz Hansen）</a>
+        <a href="https://www.fritzhansen.com/" target="_blank">Fritz Hansen 官方</a>
+        <a href="https://www.1stdibs.com/buy/series-7-arne-jacobsen/" target="_blank">1stDibs Vintage</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-1">
-    <h4>Vintage Wegner CH33 / Mogensen J39 真品<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">1950-70s · 丹麦柚木 / 橡木原版</p>
-    <p class="reason">
-      早期 Carl Hansen 或 FDB Møbler 出品，签名 + 厂标在椅子底部。整组 6 把同批次 vintage NZ$5-9k，比新品便宜还更升值。耐心淘 6-12 个月凑齐成套是常态。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage">Mr Bigglesworthy</a>
-      <a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables">Trade Me</a>
-      <a href="https://www.lauritz.com/en/">Lauritz 丹麦拍卖</a>
+    <a class="pick-image" data-full="assets/picks/ch33-vintage.jpg">
+      <img loading="lazy" src="assets/picks/ch33-vintage.jpg" alt="Wegner CH33 Vintage">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Vintage Wegner CH33 / Mogensen J39 真品<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">1950-70s · 丹麦柚木 / 橡木原版</p>
+      <p class="reason">早期 Carl Hansen 或 FDB Møbler 出品，签名 + 厂标在椅子底部。整组 6 把同批次 vintage NZ$5-9k，比新品便宜还更升值。</p>
+      <div class="links">
+        <a class="primary" href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigglesworthy</a>
+        <a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">Trade Me</a>
+        <a href="https://www.lauritz.com/en/" target="_blank">Lauritz 丹麦拍卖</a>
+      </div>
     </div>
   </article>
 
-  <h3>餐厅吊灯（餐桌正上方）</h3>
+  <h3>餐厅吊灯</h3>
 
   <article class="pick-card tier-2">
-    <h4>Louis Poulsen PH 5<span class="grade g-classic">设计经典 ★★</span></h4>
-    <p class="meta">Poul Henningsen · 1958 · Louis Poulsen</p>
-    <p class="reason">
-      丹麦灯具圣杯，三层反射板让光线 100% 无眩晕。1958 至今持续生产，每盏底部刻字。NZ$1.5-2k。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://cultdesign.co.nz/collections/louis-poulsen">Cult Design NZ</a>
-      <a href="https://www.louispoulsen.com/en-int/private/catalogue/indoor/pendants/ph-5">Louis Poulsen 官方</a>
+    <a class="pick-image" data-full="assets/picks/ph5.jpg">
+      <img loading="lazy" src="assets/picks/ph5.jpg" alt="Louis Poulsen PH5">
+      <span class="pick-zoom">放大 +</span>
+    </a>
+    <div class="pick-body">
+      <h4>Louis Poulsen PH 5<span class="grade g-classic">设计经典 ★★</span></h4>
+      <p class="meta">Poul Henningsen · 1958 · Louis Poulsen</p>
+      <p class="reason">丹麦灯具圣杯，三层反射板让光线 100% 无眩晕。1958 至今持续生产，每盏底部刻字。NZ$1.5-2k。</p>
+      <div class="links">
+        <a class="primary" href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design NZ</a>
+        <a href="https://www.louispoulsen.com/" target="_blank">Louis Poulsen 官方</a>
+      </div>
     </div>
   </article>
 
   <article class="pick-card tier-1">
-    <h4>Serge Mouille 三臂吊灯<span class="grade g-investment">投资级 ★★★</span></h4>
-    <p class="meta">Serge Mouille · 1953 · 法国 · 钢黑漆</p>
-    <p class="reason">
-      法国战后设计标志件，1953 原版在 Christie's 拍卖一盏 €60k+。DCW Éditions 现有授权重制，Serge Mouille 家族监督。新品 NZ$8-12k。
-    </p>
-    <div class="links">
-      <a class="primary" href="https://ecc.co.nz/">ECC NZ（DCW 代理）</a>
-      <a href="https://en.dcw-editions.com/serge-mouille">DCW Éditions 官方</a>
-      <a href="https://www.1stdibs.com/creators/serge-mouille/lighting/">1stDibs Vintage</a>
+    <a class="pick-image placeholder">
+      <span class="placeholder-label">Serge Mouille 3-Arm</span>
+      <span class="placeholder-sub">Serge Mouille · 1953 · 法国</span>
+      <a class="placeholder-cta" href="https://ecc.co.nz/" target="_blank">ECC 查图 ↗</a>
+    </a>
+    <div class="pick-body">
+      <h4>Serge Mouille 三臂吊灯<span class="grade g-investment">投资级 ★★★</span></h4>
+      <p class="meta">Serge Mouille · 1953 · 法国 · 钢黑漆</p>
+      <p class="reason">法国战后设计标志件，1953 原版 Christie's 拍卖一盏 €60k+。DCW Éditions 现有授权重制，Serge Mouille 家族监督。新品 NZ$8-12k。</p>
+      <div class="links">
+        <a class="primary" href="https://ecc.co.nz/" target="_blank">ECC NZ（DCW 代理）</a>
+        <a href="https://www.dcw-editions.com/" target="_blank">DCW Éditions 官方</a>
+        <a href="https://www.1stdibs.com/creators/serge-mouille/lighting/" target="_blank">1stDibs Vintage</a>
+      </div>
     </div>
   </article>
 
   <!-- ============ 渠道地图 ============ -->
   <h2 id="map">奥克兰渠道地图</h2>
-  <p style="color:var(--muted)">大部分授权展厅集中在 <strong>Grafton 的 Nugent Street</strong>（ECC + Studio Italia + Tim Webber 一条街）和 <strong>Parnell</strong>（Cult Design + Matisse）。中古真品在 <strong>Eden Terrace 的 Newton Road</strong>（Mr Bigg + Good Form 合体店）。一个周末可以扫完。</p>
+  <p style="color:var(--muted)">大部分授权展厅集中在 <strong>Grafton 的 Nugent Street</strong>（ECC + Studio Italia + Tim Webber 一条街）和 <strong>Parnell</strong>（Cult Design + Matisse）。中古真品在 <strong>Eden Terrace 的 Newton Road</strong>。一个周末可以扫完。</p>
 
   <table class="map-table">
-    <tr>
-      <th>店</th><th>地址</th><th>代理 / 专长</th><th>链接</th>
-    </tr>
-    <tr>
-      <td><strong>Cult Design</strong></td>
-      <td>73 The Strand, Parnell</td>
-      <td>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen</td>
-      <td><a href="https://cultdesign.co.nz/">cultdesign.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Matisse</strong></td>
-      <td>130 St Georges Bay Rd, Parnell</td>
-      <td>B&B Italia · Cassina · Maxalto · &Tradition</td>
-      <td><a href="https://matisse.co.nz/">matisse.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>ECC</strong></td>
-      <td>39 Nugent St, Grafton</td>
-      <td>Flos · DCW Éditions · 多品牌灯具与家具</td>
-      <td><a href="https://ecc.co.nz/">ecc.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Studio Italia</strong></td>
-      <td>25 Nugent St, Grafton</td>
-      <td>Knoll（Saarinen Tulip）· Cassina · 意大利经典</td>
-      <td><a href="https://www.studioitalia.co.nz/">studioitalia.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Tim Webber Design</strong></td>
-      <td>12 Nugent St, Grafton</td>
-      <td>NZ 当代实木家具定制</td>
-      <td><a href="https://timwebberdesign.com/">timwebberdesign.com</a></td>
-    </tr>
-    <tr>
-      <td><strong>Mr Bigglesworthy / Good Form</strong></td>
-      <td>86 Newton Rd, Eden Terrace</td>
-      <td>中古丹麦 / 意大利真品修复</td>
-      <td><a href="https://www.mrbigglesworthy.co.nz/">mrbigglesworthy.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Vitrine</strong></td>
-      <td>Morningside</td>
-      <td>法国 + 欧洲早期 20 世纪家具与灯具</td>
-      <td><a href="https://www.vitrine.co.nz/">vitrine.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Webb's Auctions</strong></td>
-      <td>Mount Eden</td>
-      <td>季度 Premium Design 拍卖 · 顶级中古主战场</td>
-      <td><a href="https://www.webbs.co.nz/decorative-arts">webbs.co.nz/decorative-arts</a></td>
-    </tr>
-    <tr>
-      <td><strong>Cordy's</strong></td>
-      <td>Mount Eden / Remuera</td>
-      <td>每月 Decorative &amp; Fine Art 拍卖 · 周一在线 Estate</td>
-      <td><a href="https://www.cordys.co.nz/">cordys.co.nz</a></td>
-    </tr>
-    <tr>
-      <td><strong>Simon James</strong></td>
-      <td>Newmarket</td>
-      <td>NZ 当代设计 + Hay / Muuto / Vitra</td>
-      <td><a href="https://simonjames.co.nz/">simonjames.co.nz</a></td>
-    </tr>
+    <tr><th>店</th><th>地址</th><th>代理 / 专长</th><th>链接</th></tr>
+    <tr><td><strong>Cult Design</strong></td><td>73 The Strand, Parnell</td><td>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen</td><td><a href="https://cultdesign.co.nz/" target="_blank">cultdesign.co.nz</a></td></tr>
+    <tr><td><strong>Matisse</strong></td><td>130 St Georges Bay Rd, Parnell</td><td>B&B Italia · Maxalto · &Tradition</td><td><a href="https://matisse.co.nz/" target="_blank">matisse.co.nz</a></td></tr>
+    <tr><td><strong>ECC</strong></td><td>39 Nugent St, Grafton</td><td>Flos · DCW Éditions · 多品牌灯具</td><td><a href="https://ecc.co.nz/" target="_blank">ecc.co.nz</a></td></tr>
+    <tr><td><strong>Studio Italia</strong></td><td>25 Nugent St, Grafton</td><td>Knoll（Saarinen Tulip）· Cassina</td><td><a href="https://www.studioitalia.co.nz/" target="_blank">studioitalia.co.nz</a></td></tr>
+    <tr><td><strong>Tim Webber</strong></td><td>12 Nugent St, Grafton</td><td>NZ 当代实木家具定制</td><td><a href="https://timwebberdesign.com/" target="_blank">timwebberdesign.com</a></td></tr>
+    <tr><td><strong>Mr Bigglesworthy / Good Form</strong></td><td>86 Newton Rd, Eden Terrace</td><td>中古丹麦 / 意大利真品修复</td><td><a href="https://www.mrbigglesworthy.co.nz/" target="_blank">mrbigglesworthy.co.nz</a></td></tr>
+    <tr><td><strong>Vitrine</strong></td><td>Morningside</td><td>法国 + 欧洲早期 20 世纪</td><td><a href="https://www.vitrine.co.nz/" target="_blank">vitrine.co.nz</a></td></tr>
+    <tr><td><strong>Webb's Auctions</strong></td><td>Mount Eden</td><td>季度 Premium Design 拍卖</td><td><a href="https://www.webbs.co.nz/decorative-arts" target="_blank">webbs.co.nz</a></td></tr>
+    <tr><td><strong>Cordy's</strong></td><td>Mount Eden / Remuera</td><td>月度 Decorative + 周一 Estate</td><td><a href="https://www.cordys.co.nz/" target="_blank">cordys.co.nz</a></td></tr>
   </table>
 
   <h2>国际 ship to Auckland</h2>
   <table class="map-table">
     <tr><th>平台</th><th>覆盖</th><th>链接</th></tr>
-    <tr><td><strong>1stDibs</strong></td><td>全球顶级中古聚合，价格透明</td><td><a href="https://www.1stdibs.com/">1stdibs.com</a></td></tr>
-    <tr><td><strong>Pamono</strong></td><td>欧洲中古，欧元定价友好</td><td><a href="https://www.pamono.com/">pamono.com</a></td></tr>
-    <tr><td><strong>Selency</strong></td><td>法国 Art Deco + mid-century</td><td><a href="https://www.selency.com/">selency.com</a></td></tr>
-    <tr><td><strong>Catawiki</strong></td><td>荷兰拍卖，频次高</td><td><a href="https://www.catawiki.com/">catawiki.com</a></td></tr>
-    <tr><td><strong>Wright Auctions</strong></td><td>芝加哥 mid-century 顶级</td><td><a href="https://www.wright20.com/">wright20.com</a></td></tr>
-    <tr><td><strong>Lauritz</strong></td><td>丹麦本土拍卖 · Wegner / Mogensen 源头</td><td><a href="https://www.lauritz.com/en/">lauritz.com</a></td></tr>
-    <tr><td><strong>Bukowskis</strong></td><td>瑞典 · 北欧家具源头</td><td><a href="https://www.bukowskis.com/en">bukowskis.com</a></td></tr>
+    <tr><td><strong>1stDibs</strong></td><td>全球顶级中古聚合</td><td><a href="https://www.1stdibs.com/" target="_blank">1stdibs.com</a></td></tr>
+    <tr><td><strong>Pamono</strong></td><td>欧洲中古，欧元定价</td><td><a href="https://www.pamono.com/" target="_blank">pamono.com</a></td></tr>
+    <tr><td><strong>Selency</strong></td><td>法国 Art Deco + mid-century</td><td><a href="https://www.selency.com/" target="_blank">selency.com</a></td></tr>
+    <tr><td><strong>Catawiki</strong></td><td>荷兰拍卖，频次高</td><td><a href="https://www.catawiki.com/" target="_blank">catawiki.com</a></td></tr>
+    <tr><td><strong>Wright Auctions</strong></td><td>芝加哥 mid-century</td><td><a href="https://www.wright20.com/" target="_blank">wright20.com</a></td></tr>
+    <tr><td><strong>Lauritz</strong></td><td>丹麦本土拍卖 · Wegner / Mogensen 源头</td><td><a href="https://www.lauritz.com/en/" target="_blank">lauritz.com</a></td></tr>
+    <tr><td><strong>Bukowskis</strong></td><td>瑞典 · 北欧家具源头</td><td><a href="https://www.bukowskis.com/en" target="_blank">bukowskis.com</a></td></tr>
   </table>
 
   <h2>购买顺序建议</h2>
   <div class="room">
-    <div class="pick"><strong>第 1 周末</strong> <em>扫店：Nugent St 三家（ECC / Studio Italia / Tim Webber）+ Parnell 两家（Cult / Matisse）· 现场试坐 Y Chair / Series 7 / Camaleonda</em></div>
-    <div class="pick"><strong>第 2 周末</strong> <em>Mr Bigg + Webb's / Cordy's 看现货 · 注册 Webb's 邮件订阅季度 Design Sale 目录</em></div>
-    <div class="pick"><strong>第 3-4 周</strong> <em>定下沙发（最大单笔，决定 Lounge 调性）· 同时在 1stDibs / Lauritz 上看 Jeanneret / Wegner Papa Bear / Mogensen 餐桌</em></div>
-    <div class="pick"><strong>第 1-2 月</strong> <em>餐桌 + 餐椅整组下定 · 餐椅推荐先成套订 6 把 Y Chair（保值 + 不用等 vintage 凑齐）</em></div>
-    <div class="pick"><strong>第 3-6 月</strong> <em>单椅 / 咖啡桌 / 灯具慢慢淘 vintage 真品 · 拍卖等机会，不急一时</em></div>
+    <div class="pick"><strong>第 1 周末</strong> <em>扫店：Nugent St 三家 + Parnell 两家 · 现场试坐 Y Chair / Series 7 / Camaleonda</em></div>
+    <div class="pick"><strong>第 2 周末</strong> <em>Mr Bigg + Webb's / Cordy's 看现货 · 注册 Webb's 邮件订阅</em></div>
+    <div class="pick"><strong>第 3-4 周</strong> <em>定下沙发（最大单笔）· 1stDibs / Lauritz 看 Jeanneret / Papa Bear / Mogensen 餐桌</em></div>
+    <div class="pick"><strong>第 1-2 月</strong> <em>餐桌 + 餐椅整组下定 · 餐椅推荐先订 6 把 Y Chair</em></div>
+    <div class="pick"><strong>第 3-6 月</strong> <em>单椅 / 咖啡桌 / 灯具慢慢淘 vintage 真品 · 拍卖等机会</em></div>
   </div>
 
 </main>
 
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+  <img id="lbImg" alt="">
+</div>
+
 <footer>
-  <p>价格区间为 2026 年 5 月 NZD 参考值 · 所有链接以经销商当前库存为准 · 拍卖结果实时变化，进场前在 webbs.co.nz / cordys.co.nz 查最新目录</p>
+  <p>价格区间为 2026 年 5 月 NZD 参考值 · 缩略图来自经销商 / 品牌官方页与 Wikimedia Commons · 部分 vintage 单品库存动态，以经销商当前页面为准</p>
 </footer>
+
+<script>
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+document.querySelectorAll('.pick-image[data-full]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    lbImg.src = el.dataset.full;
+    lb.classList.add('open');
+  });
+});
+document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
+// placeholder 内 CTA 阻止冒泡（不触发 lightbox）
+document.querySelectorAll('.placeholder-cta').forEach(a => {
+  a.addEventListener('click', e => e.stopPropagation());
+});
+</script>
 
 </body>
 </html>
