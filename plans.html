@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>实测方案 · 106 Victoria Ave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .room-section{margin:48px 0 80px}
+  .room-header{
+    background:#1a1a1a;color:#faf8f3;
+    padding:28px 32px;border-radius:4px 4px 0 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;
+  }
+  .room-header h2{
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    color:#faf8f3;border:none;margin:0;padding:0;
+    font-size:2rem;
+  }
+  .room-header .meta{
+    font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;
+    opacity:.7;font-family:"JetBrains Mono",monospace;
+  }
+  .room-content{
+    background:#fff;padding:32px;
+    border-radius:0 0 4px 4px;
+    box-shadow:var(--shadow);
+  }
+  .spec-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1px;background:var(--rule);
+    margin:24px 0;border:1px solid var(--rule);
+  }
+  .spec{background:#fff;padding:16px;text-align:center}
+  .spec .v{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold);line-height:1.1}
+  .spec .l{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:.3em}
+
+  .ascii-plan{
+    background:var(--paper);
+    padding:20px 24px;border-radius:4px;
+    font-family:"JetBrains Mono","SF Mono",Menlo,monospace;
+    font-size:.85rem;line-height:1.5;color:var(--ink);
+    overflow-x:auto;margin:24px 0;
+    border:1px solid var(--rule);
+  }
+
+  .plan-card{
+    background:var(--paper);
+    border-left:4px solid var(--gold);
+    padding:24px 28px;margin:20px 0;
+    border-radius:0 4px 4px 0;
+  }
+  .plan-card.plan-a{border-left-color:#1a1a1a}
+  .plan-card.plan-b{border-left-color:#8b6f47}
+  .plan-card.plan-c{border-left-color:#c8bda3}
+
+  .plan-tag{
+    display:inline-block;
+    font-family:"Cormorant Garamond",serif;font-size:1.8rem;
+    color:var(--gold);line-height:1;margin-right:.5em;
+    vertical-align:middle;
+  }
+  .plan-card h3{
+    font-family:"Cormorant Garamond",serif;font-weight:500;
+    font-size:1.5rem;margin:0 0 12px;color:var(--ink);
+    display:flex;align-items:baseline;flex-wrap:wrap;gap:.4em;
+  }
+  .plan-card .tier{
+    font-size:.78rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;
+    font-family:inherit;
+  }
+  .item-line{
+    padding:10px 0;border-bottom:1px dashed var(--rule);
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:.5em;
+  }
+  .item-line:last-of-type{border-bottom:none}
+  .item-line .role{
+    font-family:"Cormorant Garamond",serif;
+    color:var(--gold);min-width:80px;font-size:1.05rem;
+  }
+  .item-line strong{font-weight:500}
+  .item-line em{color:var(--muted);font-style:normal;font-size:.88rem}
+  .item-line a{
+    font-size:.8rem;padding:3px 10px;
+    border:1px solid var(--rule);border-radius:99px;
+    color:var(--ink);margin-left:auto;
+  }
+  .item-line a:hover{border-color:var(--gold);color:var(--gold)}
+
+  .why{
+    margin-top:14px;padding:12px 16px;
+    background:#fff;border-radius:4px;
+    color:var(--muted);font-size:.92rem;
+  }
+  .why strong{color:var(--ink)}
+
+  .verdict{
+    margin:32px 0 0;padding:20px 24px;
+    background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%);
+    color:#faf8f3;border-radius:4px;
+    font-family:"Cormorant Garamond",serif;font-size:1.15rem;line-height:1.5;
+  }
+  .verdict .label{
+    font-family:-apple-system,sans-serif;font-size:.72rem;
+    letter-spacing:.2em;text-transform:uppercase;opacity:.6;
+    display:block;margin-bottom:6px;
+  }
+
+  .pending-room{
+    padding:32px;background:#fff;border:1px dashed var(--rule);
+    border-radius:4px;text-align:center;color:var(--muted);
+    margin:20px 0;
+  }
+  .pending-room h3{color:var(--muted);margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">106 Victoria Ave <small>Remuera</small></div>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="gallery.html">画廊</a>
+      <a href="buying-guide.html">采购建议</a>
+      <a href="picks.html">精选</a>
+      <a href="plans.html" class="active">实测方案</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" style="padding-top:32px">
+
+  <h1>实测后的具体方案</h1>
+  <p class="lead">
+    现场测量过的房间在这里。每个方案是基于实际尺寸的具体家具组合 + 全部链接 + 摆放图。
+    随着每个房间陆续测量完，这页持续追加。
+  </p>
+
+  <!-- ============ Kitchen / Dining ============ -->
+  <section class="room-section" id="kitchen-dining">
+    <div class="room-header">
+      <h2>Kitchen / Dining 开放餐厅</h2>
+      <span class="meta">4000 × 3800 mm · 实测 2026-05-30</span>
+    </div>
+    <div class="room-content">
+
+      <p>厨房中岛南侧 + 通往阳台的开放式家庭餐厅区域。<strong>不是</strong>布局图上另一个独立 Dining (4.7×4.1m)，那间正式餐厅另外规划。</p>
+
+      <div class="spec-grid">
+        <div class="spec"><div class="v">4.0 m</div><div class="l">阳台门 ↔ 对面墙</div></div>
+        <div class="spec"><div class="v">3.8 m</div><div class="l">中岛 ↔ 另一侧</div></div>
+        <div class="spec"><div class="v">15.2 ㎡</div><div class="l">面积</div></div>
+        <div class="spec"><div class="v">西向</div><div class="l">采光</div></div>
+        <div class="spec"><div class="v">6 人</div><div class="l">推荐桌容量</div></div>
+      </div>
+
+      <h3 style="margin-top:32px">空间能放多大桌</h3>
+      <p>留 1m 椅子退路 / 桌到墙 0.75m 走道，桌最大尺寸：</p>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0">
+        <tr style="border-bottom:1px solid var(--rule)">
+          <th style="text-align:left;padding:10px 0;font-weight:500">桌型</th>
+          <th style="text-align:right;padding:10px 0;font-weight:500">尺寸上限</th>
+          <th style="text-align:right;padding:10px 0;font-weight:500">座位</th>
+          <th style="text-align:right;padding:10px 0;font-weight:500">舒适度</th>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule)"><td style="padding:10px 0">长方形</td><td style="text-align:right">2.4 × 1.0 m</td><td style="text-align:right">8 人</td><td style="text-align:right;color:var(--muted)">紧</td></tr>
+        <tr style="border-bottom:1px solid var(--rule)"><td style="padding:10px 0">长方形</td><td style="text-align:right">2.0 × 1.0 m</td><td style="text-align:right">6-8 人</td><td style="text-align:right;color:var(--muted)">舒适</td></tr>
+        <tr style="border-bottom:1px solid var(--rule)"><td style="padding:10px 0">椭圆</td><td style="text-align:right">1.98 × 1.21 m</td><td style="text-align:right">6 人</td><td style="text-align:right;color:var(--gold)">★ 推荐</td></tr>
+        <tr><td style="padding:10px 0">圆形</td><td style="text-align:right">1.52 m 直径</td><td style="text-align:right">4-6 人</td><td style="text-align:right">通透</td></tr>
+      </table>
+
+      <h3>俯视布局（方案 A）</h3>
+      <div class="ascii-plan">
+                          阳台门
+                            │
+        ┌───────────────────┴──────────┐  ←─ 4000mm ─→
+        │                              │
+        │       ◯   ◯   ◯              │
+        │                              │
+        │   ◯               ◯          │   3800mm
+        │                              │
+        │       ◯   ◯   ◯              │
+        │                              │
+        │            ↑                 │
+        │          [PH5]               │
+        └──────────────────────────────┘
+        ↑                              ↑
+    中岛吧台                       对面墙
+   （厨房一侧）                  （西/落地窗）
+      </div>
+
+      <h3 style="margin-top:40px">三个方案</h3>
+
+      <!-- 方案 A -->
+      <article class="plan-card plan-a">
+        <h3><span class="plan-tag">A</span> 现代极简：Saarinen Tulip 椭圆 1.98m <span class="tier">设计经典 ★★ · 主推</span></h3>
+
+        <div class="item-line">
+          <span class="role">餐桌</span>
+          <strong>Eero Saarinen Tulip Oval 1.98 × 1.21 m</strong>
+          <em>· Knoll · Carrara 大理石面</em>
+          <a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia NZ</a>
+        </div>
+        <div class="item-line">
+          <span class="role">餐椅</span>
+          <strong>6 把 Wegner CH24 "Y Chair"</strong>
+          <em>· Carl Hansen · 整组 NZ$11-14k</em>
+          <a href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult Design NZ</a>
+        </div>
+        <div class="item-line">
+          <span class="role">吊灯</span>
+          <strong>Louis Poulsen PH 5</strong>
+          <em>· Poul Henningsen 1958 · NZ$1.5-2k</em>
+          <a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design NZ</a>
+        </div>
+
+        <div class="why">
+          <strong>为什么：</strong>Tulip 椭圆的"无椅腿丛林"造型与厨房极简白色中岛和谐，西向落地窗采光让大理石面发光。
+          Y Chair 整组 NZ 现货能拿。<strong>风格定调与开放厨房一致 —— 现代北欧家庭</strong>，跟正式 Dining 走中古路线互补。
+        </div>
+      </article>
+
+      <!-- 方案 B -->
+      <article class="plan-card plan-b">
+        <h3><span class="plan-tag">B</span> 投资级：Vintage Mogensen 椭圆柚木桌 <span class="tier">投资级 ★★★</span></h3>
+
+        <div class="item-line">
+          <span class="role">餐桌</span>
+          <strong>Vintage Borge Mogensen / Wegner 椭圆 1.8m</strong>
+          <em>· 1955-65 丹麦柚木真品</em>
+          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/2/dining" target="_blank">Mr Bigg</a>
+        </div>
+        <div class="item-line">
+          <span class="role">餐椅</span>
+          <strong>6 把 Wegner CH24（新）或 Vintage CH33（淘）</strong>
+          <em>· 整组 NZ$5-14k 视新旧</em>
+          <a href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult NZ</a>
+        </div>
+        <div class="item-line">
+          <span class="role">吊灯</span>
+          <strong>George Nelson Bubble Saucer 17"</strong>
+          <em>· 1947 美国 · Modernica 重制 NZ$1.5-3k</em>
+          <a href="https://ecc.co.nz/" target="_blank">ECC NZ</a>
+        </div>
+
+        <div class="why">
+          <strong>为什么：</strong>整套丹麦黄金期真品，跟另一间正式 Dining 风格统一。<strong>升值 + 传家级</strong>。
+          <strong>缺点：</strong>Vintage 桌要在 Webb's 季度 Design Sale 或 Lauritz 拍卖等机会，可能 3-6 个月才凑齐。
+        </div>
+      </article>
+
+      <!-- 方案 C -->
+      <article class="plan-card plan-c">
+        <h3><span class="plan-tag">C</span> 通透日常：Tulip 圆 1.52m + 角落 Reading Nook <span class="tier">设计经典 ★★</span></h3>
+
+        <div class="item-line">
+          <span class="role">餐桌</span>
+          <strong>Saarinen Tulip Round 1.52 m</strong>
+          <em>· 4-6 人日常</em>
+          <a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia NZ</a>
+        </div>
+        <div class="item-line">
+          <span class="role">餐椅</span>
+          <strong>4 把 Tulip Side Chair 或 Eames DSW</strong>
+          <em>· 配 Tulip 桌完美</em>
+          <a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia</a>
+        </div>
+        <div class="item-line">
+          <span class="role">角落</span>
+          <strong>单椅 + 边桌做晨读咖啡角</strong>
+          <em>· 朝阳台门 · Vintage 单椅最佳</em>
+          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/1/lounge" target="_blank">Mr Bigg 单椅</a>
+        </div>
+        <div class="item-line">
+          <span class="role">吊灯</span>
+          <strong>Louis Poulsen PH 5 / Verner Panton Flowerpot</strong>
+          <em>· 圆桌正中</em>
+          <a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design NZ</a>
+        </div>
+
+        <div class="why">
+          <strong>为什么：</strong>4×3.8m 留出更多空间，通透不"满"。
+          角落 1.2m 留 reading nook 朝阳台门看花园是很 NZ 的生活感。
+          适合日常 4 人，聚 6 人时搬两把椅子。
+        </div>
+      </article>
+
+      <div class="verdict">
+        <span class="label">我的判断</span>
+        方案 <strong>A</strong> —— 跟厨房开放空间气质一致，且 Tulip 桌 + Y Chair + PH5 在 NZ 都是现货能落地，
+        不用等拍卖。把正式 Dining 留给中古丹麦的投入，这里走"经典 + 日用"的平衡。
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 未来其他房间占位 -->
+  <h2>其他房间 · 待测</h2>
+  <div class="pending-room">
+    <h3>Lounge · 主客厅 (5.2 × 6.8 m 标称)</h3>
+    <p>实测后将在此追加方案</p>
+  </div>
+  <div class="pending-room">
+    <h3>Master Bedroom · 主卧 (4.5 × 4.0 m + Walk-in 标称)</h3>
+    <p>实测后将在此追加方案</p>
+  </div>
+  <div class="pending-room">
+    <h3>Living · 第二起居室 (4.3 × 6.9 m 标称)</h3>
+    <p>实测后将在此追加方案</p>
+  </div>
+  <div class="pending-room">
+    <h3>Study · 书房 (4.2 × 3.3 m 标称)</h3>
+    <p>实测后将在此追加方案</p>
+  </div>
+  <div class="pending-room">
+    <h3>正式 Dining (4.7 × 4.1 m 标称)</h3>
+    <p>实测后将在此追加方案</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>方案基于现场实测尺寸 · 推荐遵循 picks 页的中古/经典保值原则 · 价格区间为 2026-05 NZD 参考值</p>
+</footer>
+
+</body>
+</html>
