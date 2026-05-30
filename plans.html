@@ -53,6 +53,35 @@
     padding:24px 28px;margin:20px 0;
     border-radius:0 4px 4px 0;
   }
+  .plan-thumbs{
+    display:flex;gap:10px;margin:8px 0 20px;flex-wrap:wrap;
+  }
+  .plan-thumbs .thumb{
+    width:150px;height:105px;border-radius:4px;overflow:hidden;
+    background:linear-gradient(135deg,#f0ece3,#d9d1bf);
+    flex-shrink:0;position:relative;cursor:zoom-in;
+    display:block;border:none;
+  }
+  .plan-thumbs .thumb img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .35s;
+  }
+  .plan-thumbs .thumb:hover img{transform:scale(1.05)}
+  .plan-thumbs .thumb.placeholder{
+    display:flex;align-items:center;justify-content:center;
+    cursor:default;text-align:center;padding:8px;
+  }
+  .plan-thumbs .thumb-label{
+    font-family:"Cormorant Garamond",serif;
+    color:var(--gold);font-size:.95rem;line-height:1.15;
+  }
+  .plan-thumbs .thumb-role{
+    position:absolute;left:6px;bottom:4px;
+    font-size:.65rem;letter-spacing:.1em;
+    color:#fff;background:rgba(0,0,0,.55);
+    padding:1px 6px;border-radius:2px;
+    text-transform:uppercase;
+  }
   .plan-card.plan-a{border-left-color:#1a1a1a}
   .plan-card.plan-b{border-left-color:#8b6f47}
   .plan-card.plan-c{border-left-color:#c8bda3}
@@ -199,6 +228,21 @@
       <article class="plan-card plan-a">
         <h3><span class="plan-tag">A</span> 现代极简：Saarinen Tulip 椭圆 1.98m <span class="tier">设计经典 ★★ · 主推</span></h3>
 
+        <div class="plan-thumbs">
+          <a class="thumb" data-full="assets/picks/saarinen-tulip.jpg">
+            <img loading="lazy" src="assets/picks/saarinen-tulip.jpg" alt="Saarinen Tulip">
+            <span class="thumb-role">餐桌</span>
+          </a>
+          <a class="thumb" data-full="assets/picks/ch24.jpg">
+            <img loading="lazy" src="assets/picks/ch24.jpg" alt="Wegner CH24 Y Chair">
+            <span class="thumb-role">餐椅 ×6</span>
+          </a>
+          <a class="thumb" data-full="assets/picks/ph5.jpg">
+            <img loading="lazy" src="assets/picks/ph5.jpg" alt="Louis Poulsen PH5">
+            <span class="thumb-role">吊灯</span>
+          </a>
+        </div>
+
         <div class="item-line">
           <span class="role">餐桌</span>
           <strong>Eero Saarinen Tulip Oval 1.98 × 1.21 m</strong>
@@ -228,6 +272,25 @@
       <article class="plan-card plan-b">
         <h3><span class="plan-tag">B</span> 投资级：Vintage Mogensen 椭圆柚木桌 <span class="tier">投资级 ★★★</span></h3>
 
+        <div class="plan-thumbs">
+          <div class="thumb placeholder">
+            <span class="thumb-label">Vintage<br>Mogensen<br>椭圆柚木</span>
+            <span class="thumb-role">餐桌</span>
+          </div>
+          <a class="thumb" data-full="assets/picks/ch24.jpg">
+            <img loading="lazy" src="assets/picks/ch24.jpg" alt="Wegner CH24">
+            <span class="thumb-role">餐椅 ×6</span>
+          </a>
+          <a class="thumb" data-full="assets/picks/ch33-vintage.jpg">
+            <img loading="lazy" src="assets/picks/ch33-vintage.jpg" alt="Vintage CH33 备选">
+            <span class="thumb-role">备选 vintage</span>
+          </a>
+          <div class="thumb placeholder">
+            <span class="thumb-label">Nelson<br>Bubble Saucer</span>
+            <span class="thumb-role">吊灯</span>
+          </div>
+        </div>
+
         <div class="item-line">
           <span class="role">餐桌</span>
           <strong>Vintage Borge Mogensen / Wegner 椭圆 1.8m</strong>
@@ -256,6 +319,21 @@
       <!-- 方案 C -->
       <article class="plan-card plan-c">
         <h3><span class="plan-tag">C</span> 通透日常：Tulip 圆 1.52m + 角落 Reading Nook <span class="tier">设计经典 ★★</span></h3>
+
+        <div class="plan-thumbs">
+          <a class="thumb" data-full="assets/picks/saarinen-tulip.jpg">
+            <img loading="lazy" src="assets/picks/saarinen-tulip.jpg" alt="Saarinen Tulip 圆桌">
+            <span class="thumb-role">餐桌（圆）</span>
+          </a>
+          <a class="thumb" data-full="assets/picks/papa-bear.jpg">
+            <img loading="lazy" src="assets/picks/papa-bear.jpg" alt="角落单椅参考 Papa Bear">
+            <span class="thumb-role">角落椅</span>
+          </a>
+          <a class="thumb" data-full="assets/picks/ph5.jpg">
+            <img loading="lazy" src="assets/picks/ph5.jpg" alt="PH5">
+            <span class="thumb-role">吊灯</span>
+          </a>
+        </div>
 
         <div class="item-line">
           <span class="role">餐桌</span>
@@ -297,6 +375,27 @@
 
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb">
+    <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    document.querySelectorAll('.thumb[data-full]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        lbImg.src = el.dataset.full;
+        lb.classList.add('open');
+      });
+    });
+    document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+    lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
+  </script>
 
   <!-- 未来其他房间占位 -->
   <h2>其他房间 · 待测</h2>
