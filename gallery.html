@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>画廊 · 106 Victoria Ave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">106 Victoria Ave <small>Remuera</small></div>
+    <div class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="gallery.html" class="active">画廊</a>
+      <a href="buying-guide.html">采购建议</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wide" style="padding-top:32px">
+  <h1 style="text-align:center;margin:24px 0 8px">房源画廊</h1>
+  <p style="text-align:center;color:var(--muted);margin:0 0 24px">32 张 NZ Sotheby's 高清原图 · 点击放大</p>
+
+  <div id="gallery" class="gallery"></div>
+</main>
+
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<footer>
+  <p>图片来源：NZ Sotheby's Realty (REM10342) · 每张 2560px 宽 JPEG</p>
+</footer>
+
+<script>
+const IDS = [
+  1732614,1732615,1732616,1732617,1732619,1732620,1732621,1732622,
+  1732623,1732625,1732626,1732627,1732628,1732629,1732630,1732631,
+  1732632,1732633,1732634,1732635,1732636,1732637,1732638,1732639,
+  1732640,1732642,1732643,1732644,1732645,1732795,1733163,1733934
+];
+const grid = document.getElementById('gallery');
+IDS.forEach((id, i) => {
+  const n = String(i+1).padStart(2,'0');
+  const src = `房产资料/现场照片/房源_${n}_${id}.jpg`;
+  const a = document.createElement('a');
+  a.className = 'tile';
+  a.href = src;
+  a.dataset.full = src;
+  a.innerHTML = `<span class="num">#${n}</span><img loading="lazy" src="${src}" alt="房源照片 ${n}">`;
+  grid.appendChild(a);
+});
+
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+grid.addEventListener('click', e => {
+  const a = e.target.closest('.tile');
+  if(!a) return;
+  e.preventDefault();
+  lbImg.src = a.dataset.full;
+  lb.classList.add('open');
+});
+document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
+</script>
+
+</body>
+</html>
