@@ -71,17 +71,9 @@
   .map-table tr:last-child td{border-bottom:none}
 
 
-  .svg-room{display:block;max-width:340px;margin:0 auto;background:#fff;border-radius:3px}
-  .svg-room .walls rect{fill:#C5D8B2;stroke:#1a1a1a;stroke-width:3}
-  .svg-room .fixtures rect{fill:#E8E2D0;stroke:#1a1a1a;stroke-width:1}
-  .svg-room .fixtures .panel{fill:#5C4A38}
-  .svg-room .fixtures .walkin{fill:#A8C295;stroke-width:2}
+  .svg-room{display:block;max-width:380px;margin:0 auto;background:#fff;border-radius:3px}
+  .svg-room image{user-select:none}
   .svg-room .furniture{opacity:.9}
-  .svg-room .label{font-family:"Cormorant Garamond",serif;font-size:14px;fill:#1a1a1a}
-  .svg-room .meta{font-family:-apple-system,sans-serif;font-size:10px;fill:#6b6253}
-  .svg-room .dim{font-family:"JetBrains Mono",monospace;font-size:9px;fill:#6b6253}
-  .svg-room .door{stroke:#fff;stroke-width:5}
-  .svg-room .door-arc{fill:none;stroke:#1a1a1a;stroke-width:0.8}
 
   .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
   .lb.open{display:flex}
@@ -148,37 +140,11 @@
     </div>
     <div class="room-content">
 
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 300 460" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="200" height="380"/>
-  </g>
-  <g class="fixtures">
-    <!-- L 橱柜 -->
-    <rect x="40" y="50" width="18" height="350"/>
-    <rect x="40" y="400" width="160" height="30"/>
-    <!-- 纵向中岛 -->
-    <rect x="110" y="200" width="50" height="170" stroke-width="1.5"/>
-    <!-- 灶台 4 圆点 -->
-    <circle cx="80" cy="410" r="2" fill="#1a1a1a"/>
-    <circle cx="90" cy="410" r="2" fill="#1a1a1a"/>
-    <circle cx="80" cy="420" r="2" fill="#1a1a1a"/>
-    <circle cx="90" cy="420" r="2" fill="#1a1a1a"/>
-    <!-- 水槽 -->
-    <circle cx="49" cy="360" r="7" fill="#fff" stroke="#1a1a1a" stroke-width="0.6"/>
-    <!-- 早餐桌北端 -->
-    <rect x="125" y="80" width="55" height="32" rx="3" fill="#fff" stroke-width="0.8"/>
-    <!-- 东侧大开口 -->
-    <line x1="240" y1="100" x2="240" y2="370" class="door"/>
-  </g>
-  <g class="labels">
-    <text class="label" x="140" y="160" text-anchor="middle" font-weight="500">Kitchen / Dining</text>
-    <text class="meta" x="140" y="178" text-anchor="middle">4.0 × 7.6 m</text>
-    <text class="dim" x="140" y="38" text-anchor="middle">4000 mm</text>
-    <text class="dim" x="22" y="240" text-anchor="middle" transform="rotate(-90 22 240)">7600 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 290 570" xmlns="http://www.w3.org/2000/svg" data-room="kitchen-dining">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/kitchen-dining.jpg" x="0" y="0" width="290" height="570"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景照片（3 个视角）</h3>
@@ -200,24 +166,11 @@
       <span class="meta">4.7 × 4.1 m 标称</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="235" height="205"/>
-  </g>
-  <g class="fixtures">
-    <!-- 两侧开口 -->
-    <line x1="40" y1="115" x2="40" y2="160" class="door"/>
-    <line x1="275" y1="115" x2="275" y2="160" class="door"/>
-  </g>
-  <g class="labels">
-    <text class="label" x="157" y="140" text-anchor="middle" font-weight="500">Dining</text>
-    <text class="meta" x="157" y="158" text-anchor="middle">4.7 × 4.1 m · 过道型</text>
-    <text class="dim" x="157" y="38" text-anchor="middle">4700 mm</text>
-    <text class="dim" x="22" y="152" text-anchor="middle" transform="rotate(-90 22 152)">4100 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 255 275" xmlns="http://www.w3.org/2000/svg" data-room="dining">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/dining.jpg" x="0" y="0" width="255" height="275"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
@@ -261,25 +214,11 @@
       <span class="meta">5.2 × 6.8 m 标称 · 35.4 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 340 400" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="260" height="340"/>
-  </g>
-  <g class="fixtures">
-    <!-- 北墙门通 Entry -->
-    <line x1="120" y1="50" x2="200" y2="50" class="door"/>
-    <path d="M 120 50 A 40 40 0 0 1 160 90" class="door-arc"/>
-    <text class="meta" x="160" y="100" text-anchor="middle">门 · 通 Entry</text>
-  </g>
-  <g class="labels">
-    <text class="label" x="170" y="210" text-anchor="middle" font-weight="500">Lounge</text>
-    <text class="meta" x="170" y="228" text-anchor="middle">5.2 × 6.8 m · 35.4 ㎡</text>
-    <text class="dim" x="170" y="38" text-anchor="middle">5200 mm</text>
-    <text class="dim" x="22" y="220" text-anchor="middle" transform="rotate(-90 22 220)">6800 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 285 360" xmlns="http://www.w3.org/2000/svg" data-room="lounge">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/lounge.jpg" x="0" y="0" width="285" height="360"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
@@ -332,22 +271,11 @@
       <span class="meta">4.3 × 6.9 m 标称 · 29.7 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 405" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="215" height="345"/>
-  </g>
-  <g class="fixtures">
-
-  </g>
-  <g class="labels">
-    <text class="label" x="147" y="210" text-anchor="middle" font-weight="500">Living</text>
-    <text class="meta" x="147" y="228" text-anchor="middle">4.3 × 6.9 m · 29.7 ㎡</text>
-    <text class="dim" x="147" y="38" text-anchor="middle">4300 mm</text>
-    <text class="dim" x="22" y="222" text-anchor="middle" transform="rotate(-90 22 222)">6900 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 265 480" xmlns="http://www.w3.org/2000/svg" data-room="living">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/living.jpg" x="0" y="0" width="265" height="480"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
@@ -384,25 +312,11 @@
       <span class="meta">4.2 × 3.3 m 标称 · 13.9 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 235" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="210" height="165"/>
-  </g>
-  <g class="fixtures">
-    <!-- 两侧深木镶板 -->
-    <rect class="panel" x="40" y="50" width="10" height="165" stroke="#1a1a1a" stroke-width="1"/>
-    <rect class="panel" x="240" y="50" width="10" height="165" stroke="#1a1a1a" stroke-width="1"/>
-    <text class="meta" x="145" y="180" text-anchor="middle" fill="#8b6f47">★ 两侧深木镶板 + 内置书柜</text>
-  </g>
-  <g class="labels">
-    <text class="label" x="145" y="130" text-anchor="middle" font-weight="500">Study 书房</text>
-    <text class="meta" x="145" y="148" text-anchor="middle">4.2 × 3.3 m · 13.9 ㎡</text>
-    <text class="dim" x="145" y="38" text-anchor="middle">4200 mm</text>
-    <text class="dim" x="22" y="132" text-anchor="middle" transform="rotate(-90 22 132)">3300 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 175 255" xmlns="http://www.w3.org/2000/svg" data-room="study">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/study.jpg" x="0" y="0" width="175" height="255"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
@@ -440,25 +354,11 @@
       <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="225" height="200"/>
-  </g>
-  <g class="fixtures">
-    <!-- Walk-in 嵌在西南角 -->
-    <rect class="walkin" x="40" y="180" width="100" height="70"/>
-    <text class="meta" x="90" y="215" text-anchor="middle" font-weight="500">Walk In</text>
-    <text class="meta" x="90" y="228" text-anchor="middle">2.0 × 1.4</text>
-  </g>
-  <g class="labels">
-    <text class="label" x="200" y="135" text-anchor="middle" font-weight="500">Master</text>
-    <text class="meta" x="200" y="153" text-anchor="middle">4.5 × 4.0 m · 18 ㎡</text>
-    <text class="dim" x="152" y="38" text-anchor="middle">4500 mm</text>
-    <text class="dim" x="22" y="150" text-anchor="middle" transform="rotate(-90 22 150)">4000 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 230 235" xmlns="http://www.w3.org/2000/svg" data-room="master">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/master.jpg" x="0" y="0" width="230" height="235"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
@@ -524,22 +424,11 @@
       <span class="meta">3.5 × 5.5 m · 19.3 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 210 330" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="140" height="275"/>
-  </g>
-  <g class="fixtures">
-
-  </g>
-  <g class="labels">
-    <text class="label" x="110" y="170" text-anchor="middle" font-weight="500">Bedroom 2</text>
-    <text class="meta" x="110" y="188" text-anchor="middle">3.5 × 5.5 m · 19.3 ㎡</text>
-    <text class="dim" x="110" y="38" text-anchor="middle">3500 mm</text>
-    <text class="dim" x="22" y="187" text-anchor="middle" transform="rotate(-90 22 187)">5500 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 205 290" xmlns="http://www.w3.org/2000/svg" data-room="bedroom-2">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/bedroom-2.jpg" x="0" y="0" width="205" height="290"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -556,22 +445,11 @@
       <span class="meta">4.5 × 3.1 m · 14.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 220" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="210" height="155"/>
-  </g>
-  <g class="fixtures">
-
-  </g>
-  <g class="labels">
-    <text class="label" x="145" y="125" text-anchor="middle" font-weight="500">Bedroom 3</text>
-    <text class="meta" x="145" y="143" text-anchor="middle">4.5 × 3.1 m · 14.0 ㎡</text>
-    <text class="dim" x="145" y="38" text-anchor="middle">4500 mm</text>
-    <text class="dim" x="22" y="128" text-anchor="middle" transform="rotate(-90 22 128)">3100 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 230 195" xmlns="http://www.w3.org/2000/svg" data-room="bedroom-3">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/bedroom-3.jpg" x="0" y="0" width="230" height="195"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -588,22 +466,11 @@
       <span class="meta">3.7 × 1.9 m · 7.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 250 160" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="180" height="95"/>
-  </g>
-  <g class="fixtures">
-    <text class="meta" x="130" y="125" text-anchor="middle" fill="#8b6f47">★ 太窄 · 建议改 dressing room</text>
-  </g>
-  <g class="labels">
-    <text class="label" x="130" y="100" text-anchor="middle" font-weight="500">Bedroom 4</text>
-    <text class="meta" x="130" y="118" text-anchor="middle">3.7 × 1.9 m · 7.0 ㎡</text>
-    <text class="dim" x="130" y="38" text-anchor="middle">3700 mm</text>
-    <text class="dim" x="22" y="98" text-anchor="middle" transform="rotate(-90 22 98)">1900 mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 205 195" xmlns="http://www.w3.org/2000/svg" data-room="bedroom-4">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/bedroom-4.jpg" x="0" y="0" width="205" height="195"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -652,24 +519,11 @@
       <span class="meta">独立建筑 · Living + Toilet</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 280" xmlns="http://www.w3.org/2000/svg" data-room>
-  <g class="walls">
-    <rect x="40" y="50" width="230" height="210"/>
-  </g>
-  <g class="fixtures">
-    <!-- Toilet 隔间 -->
-    <rect class="walkin" x="180" y="50" width="90" height="80"/>
-    <text class="meta" x="225" y="92" text-anchor="middle" font-weight="500">Toilet</text>
-  </g>
-  <g class="labels">
-    <text class="label" x="125" y="170" text-anchor="middle" font-weight="500">Pool House</text>
-    <text class="meta" x="125" y="188" text-anchor="middle">Living + Toilet · 独立建筑</text>
-    <text class="dim" x="155" y="38" text-anchor="middle">- mm</text>
-    <text class="dim" x="22" y="155" text-anchor="middle" transform="rotate(-90 22 155)">- mm</text>
-  </g>
-  <g class="furniture" data-furniture>
-    <!-- 后续选定家具后在此添加 -->
-  </g>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · Sotheby&apos;s 切片作底图 + 家具叠加层</div><svg class="svg-room" viewBox="0 0 340 580" xmlns="http://www.w3.org/2000/svg" data-room="pool-house">
+  <!-- 底图层：floor plan 切片（不可变 · 100% 准确）-->
+  <image href="assets/floor-plans/pool-house.jpg" x="0" y="0" width="340" height="580"/>
+  <!-- 家具叠加层 -->
+  <g class="furniture" data-furniture></g>
 </svg></div>
 
       <h3>Staging 实景</h3>
