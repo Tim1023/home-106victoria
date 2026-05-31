@@ -3,17 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>实测方案 · 106 Victoria Ave</title>
+<title>方案 · 106 Victoria Ave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
-  .toc{
-    background:#fff;padding:20px 28px;
-    box-shadow:var(--shadow);border-radius:4px;
-    margin:24px 0 32px;
-  }
+  .toc{background:#fff;padding:20px 28px;box-shadow:var(--shadow);border-radius:4px;margin:24px 0 32px}
   .toc h3{margin:0 0 12px;font-size:1rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
   .toc ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
   .toc li{font-size:.92rem}
@@ -23,123 +19,25 @@
 
   .room-section{margin:40px 0 64px;scroll-margin-top:80px}
   .room-header{
-    background:#1a1a1a;color:#faf8f3;
-    padding:24px 32px;border-radius:4px 4px 0 0;
+    background:#1a1a1a;color:#faf8f3;padding:24px 32px;border-radius:4px 4px 0 0;
     display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;
   }
   .room-header.measured{background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%)}
-  .room-header.pending{background:#3a3a3a}
-  .room-header h2{
-    font-family:"Cormorant Garamond",serif;font-weight:500;
-    color:#faf8f3;border:none;margin:0;padding:0;
-    font-size:1.8rem;
-  }
-  .room-header .meta{
-    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
-    opacity:.7;font-family:"JetBrains Mono",monospace;
-  }
-  .room-content{
-    background:#fff;padding:24px 28px 28px;
-    border-radius:0 0 4px 4px;
-    box-shadow:var(--shadow);
-  }
+  .room-header h2{font-family:"Cormorant Garamond",serif;font-weight:500;color:#faf8f3;border:none;margin:0;padding:0;font-size:1.8rem}
+  .room-header .meta{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7;font-family:"JetBrains Mono",monospace}
+  .room-content{background:#fff;padding:24px 28px 28px;border-radius:0 0 4px 4px;box-shadow:var(--shadow)}
 
-  .spec-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:1px;background:var(--rule);
-    margin:20px 0;border:1px solid var(--rule);
-  }
-  .spec{background:#fff;padding:14px;text-align:center}
-  .spec .v{font-family:"Cormorant Garamond",serif;font-size:1.4rem;color:var(--gold);line-height:1.1}
-  .spec .l{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:.3em}
+  .fp-zoom{background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 20px;text-align:center}
+  .fp-zoom img{max-width:100%;border-radius:3px;display:block;margin:0 auto;cursor:zoom-in}
+  .fp-zoom .cap{color:var(--muted);font-size:.85rem;margin-top:8px}
 
-  .ascii-plan{
-    background:var(--paper);
-    padding:18px 22px;border-radius:4px;
-    font-family:"JetBrains Mono","SF Mono",Menlo,monospace;
-    font-size:.78rem;line-height:1.45;color:var(--ink);
-    overflow-x:auto;margin:20px 0;
-    border:1px solid var(--rule);
-  }
+  .staging-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 20px}
+  .staging-thumb{display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none}
+  .staging-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+  .staging-thumb:hover img{transform:scale(1.04)}
 
-  .plan-card{
-    background:var(--paper);
-    border-left:4px solid var(--gold);
-    padding:20px 24px;margin:16px 0;
-    border-radius:0 4px 4px 0;
-  }
-  .plan-card.plan-a{border-left-color:#1a1a1a}
-  .plan-card.plan-b{border-left-color:#8b6f47}
-  .plan-card.plan-c{border-left-color:#c8bda3}
-  .plan-tag{
-    display:inline-block;
-    font-family:"Cormorant Garamond",serif;font-size:1.6rem;
-    color:var(--gold);line-height:1;margin-right:.4em;
-    vertical-align:middle;
-  }
-  .plan-card h3{
-    font-family:"Cormorant Garamond",serif;font-weight:500;
-    font-size:1.3rem;margin:0 0 10px;color:var(--ink);
-    display:flex;align-items:baseline;flex-wrap:wrap;gap:.4em;
-  }
-  .plan-card .tier{
-    font-size:.74rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;
-    font-family:inherit;
-  }
-
-  .plan-thumbs{
-    display:flex;gap:10px;margin:8px 0 16px;flex-wrap:wrap;
-  }
-  .plan-thumbs .thumb{
-    width:140px;height:100px;border-radius:4px;overflow:hidden;
-    background:linear-gradient(135deg,#f0ece3,#d9d1bf);
-    flex-shrink:0;position:relative;cursor:zoom-in;
-    display:block;border:none;
-  }
-  .plan-thumbs .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
-  .plan-thumbs .thumb:hover img{transform:scale(1.05)}
-  .plan-thumbs .thumb.placeholder{
-    display:flex;align-items:center;justify-content:center;
-    cursor:default;text-align:center;padding:6px;
-  }
-  .plan-thumbs .thumb-label{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:.85rem;line-height:1.15}
-  .plan-thumbs .thumb-role{
-    position:absolute;left:5px;bottom:4px;
-    font-size:.62rem;letter-spacing:.08em;
-    color:#fff;background:rgba(0,0,0,.6);
-    padding:1px 6px;border-radius:2px;text-transform:uppercase;
-  }
-
-  .item-line{
-    padding:9px 0;border-bottom:1px dashed var(--rule);
-    display:flex;flex-wrap:wrap;align-items:baseline;gap:.5em;
-  }
-  .item-line:last-of-type{border-bottom:none}
-  .item-line .role{font-family:"Cormorant Garamond",serif;color:var(--gold);min-width:70px;font-size:1rem}
-  .item-line strong{font-weight:500}
-  .item-line em{color:var(--muted);font-style:normal;font-size:.85rem}
-  .item-line a{font-size:.78rem;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--ink);margin-left:auto}
-  .item-line a:hover{border-color:var(--gold);color:var(--gold)}
-
-  .why{margin-top:12px;padding:10px 14px;background:#fff;border-radius:4px;color:var(--muted);font-size:.9rem}
-  .why strong{color:var(--ink)}
-
-  .verdict{
-    margin:24px 0 0;padding:18px 22px;
-    background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%);
-    color:#faf8f3;border-radius:4px;
-    font-family:"Cormorant Garamond",serif;font-size:1.1rem;line-height:1.5;
-  }
-  .verdict .label{font-family:-apple-system,sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6;display:block;margin-bottom:5px}
-
-  .candidate-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:14px;margin:18px 0;
-  }
-  .candidate{
-    background:var(--paper);padding:16px 18px;border-radius:4px;
-    border-left:3px solid var(--gold);
-  }
+  .candidate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:18px 0}
+  .candidate{background:var(--paper);padding:16px 18px;border-radius:4px;border-left:3px solid var(--gold)}
   .candidate.kept{border-left-color:#1a1a1a}
   .candidate.alt{border-left-color:#c8bda3}
   .candidate h4{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.1rem;margin:0 0 4px}
@@ -149,14 +47,30 @@
   .candidate a{display:inline-block;font-size:.76rem;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--ink);margin-top:6px;margin-right:5px}
   .candidate a:hover{border-color:var(--gold);color:var(--gold)}
 
-  .room-status{
-    display:inline-block;font-size:.7rem;letter-spacing:.12em;
-    padding:3px 10px;border-radius:99px;text-transform:uppercase;
-    margin-left:.6em;font-family:-apple-system,sans-serif;
-  }
+  .room-status{display:inline-block;font-size:.7rem;letter-spacing:.12em;padding:3px 10px;border-radius:99px;text-transform:uppercase;margin-left:.6em;font-family:-apple-system,sans-serif}
   .room-status.measured{background:var(--gold);color:#fff}
   .room-status.researching{background:#1a1a1a;color:#faf8f3}
-  .room-status.pending{background:var(--paper);color:var(--muted);border:1px solid var(--rule)}
+
+  .plan-card{background:var(--paper);border-left:4px solid var(--gold);padding:20px 24px;margin:16px 0;border-radius:0 4px 4px 0}
+  .plan-card.plan-a{border-left-color:#1a1a1a}
+  .plan-card.plan-b{border-left-color:#8b6f47}
+  .plan-card.plan-c{border-left-color:#c8bda3}
+  .plan-tag{display:inline-block;font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold);line-height:1;margin-right:.4em;vertical-align:middle}
+  .plan-card h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.3rem;margin:0 0 10px;color:var(--ink)}
+  .plan-card .tier{font-size:.74rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-family:inherit}
+  .item-line{padding:9px 0;border-bottom:1px dashed var(--rule);display:flex;flex-wrap:wrap;align-items:baseline;gap:.5em}
+  .item-line:last-of-type{border-bottom:none}
+  .item-line .role{font-family:"Cormorant Garamond",serif;color:var(--gold);min-width:70px;font-size:1rem}
+  .item-line a{font-size:.78rem;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--ink);margin-left:auto}
+  .why{margin-top:12px;padding:10px 14px;background:#fff;border-radius:4px;color:var(--muted);font-size:.9rem}
+
+  .verdict{margin:24px 0 0;padding:18px 22px;background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%);color:#faf8f3;border-radius:4px;font-family:"Cormorant Garamond",serif;font-size:1.1rem;line-height:1.5}
+  .verdict .label{font-family:-apple-system,sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6;display:block;margin-bottom:5px}
+
+  .map-table{width:100%;border-collapse:collapse;background:#fff;box-shadow:var(--shadow);border-radius:4px;overflow:hidden;margin:14px 0}
+  .map-table th,.map-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--rule);font-size:.92rem}
+  .map-table th{background:var(--paper);font-weight:500;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .map-table tr:last-child td{border-bottom:none}
 
   .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
   .lb.open{display:flex}
@@ -181,527 +95,132 @@
 
   <h1>家具方案总览</h1>
   <p class="lead">
-    按房间组织。每个房间含 floor plan 风格平面图 + 空间分析 + 候选家具单品（含设计师 / 年代 / NZD / 链接）。
-    页面尾部是 <a href="#channels">奥克兰渠道地图</a>、<a href="#nz-designers">NZ 设计师品牌</a>、<a href="#auctions">拍卖行</a>、<a href="#international">国际平台</a>、<a href="#provenance">验真保养</a>。
+    每个房间一节：Sotheby's floor plan（参考完整图）+ staging 实景照片 + 空间分析 + 候选单品（含价 + NZ 经销商链接）。
+    页尾：<a href="#channels">奥克兰 33 家渠道</a>、<a href="#auctions">拍卖行 4 家</a>、<a href="#international">国际平台 7 家</a>、<a href="#provenance">验真保养</a>。
   </p>
   <p class="lead" style="font-size:.95rem">
-    <strong>风格基调</strong>：1940s Art Deco / Mediterranean 房屋底子 + 优先中古真品 (1930-1980) 或设计经典持续生产款的<strong>保值组合</strong>，
-    辅以 NZ 本土当代设计师作日用件。三条主线：
-    <strong>① 法国 Art Deco</strong>（呼应房子年代）·
-    <strong>② 北欧 Mid-century</strong>（温润日用）·
-    <strong>③ 意大利后现代</strong>（戏剧性点缀）。
+    <strong>风格基调</strong>：1940s Art Deco / Mediterranean 房屋 + 优先<strong>中古真品 (1930-1980)</strong>或<strong>设计经典持续生产款</strong>。三主线：① 法国 Art Deco · ② 北欧 Mid-century · ③ 意大利后现代。
   </p>
+
+  <h2>完整 Floor Plan（点击放大）</h2>
+  <div class="fp-zoom">
+    <a class="thumb" data-full="assets/floor-plans/full-floor-plan.jpg" style="border:none">
+      <img src="assets/floor-plans/full-floor-plan.jpg" alt="106 Victoria Avenue 完整 floor plan">
+    </a>
+    <div class="cap">📐 Sotheby's 官方 floor plan · 含主层 + 二楼 + 泳池房 + 标尺寸</div>
+  </div>
 
   <div class="toc">
     <h3>跳转</h3>
     <ul>
-      <li><a href="#lounge">Lounge 主客厅 <span class="status">待测</span></a></li>
-      <li><a href="#living">Living 第二起居室 <span class="status">待测</span></a></li>
-      <li><a href="#kitchen-dining"><strong>Kitchen / Dining</strong> <span class="status">实测 + 冰箱</span></a></li>
-      <li><a href="#formal-dining">正式 Dining <span class="status">待测</span></a></li>
-      <li><a href="#study">Study 书房 <span class="status">待测</span></a></li>
-      <li><a href="#master"><strong>主卧 Master</strong> <span class="status">调研中</span></a></li>
-      <li><a href="#bedroom-2">次卧 2 / 3 <span class="status">待测</span></a></li>
-      <li><a href="#pool-house">Pool House <span class="status">待测</span></a></li>
-      <li><a href="#deck">泳池甲板 / 户外 <span class="status">待测</span></a></li>
+      <li><a href="#kitchen-dining"><strong>Kitchen / Dining</strong> <span class="status">实测 + 3 方案</span></a></li>
+      <li><a href="#dining">Dining 正式餐厅</a></li>
+      <li><a href="#lounge">Lounge 主客厅</a></li>
+      <li><a href="#living">Living 起居室</a></li>
+      <li><a href="#study">Study 书房</a></li>
+      <li><a href="#master"><strong>Master 主卧</strong> <span class="status">候选床调研中</span></a></li>
+      <li><a href="#bedrooms">次卧 2 / 3 / 4</a></li>
+      <li><a href="#pool-house">Pool House 独立泳池房</a></li>
+      <li><a href="#channels">奥克兰渠道地图</a></li>
     </ul>
   </div>
 
-  <!-- ============ Lounge 主客厅 ============ -->
-  <section class="room-section" id="lounge">
-    <div class="room-header pending">
-      <h2>Lounge 主客厅</h2>
-      <span class="meta">5.2 × 6.8 m 标称 · 待实测</span>
-    </div>
-    <div class="room-content">
-
-      <svg viewBox="0 0 520 660" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="440" height="580" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <line x1="200" y1="40" x2="300" y2="40" stroke="#fff" stroke-width="7"/>
-        <path d="M 200 40 A 50 50 0 0 1 300 40" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="260" y="200" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a" letter-spacing="2">入口</text>
-        <text x="260" y="335" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="22" font-weight="500" fill="#1a1a1a">Lounge</text>
-        <text x="260" y="363" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" fill="#4a4a4a">主客厅 · 35.4 ㎡</text>
-        <line x1="40" y1="22" x2="480" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="40" y1="17" x2="40" y2="27" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="480" y1="17" x2="480" y2="27" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="260" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b">5200 mm</text>
-        <line x1="22" y1="40" x2="22" y2="620" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="17" y1="40" x2="27" y2="40" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="17" y1="620" x2="27" y2="620" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="14" y="330" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b" transform="rotate(-90 14 330)">6800 mm</text>
-      </svg>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_09_1732623.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_09_1732623.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-      </div>
-
-      <h3>空间特征</h3>
-      <p>floor plan 显示<strong>入口从南面进入（Entry 箭头）</strong>，<strong>壁炉在北墙</strong>（staging 照片可见白色壁炉 + 圆镜），双窗朝南通往户外。35.4 ㎡。</p>
-
-      <h3>什么家具合适</h3>
-      <p>大尺度（≥3 人 + 躺位）或 L 形 / 模块化沙发主导，对面或 90° 摆 1-2 把<strong>戏剧性收藏单椅</strong>。中间一张<strong>真材实料咖啡桌</strong>（雕塑感）。角落落地灯 + 边桌。地毯 2.4×3m 起。<strong>预算分配 25-30%</strong>。</p>
-
-      <h3>候选单品</h3>
-      <div class="candidate-grid">
-        <article class="candidate kept">
-          <h4>B&B Italia "Camaleonda" 模块沙发</h4>
-          <div class="c-meta">Mario Bellini · 1970 / 2020 重生产</div>
-          <div class="c-price">NZ$25-40k · 设计经典 ★★</div>
-          <div class="c-note">模块化最适合 5.2×6.8m。新品 + 限量花色每年涨。</div>
-          <a href="https://matisse.co.nz/camaleonda-sofa/" target="_blank">Matisse NZ</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Florence Knoll Leather Sofa Vintage</h4>
-          <div class="c-meta">Florence Knoll · 1954 · Knoll 真品</div>
-          <div class="c-price">NZ$9,500 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 包豪斯 + 美式现代鼻祖款。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-florence-knoll-leather-sofa-by-knoll-international" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Hans Wegner AP32 Sofa</h4>
-          <div class="c-meta">Hans Wegner · 1950 · AP Stolen Denmark</div>
-          <div class="c-price">NZ$6,750 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · Wegner 黄金期沙发，与房子 1940s 完美呼应。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/exceptional-hans-j-wegner-ap32-sofa-by-ap-stolen" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Mario Bellini "Le Bambole" Vintage</h4>
-          <div class="c-meta">Mario Bellini · 1972 · MoMA 馆藏</div>
-          <div class="c-price">NZ$6-15k · 投资级 ★★★</div>
-          <div class="c-note">Compasso d'Oro 1979 获奖，曲面工艺难度高。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
-          <a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's 拍卖</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Wegner "Papa Bear" AP19 Vintage</h4>
-          <div class="c-meta">Hans Wegner · 1951 · 早期 AP Stolen</div>
-          <div class="c-price">NZ$12-25k · 投资级 ★★★</div>
-          <div class="c-note">单椅 · 拍卖单价 10 年涨 3 倍。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
-          <a href="https://www.pp.dk/furniture/pp19" target="_blank">PP Møbler 新品</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Hvidt & Mølgaard 'Ax' Lounge 一对</h4>
-          <div class="c-meta">Hvidt & Mølgaard · 1947 · Fritz Hansen 早期</div>
-          <div class="c-price">NZ$7,500 一对 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 1947 现代主义里程碑椅。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/pair-of-hvidt-molgaard-nielsen-ax-lounge-chair-by-fritz-hansen" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Eames EA222 Soft Pad Lounge</h4>
-          <div class="c-meta">Charles & Ray Eames · 1969 · Vitra 重制</div>
-          <div class="c-price">NZ$4,450 · 设计经典 ★★</div>
-          <div class="c-note">Mr Bigg 现货 · 旋转 + 倾斜，办公或客厅两用。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-charles-ray-eames-ea222-soft-pad-lounge-chair-by-vitra" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Isamu Noguchi Coffee Table IN-50</h4>
-          <div class="c-meta">Isamu Noguchi · 1944 · Herman Miller / Vitra</div>
-          <div class="c-price">NZ$4-6k 新 / 1.5-4k vintage · 设计经典 ★★</div>
-          <div class="c-note">雕塑感咖啡桌经典。</div>
-          <a href="https://www.hermanmiller.com/products/tables/occasional-tables/noguchi-table/" target="_blank">Herman Miller</a>
-          <a href="https://matisse.co.nz/" target="_blank">Matisse NZ</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Afra & Tobia Scarpa Model 771</h4>
-          <div class="c-meta">Afra & Tobia Scarpa · 1964 · Cassina</div>
-          <div class="c-price">NZ$2,950 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 意大利 60s 收藏级咖啡桌。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/coveted-afra-and-tobia-scarpa-model-771-coffee-table-by-cassina" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Achille Castiglioni "Arco" 落地灯</h4>
-          <div class="c-meta">Castiglioni 兄弟 · 1962 · Flos</div>
-          <div class="c-price">NZ$5-7k · 设计经典 ★★</div>
-          <div class="c-note">大理石底座 + 不锈钢弧臂，吊覆沙发上方。</div>
-          <a href="https://ecc.co.nz/" target="_blank">ECC NZ</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Living 第二起居室 ============ -->
-  <section class="room-section" id="living">
-    <div class="room-header pending">
-      <h2>Living 第二起居室 / 媒体室</h2>
-      <span class="meta">4.3 × 6.9 m 标称 · 待实测</span>
-    </div>
-    <div class="room-content">
-
-      <svg viewBox="0 0 430 670" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="350" height="590" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <line x1="40" y1="100" x2="40" y2="160" stroke="#fff" stroke-width="7"/>
-        <path d="M 40 100 A 60 60 0 0 0 100 160" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="215" y="330" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" font-weight="500" fill="#1a1a1a">Living</text>
-        <text x="215" y="358" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" fill="#4a4a4a">第二起居室 · 29.7 ㎡</text>
-        <line x1="40" y1="22" x2="390" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="40" y1="17" x2="40" y2="27" stroke="#6b6b6b" stroke-width="0.5"/>
-        <line x1="390" y1="17" x2="390" y2="27" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="215" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b">4300 mm</text>
-        <line x1="22" y1="40" x2="22" y2="630" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="14" y="335" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b" transform="rotate(-90 14 335)">6900 mm</text>
-      </svg>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_11_1732626.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_11_1732626.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-      </div>
-
-      <h3>空间特征</h3>
-      <p>从 Lounge 或 Dining 进入，比 Lounge 略小（29.7 ㎡），更日常。staging 显示双窗（朝南） + 矮天花，floor plan 显示左侧（西）壁炉墙 + 电视位。</p>
-
-      <h3>什么家具合适</h3>
-      <p>中尺度 3 人沙发 + 单椅一对（L 型或对面）。茶几比 Lounge 小（1.2m 圆 或方）。<strong>柔软可天天用的中古沙发</strong>（不挑剔的好坐），别放收藏级 vintage（怕磨损）。配 PH5 / Bubble 吊灯 + 一张地毯。</p>
-
-      <h3>候选单品</h3>
-      <div class="candidate-grid">
-        <article class="candidate kept">
-          <h4>🇳🇿 Ole Wanscher "Senator" Sofa</h4>
-          <div class="c-meta">Ole Wanscher · 1951 · Poul Jeppesen</div>
-          <div class="c-price">NZ$5,750 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 日用舒适 + 收藏价值。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-ole-wanscher-senator-sofa-by-poul-jeppesen" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Grete Jalk Model 118 Sofa</h4>
-          <div class="c-meta">Grete Jalk · 1964 · France & Søn</div>
-          <div class="c-price">NZ$6,250 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 丹麦女性设计师代表作。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/refined-grete-jalk-model-118-sofa-by-france-son" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Mario Bellini Le Bambole (备选)</h4>
-          <div class="c-meta">Bellini · 1972 · B&B Italia</div>
-          <div class="c-price">NZ$6-15k · 投资级 ★★★</div>
-          <a href="https://www.bebitalia.com/en/upholstery/sofas/le-bambole-2022" target="_blank">B&B Italia</a>
-        </article>
-        <article class="candidate kept">
-          <h4>Louis Poulsen PH 5 吊灯</h4>
-          <div class="c-meta">Poul Henningsen · 1958 · Louis Poulsen</div>
-          <div class="c-price">NZ$1.5-2k · 设计经典 ★★</div>
-          <a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design NZ</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Kitchen / Dining 已实测 ============ -->
+  <!-- ============ Kitchen / Dining ============ -->
   <section class="room-section" id="kitchen-dining">
     <div class="room-header measured">
       <h2>Kitchen / Dining 开放餐厅 <span class="room-status measured">实测</span></h2>
-      <span class="meta">4000 × 3800 mm + 冰箱角 · 实测 2026-05-30</span>
+      <span class="meta">餐桌区 4000 × 3800 mm · 总 4.0 × 7.6 m</span>
     </div>
     <div class="room-content">
 
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:18px;margin:18px auto;max-width:560px">
-        <a class="thumb" data-full="assets/floor-plans/kitchen-dining.jpg" style="display:block;cursor:zoom-in;border:none">
-          <img src="assets/floor-plans/kitchen-dining.jpg" alt="Kitchen/Dining floor plan zoom" style="display:block;width:100%;border-radius:4px">
+      <div class="fp-zoom">
+        <a class="thumb staging-thumb" data-full="assets/floor-plans/kitchen-dining.jpg" style="height:auto;display:block">
+          <img src="assets/floor-plans/kitchen-dining.jpg" alt="Kitchen/Dining floor plan zoom">
         </a>
-        <p style="color:var(--muted);font-size:.88rem;text-align:center;margin:14px 0 0;line-height:1.5">
-          📐 <strong>原版 Sotheby's floor plan（裁切）</strong>· Kitchen/Dining 4.0 × 7.6m<br>
-          早餐桌在<strong>北端</strong> · 中岛在中部 · <strong>西墙 L 型橱柜含水槽</strong> · <strong>南墙底柜含灶台烤箱</strong> · 东侧大开口通 deck<br>
-          通 Laundry 在西南角 · 通 Dining 在南墙
-        </p>
+        <div class="cap">📐 早餐桌北端 · 中部中岛 · 西墙 L 橱柜含水槽 · 南墙底柜含灶台烤箱 · 东侧通 deck</div>
       </div>
 
       <h3>Staging 实景照片（3 个视角）</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_13_1732628.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_13_1732628.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-        <a class="thumb" data-full="房产资料/现场照片/房源_12_1732627.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_12_1732627.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-        <a class="thumb" data-full="房产资料/现场照片/房源_14_1732629.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_14_1732629.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_13_1732628.jpg"><img src="房产资料/现场照片/房源_13_1732628.jpg" loading="lazy"></a>
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_12_1732627.jpg"><img src="房产资料/现场照片/房源_12_1732627.jpg" loading="lazy"></a>
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_14_1732629.jpg"><img src="房产资料/现场照片/房源_14_1732629.jpg" loading="lazy"></a>
       </div>
 
-      <p>开放式厨房 + 早餐/餐桌区 4×7.6m 纵向。<strong>厨房工作区在南半</strong>（U 型橱柜含水槽、灶台、烤箱、洗碗机，水槽朝小窗），<strong>中岛在中部</strong>含吧台椅，<strong>餐桌区在北半</strong>（实测 4×3.8m，含大窗+落地门通 deck）。<strong>中岛是固定家电不能动</strong>。冰箱位计划在角落。</p>
+      <p>开放式厨房 + 餐桌区 4×7.6m 纵向。<strong>北半 = 餐桌区</strong>（实测 4×3.8m，含大窗 + 落地门通 deck）·<strong>中部 = 中岛</strong>含吧台椅 ·<strong>南半 = 厨房工作区</strong>（U 型橱柜含水槽朝小窗、灶台、烤箱、洗碗机）。中岛是固定家电不动。计划在角落加冰箱。</p>
 
-      <h3 style="margin-top:32px">俯视平面图 · 方案 A 餐桌区局部</h3>
-      <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:720px;display:block;margin:16px auto;background:#fcfaf5;border-radius:4px;border:1px solid #d9d1bf">
-        <!-- 餐桌区 4m × 3.8m (横向) -->
-        <rect x="80" y="50" width="400" height="380" fill="#faf8f3" stroke="#1a1a1a" stroke-width="2"/>
-        <!-- 北墙大窗 (顶) -->
-        <line x1="180" y1="50" x2="380" y2="50" stroke="#fff" stroke-width="5"/>
-        <line x1="180" y1="45" x2="380" y2="45" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="180" y1="55" x2="380" y2="55" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="280" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253">大窗 · 山景 (北)</text>
-        <!-- 东墙开口通 deck (右) -->
-        <line x1="480" y1="120" x2="480" y2="320" stroke="#fff" stroke-width="6"/>
-        <text x="500" y="220" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253" transform="rotate(90 500 220)">东墙开口 · 通 deck</text>
-        <!-- 南墙 = 中岛吧台 (底) -->
-        <rect x="80" y="380" width="400" height="50" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="2"/>
-        <text x="280" y="410" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" font-weight="500" fill="#1a1a1a">中岛吧台（固定 · 不动）</text>
-        <!-- 西墙橱柜 (左) -->
-        <rect x="80" y="50" width="35" height="330" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="98" y="220" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#6b6253" transform="rotate(-90 98 220)">西墙橱柜</text>
-        <!-- 冰箱位 (西墙某段) -->
-        <rect x="115" y="80" width="55" height="80" fill="#F5F0E5" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="4,3"/>
-        <text x="143" y="115" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#1a1a1a">冰箱</text>
-        <text x="143" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="8" fill="#6b6253">900×700</text>
-        <!-- Tulip 椭圆桌 1.98×1.21m (居中) -->
-        <ellipse cx="290" cy="215" rx="99" ry="60" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="290" y="175" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#6b6253">Tulip Oval 1980×1210</text>
-        <!-- 6 椅 -->
-        <circle cx="230" cy="132" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <circle cx="290" cy="126" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <circle cx="350" cy="132" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <circle cx="230" cy="298" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <circle cx="290" cy="304" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <circle cx="350" cy="298" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-        <!-- PH5 吊灯 -->
-        <circle cx="290" cy="215" r="28" fill="none" stroke="#8b6f47" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.8"/>
-        <text x="290" y="219" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#8b6f47">PH5</text>
-        <!-- 尺寸标注 顶部 -->
-        <line x1="80" y1="28" x2="480" y2="28" stroke="#6b6253" stroke-width="0.5"/>
-        <line x1="80" y1="23" x2="80" y2="33" stroke="#6b6253" stroke-width="0.5"/>
-        <line x1="480" y1="23" x2="480" y2="33" stroke="#6b6253" stroke-width="0.5"/>
-        <text x="280" y="20" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4000 mm</text>
-        <!-- 尺寸标注 左侧 -->
-        <line x1="60" y1="50" x2="60" y2="430" stroke="#6b6253" stroke-width="0.5"/>
-        <line x1="55" y1="50" x2="65" y2="50" stroke="#6b6253" stroke-width="0.5"/>
-        <line x1="55" y1="430" x2="65" y2="430" stroke="#6b6253" stroke-width="0.5"/>
-        <text x="50" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 50 240)">3800 mm</text>
-        <!-- 方向标 -->
-        <text x="280" y="465" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#8b6f47" letter-spacing="3">↑ 北 · 山景 │ → 东 · deck │ ↓ 中岛(厨房工作区)</text>
-      </svg>
+      <h3 style="margin-top:24px">三个家具方案</h3>
 
-      <h3 style="margin-top:32px">三个方案</h3>
-
-      <!-- 方案 A -->
       <article class="plan-card plan-a">
-        <h3><span class="plan-tag">A</span> 现代极简：Saarinen Tulip 椭圆 1.98m <span class="tier">设计经典 ★★ · 主推</span></h3>
-
-        <p style="color:var(--muted);font-size:.85rem;margin:0 0 8px">↑ 顶部俯视平面图就是这个方案</p>
-
-        <div class="plan-thumbs">
-          <a class="thumb" data-full="assets/picks/saarinen-tulip.jpg">
-            <img loading="lazy" src="assets/picks/saarinen-tulip.jpg" alt="Tulip">
-            <span class="thumb-role">餐桌</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/ch24.jpg">
-            <img loading="lazy" src="assets/picks/ch24.jpg" alt="Y Chair">
-            <span class="thumb-role">餐椅 ×6</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/ph5.jpg">
-            <img loading="lazy" src="assets/picks/ph5.jpg" alt="PH5">
-            <span class="thumb-role">吊灯</span>
-          </a>
-        </div>
-
-        <div class="item-line"><span class="role">餐桌</span><strong>Eero Saarinen Tulip Oval 1.98 × 1.21 m</strong><em>· Knoll · Carrara 大理石</em><a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia</a></div>
-        <div class="item-line"><span class="role">餐椅</span><strong>6 把 Wegner CH24 Y Chair</strong><em>· 整组 NZ$11-14k</em><a href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult Design</a></div>
-        <div class="item-line"><span class="role">吊灯</span><strong>Louis Poulsen PH 5</strong><em>· NZ$1.5-2k</em><a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design</a></div>
-
-        <div class="why">
-          <strong>为什么：</strong>Tulip 椭圆的"无椅腿丛林"造型在 4×3.8 空间通透，<strong>冰箱角不会跟桌脚冲突</strong>。
-          落地窗采光下大理石面发光。Y Chair NZ 现货能整组拿。
-        </div>
+        <h3><span class="plan-tag">A</span> 现代极简 · Saarinen Tulip 椭圆 1.98m <span class="tier">设计经典 ★★ · 主推</span></h3>
+        <div class="item-line"><span class="role">餐桌</span><strong>Eero Saarinen Tulip Oval 1.98×1.21m</strong> <em>· Knoll · Carrara 大理石</em><a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia</a></div>
+        <div class="item-line"><span class="role">餐椅</span><strong>6 把 Wegner CH24 Y Chair</strong> <em>· 整组 NZ$11-14k</em><a href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult Design</a></div>
+        <div class="item-line"><span class="role">吊灯</span><strong>Louis Poulsen PH 5</strong> <em>· NZ$1.5-2k</em><a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design</a></div>
+        <div class="why"><strong>为什么</strong>：Tulip 椭圆"无椅腿丛林"造型在 4×3.8 通透，冰箱角不冲突。NZ 现货整组拿。</div>
       </article>
 
-      <!-- 方案 B -->
       <article class="plan-card plan-b">
-        <h3><span class="plan-tag">B</span> 投资级：Vintage Mogensen 椭圆柚木桌 <span class="tier">投资级 ★★★</span></h3>
-
-        <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:12px auto;background:#fcfaf5;border-radius:4px;border:1px solid #d9d1bf">
-          <rect x="80" y="50" width="400" height="380" fill="#faf8f3" stroke="#1a1a1a" stroke-width="2"/>
-          <line x1="180" y1="50" x2="380" y2="50" stroke="#fff" stroke-width="5"/>
-          <line x1="180" y1="45" x2="380" y2="45" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="55" x2="380" y2="55" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="280" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253">大窗 · 山景 (北)</text>
-          <line x1="480" y1="120" x2="480" y2="320" stroke="#fff" stroke-width="6"/>
-          <text x="500" y="220" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253" transform="rotate(90 500 220)">东墙开口 · 通 deck</text>
-          <rect x="80" y="380" width="400" height="50" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="2"/>
-          <text x="280" y="410" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" font-weight="500" fill="#1a1a1a">中岛吧台（固定）</text>
-          <rect x="80" y="50" width="35" height="330" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
-          <rect x="115" y="80" width="55" height="80" fill="#F5F0E5" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <text x="143" y="120" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#1a1a1a">冰箱</text>
-          <ellipse cx="290" cy="215" rx="90" ry="50" fill="#d9c9a7" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="290" y="180" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#6b6253">Vintage Mogensen 柚木 1800×1000</text>
-          <circle cx="230" cy="138" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="290" cy="132" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="350" cy="138" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="230" cy="292" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="290" cy="298" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="350" cy="292" r="17" fill="#3a2f24" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="290" cy="215" r="34" fill="none" stroke="#8b6f47" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.8"/>
-          <text x="290" y="219" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#8b6f47">Bubble</text>
-          <text x="280" y="20" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4000 mm</text>
-          <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 40 240)">3800 mm</text>
-          <text x="280" y="465" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#8b6f47" letter-spacing="2">↑ 北 │ → 东 deck │ ↓ 中岛</text>
-        </svg>
-
-        <div class="plan-thumbs">
-          <a class="thumb placeholder">
-            <span class="thumb-label">Vintage<br>Mogensen<br>椭圆柚木</span>
-            <span class="thumb-role">餐桌</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/ch24.jpg">
-            <img loading="lazy" src="assets/picks/ch24.jpg" alt="Y Chair">
-            <span class="thumb-role">餐椅</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/ch33-vintage.jpg">
-            <img loading="lazy" src="assets/picks/ch33-vintage.jpg" alt="CH33 vintage">
-            <span class="thumb-role">vintage 备选</span>
-          </a>
-        </div>
-
-        <div class="item-line"><span class="role">餐桌</span><strong>Vintage Borge Mogensen 椭圆 1.8m</strong><em>· 1955-65 丹麦柚木真品</em><a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/2/dining" target="_blank">Mr Bigg</a></div>
-        <div class="item-line"><span class="role">餐椅</span><strong>6 把 CH24 新 或 Vintage CH33</strong><em>· 整组 NZ$5-14k</em><a href="https://cultdesign.co.nz/collections/carl-hansen-son" target="_blank">Cult NZ</a></div>
-        <div class="item-line"><span class="role">吊灯</span><strong>George Nelson Bubble Saucer 17"</strong><em>· NZ$1.5-3k</em><a href="https://ecc.co.nz/" target="_blank">ECC</a></div>
-
-        <div class="why">
-          <strong>为什么：</strong>整套丹麦黄金期真品，跟正式 Dining 风格统一，传家级保值。
-          <strong>缺点：</strong>Vintage 椭圆桌要在 Webb's 季度 Design Sale 等机会，3-6 个月凑齐。
-        </div>
+        <h3><span class="plan-tag">B</span> 投资级 · Vintage Mogensen 椭圆柚木 <span class="tier">投资级 ★★★</span></h3>
+        <div class="item-line"><span class="role">餐桌</span><strong>Vintage Borge Mogensen 椭圆 1.8m</strong> <em>· 1955-65 丹麦柚木真品</em><a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/2/dining" target="_blank">Mr Bigg</a></div>
+        <div class="item-line"><span class="role">餐椅</span><strong>6 把 CH24 / vintage CH33</strong> <em>· 整组 NZ$5-14k</em><a href="https://cultdesign.co.nz/" target="_blank">Cult NZ</a></div>
+        <div class="item-line"><span class="role">吊灯</span><strong>George Nelson Bubble Saucer 17"</strong> <em>· NZ$1.5-3k</em><a href="https://ecc.co.nz/" target="_blank">ECC</a></div>
+        <div class="why"><strong>为什么</strong>：丹麦黄金期真品，跟正式 Dining 风格统一。Vintage 桌等机会 3-6 个月。</div>
       </article>
 
-      <!-- 方案 C -->
       <article class="plan-card plan-c">
-        <h3><span class="plan-tag">C</span> 通透日常：Tulip 圆 1.52m + 角落 Reading Nook <span class="tier">设计经典 ★★</span></h3>
-
-        <svg viewBox="0 0 560 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:12px auto;background:#fcfaf5;border-radius:4px;border:1px solid #d9d1bf">
-          <rect x="80" y="50" width="400" height="380" fill="#faf8f3" stroke="#1a1a1a" stroke-width="2"/>
-          <line x1="180" y1="50" x2="380" y2="50" stroke="#fff" stroke-width="5"/>
-          <line x1="180" y1="45" x2="380" y2="45" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="55" x2="380" y2="55" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="280" y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253">大窗 · 山景 (北)</text>
-          <line x1="480" y1="90" x2="480" y2="280" stroke="#fff" stroke-width="6"/>
-          <text x="500" y="190" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253" transform="rotate(90 500 190)">东墙开口 · 通 deck</text>
-          <rect x="80" y="380" width="400" height="50" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="2"/>
-          <text x="280" y="410" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" font-weight="500" fill="#1a1a1a">中岛吧台（固定）</text>
-          <rect x="80" y="50" width="35" height="330" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
-          <rect x="115" y="80" width="55" height="80" fill="#F5F0E5" stroke="#1a1a1a" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <text x="143" y="120" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#1a1a1a">冰箱</text>
-          <!-- Tulip 圆桌 1.52m -->
-          <circle cx="240" cy="200" r="76" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="240" y="175" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#6b6253">Tulip Round Ø1520</text>
-          <circle cx="240" cy="110" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="240" cy="290" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="148" cy="200" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="330" cy="200" r="17" fill="#8b6f47" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <circle cx="240" cy="200" r="24" fill="none" stroke="#8b6f47" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.8"/>
-          <text x="240" y="204" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" fill="#8b6f47">PH5</text>
-          <!-- Reading Nook 东北角朝东向 deck -->
-          <rect x="380" y="60" width="95" height="80" fill="#f0ece3" opacity="0.6" stroke="#8b6f47" stroke-width="0.8" stroke-dasharray="3,3"/>
-          <circle cx="410" cy="95" r="16" fill="#c8bda3" opacity="0.85" stroke="#1a1a1a" stroke-width="0.5"/>
-          <rect x="435" y="88" width="14" height="14" fill="#fff" stroke="#1a1a1a" stroke-width="0.5"/>
-          <text x="425" y="130" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="9" fill="#8b6f47">Reading Nook</text>
-          <text x="280" y="20" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4000 mm</text>
-          <text x="40" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 40 240)">3800 mm</text>
-          <text x="280" y="465" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#8b6f47" letter-spacing="2">↑ 北 │ → 东 deck │ ↓ 中岛</text>
-        </svg>
-
-        <div class="plan-thumbs">
-          <a class="thumb" data-full="assets/picks/saarinen-tulip.jpg">
-            <img loading="lazy" src="assets/picks/saarinen-tulip.jpg" alt="Tulip 圆">
-            <span class="thumb-role">餐桌（圆）</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/papa-bear.jpg">
-            <img loading="lazy" src="assets/picks/papa-bear.jpg" alt="角落椅参考">
-            <span class="thumb-role">角落椅</span>
-          </a>
-          <a class="thumb" data-full="assets/picks/ph5.jpg">
-            <img loading="lazy" src="assets/picks/ph5.jpg" alt="PH5">
-            <span class="thumb-role">吊灯</span>
-          </a>
-        </div>
-
-        <div class="item-line"><span class="role">餐桌</span><strong>Saarinen Tulip Round 1.52 m</strong><em>· 4-6 人日常</em><a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia</a></div>
-        <div class="item-line"><span class="role">餐椅</span><strong>4 把 Tulip Side 或 Eames DSW</strong><em>· 配 Tulip 完美</em><a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia</a></div>
-        <div class="item-line"><span class="role">角落</span><strong>单椅 + 边桌 朝阳台门</strong><em>· Vintage 单椅</em><a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/1/lounge" target="_blank">Mr Bigg</a></div>
-        <div class="item-line"><span class="role">吊灯</span><strong>PH 5 或 Verner Panton Flowerpot</strong><em>· 圆桌正中</em><a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design</a></div>
-
-        <div class="why">
-          <strong>为什么：</strong>4×3.8m 留出更多空间，冰箱角影响最小。
-          1.2m 留 reading nook 朝阳台门。
-        </div>
+        <h3><span class="plan-tag">C</span> 通透日常 · Tulip 圆 1.52m + Reading Nook <span class="tier">设计经典 ★★</span></h3>
+        <div class="item-line"><span class="role">餐桌</span><strong>Saarinen Tulip Round 1.52m</strong> <em>· 4-6 人日常</em><a href="https://www.studioitalia.co.nz/products/saarinen-tulip-chair" target="_blank">Studio Italia</a></div>
+        <div class="item-line"><span class="role">餐椅</span><strong>4 把 Tulip Side / Eames DSW</strong></div>
+        <div class="item-line"><span class="role">角落</span><strong>单椅 + 边桌 朝落地门</strong><a href="https://www.mrbigglesworthy.co.nz/shop-vintage/category/1/lounge" target="_blank">Mr Bigg</a></div>
+        <div class="item-line"><span class="role">吊灯</span><strong>PH 5</strong></div>
+        <div class="why"><strong>为什么</strong>：4×3.8 留更多空间，1.2m 角落放 reading nook 朝落地门通透。日常 4 人，聚 6 人搬 2 把椅。</div>
       </article>
 
       <div class="verdict">
         <span class="label">我的判断</span>
-        方案 <strong>A</strong> —— Tulip 椭圆与冰箱角共存最好（无桌腿干扰开门动线），跟厨房极简白色中岛和谐，NZ 现货能落地。
+        方案 <strong>A</strong> · Tulip 椭圆配 Y Chair NZ 现货能落地，跟厨房极简白色中岛和谐。正式 Dining 那边留给中古丹麦投入。
       </div>
-
     </div>
   </section>
 
   <!-- ============ 正式 Dining ============ -->
-  <section class="room-section" id="formal-dining">
-    <div class="room-header pending">
-      <h2>正式 Dining 餐厅</h2>
-      <span class="meta">4.7 × 4.1 m 标称 · 待实测</span>
+  <section class="room-section" id="dining">
+    <div class="room-header">
+      <h2>Dining 正式餐厅</h2>
+      <span class="meta">4.7 × 4.1 m 标称</span>
     </div>
     <div class="room-content">
-
-      <svg viewBox="0 0 510 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="430" height="370" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <line x1="40" y1="180" x2="40" y2="260" stroke="#fff" stroke-width="7"/>
-        <path d="M 40 180 A 50 50 0 0 0 40 260" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="25" y="225" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#4a4a4a" transform="rotate(-90 25 225)">通 Living</text>
-        <line x1="470" y1="180" x2="470" y2="260" stroke="#fff" stroke-width="7"/>
-        <path d="M 470 180 A 50 50 0 0 1 470 260" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="485" y="225" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#4a4a4a" transform="rotate(90 485 225)">通厨房</text>
-        <text x="255" y="220" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" font-weight="500" fill="#1a1a1a">Dining 正式餐厅</text>
-        <text x="255" y="246" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" fill="#4a4a4a">19.3 ㎡</text>
-        <line x1="40" y1="22" x2="470" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="255" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b">4700 mm</text>
-        <line x1="22" y1="40" x2="22" y2="410" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="14" y="220" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b" transform="rotate(-90 14 220)">4100 mm</text>
-      </svg>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_10_1732625.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_10_1732625.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_10_1732625.jpg"><img src="房产资料/现场照片/房源_10_1732625.jpg" loading="lazy"></a>
       </div>
-
-      <h3>空间特征</h3>
-      <p>独立正式餐厅，几乎方形（4.7×4.1m，19.3 ㎡）。Staging 用了米色椅 + 深色圆桌 + 白挂镜。floor plan 显示两侧开放：一侧通 Living，一侧通厨房，是<strong>过道型空间</strong>。</p>
-
-      <h3>什么家具合适</h3>
-      <p>过道型空间适合<strong>圆桌或八角桌</strong>（无角向、无方向感）。建议 Ø1.5-1.7m 容 6-8 人。跟 Kitchen/Dining 日常餐桌区<strong>风格区分</strong>：那边走现代经典，这边走<strong>古典丹麦真品中古</strong>（Mogensen / 早期 Wegner 圆桌）。配 Serge Mouille 三臂或 Bubble 吊灯。</p>
+      <p>独立正式餐厅，近方形 19.3 ㎡。floor plan 显示两侧开放（一侧通 Living + 一侧通 Kitchen），是<strong>过道型</strong>空间。Staging 米色椅 + 深木圆桌 + 白挂镜。建议<strong>圆桌或八角桌</strong>，跟 Kitchen/Dining 日常区<strong>风格区分</strong>：那边现代经典，这边走<strong>古典丹麦中古</strong>。</p>
 
       <h3>候选单品</h3>
       <div class="candidate-grid">
         <article class="candidate kept">
           <h4>🌟🇳🇿 Hans Wegner The Chair JH-503 ×6</h4>
-          <div class="c-meta">Hans Wegner · 1949 · Johannes Hansen 早期原版</div>
-          <div class="c-price">NZ$31,500 整组 6 把 · 投资级 ★★★ 至尊</div>
-          <div class="c-note">Mr Bigg 现货 · "The Chair" 史称世上最美椅，整组 6 把成套极罕见。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/six-hans-wegner-the-chair-model-jh503-by-johannes-hansen" target="_blank">Mr Bigg 现货</a>
+          <div class="c-meta">Wegner · 1949 · Johannes Hansen 早期原版</div>
+          <div class="c-price">NZ$31,500 整组 · 投资级 ★★★ 至尊</div>
+          <div class="c-note">Mr Bigg 现货 · 史称世上最美椅，整组 6 把成套极罕见。</div>
+          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate kept">
-          <h4>🇳🇿 Bruno Mathsson "Maria" Extending Table</h4>
-          <div class="c-meta">Bruno Mathsson · 1938 · Firma Karl Mathsson</div>
-          <div class="c-price">NZ$9,650 (sale) · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 瑞典前卫家具祖师爷代表作，1938 真品。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/bruno-mathsson-maria-extending-dining-table-by-firma-karl-mathsson" target="_blank">Mr Bigg 现货</a>
+          <h4>🇳🇿 Bruno Mathsson "Maria" 桌</h4>
+          <div class="c-meta">Mathsson · 1938 · Firma Karl Mathsson</div>
+          <div class="c-price">NZ$9,650 · 投资级 ★★★</div>
+          <div class="c-note">Mr Bigg 现货 · 瑞典前卫祖师爷代表作。</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/bruno-mathsson-maria-extending-dining-table-by-firma-karl-mathsson" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate kept">
-          <h4>🇳🇿 Mario Bellini "La Rotonda" 圆桌</h4>
-          <div class="c-meta">Bellini · 1976 · Cassina</div>
-          <div class="c-price">NZ$5,250 · 设计经典 ★★</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/sculptural-mario-bellini-la-rotonda-dining-table-by-cassina" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Kai Kristiansen "Universe 301" ×6</h4>
-          <div class="c-meta">Kai Kristiansen · 1966 · Magnus Olesen</div>
-          <div class="c-price">NZ$7,500 整组 6 · 投资级 ★★★</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/six-stunning-kai-kristiansen-universe-301-dining-chairs-by-magnus-olesen" target="_blank">Mr Bigg 现货</a>
+          <h4>🇳🇿 Kai Kristiansen Universe 301 ×6</h4>
+          <div class="c-meta">Kristiansen · 1966 · Magnus Olesen</div>
+          <div class="c-price">NZ$7,500 整组 · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/six-stunning-kai-kristiansen-universe-301-dining-chairs-by-magnus-olesen" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate alt">
           <h4>Serge Mouille 三臂吊灯</h4>
-          <div class="c-meta">Serge Mouille · 1953 · DCW 重制</div>
+          <div class="c-meta">Mouille · 1953 · DCW 重制</div>
           <div class="c-price">NZ$8-12k · 投资级 ★★★</div>
           <a href="https://ecc.co.nz/" target="_blank">ECC NZ</a>
         </article>
@@ -709,55 +228,120 @@
     </div>
   </section>
 
-  <!-- ============ Study 书房 ============ -->
-  <section class="room-section" id="study">
-    <div class="room-header pending">
-      <h2>Study 书房</h2>
-      <span class="meta">4.2 × 3.3 m 标称 · 待实测</span>
+  <!-- ============ Lounge ============ -->
+  <section class="room-section" id="lounge">
+    <div class="room-header">
+      <h2>Lounge 主客厅</h2>
+      <span class="meta">5.2 × 6.8 m 标称 · 35.4 ㎡</span>
     </div>
     <div class="room-content">
-
-      <svg viewBox="0 0 460 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:440px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="380" height="290" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <rect x="40" y="40" width="20" height="290" fill="#5C4A38" stroke="#1a1a1a" stroke-width="1"/>
-        <rect x="400" y="40" width="20" height="290" fill="#5C4A38" stroke="#1a1a1a" stroke-width="1"/>
-        <text x="50" y="190" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#fff" transform="rotate(-90 50 190)">深木镶板</text>
-        <text x="410" y="190" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#fff" transform="rotate(-90 410 190)">内置书柜</text>
-        <line x1="170" y1="330" x2="240" y2="330" stroke="#fff" stroke-width="7"/>
-        <path d="M 170 330 A 50 50 0 0 0 240 330" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="200" y1="40" x2="280" y2="40" stroke="#fff" stroke-width="6"/>
-        <line x1="200" y1="36" x2="280" y2="36" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="200" y1="44" x2="280" y2="44" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="240" y="30" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#4a4a4a">窗</text>
-        <text x="230" y="180" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" font-weight="500" fill="#1a1a1a">Study</text>
-        <text x="230" y="205" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" fill="#4a4a4a">书房 · 13.9 ㎡</text>
-        <line x1="40" y1="22" x2="420" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="230" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b">4200 mm</text>
-        <line x1="22" y1="40" x2="22" y2="330" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="14" y="185" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b" transform="rotate(-90 14 185)">3300 mm</text>
-      </svg>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_15_1732630.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_15_1732630.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_09_1732623.jpg"><img src="房产资料/现场照片/房源_09_1732623.jpg" loading="lazy"></a>
       </div>
-
-      <h3>空间特征</h3>
-      <p>★ 隐藏宝藏。staging 照片可见<strong>整面深色木镶板 + 内置书柜 + 搁架</strong>（1940s 真材），房间本身就是中古风格底子。双窗在长墙，门从主层廊道进。Staging 已经放了 Aalto 风曲木椅 + 木质 T 形书桌。</p>
-
-      <h3>什么家具合适</h3>
-      <p>不要再加书柜（已有）。中央放<strong>一张厚实书桌</strong>（最好是 Pierre Jeanneret 钱迪加尔柚木），<strong>1 把阅读椅</strong>（Wegner Papa Bear / Aalto Paimio 41）配脚凳，<strong>1 张矮台灯</strong>。整间走"已有底子拔档"路线，只投椅+桌+灯三件就够。</p>
+      <p>房子最大的会客空间。floor plan 显示<strong>入口从南面 Entry 进</strong>，<strong>北墙有白色壁炉</strong>（staging 可见 + 圆镜），双窗朝南。大尺度沙发 + 1-2 把<strong>戏剧性收藏单椅</strong> + 真材实料咖啡桌。预算分配 25-30%。</p>
 
       <h3>候选单品</h3>
       <div class="candidate-grid">
         <article class="candidate kept">
-          <h4>🇳🇿 Gunni Omann "Model 76" Executive Desk</h4>
-          <div class="c-meta">Gunni Omann · 1960 · Omann Jun Denmark</div>
+          <h4>B&B Italia Camaleonda 模块沙发</h4>
+          <div class="c-meta">Bellini · 1970 / 2020 重生产</div>
+          <div class="c-price">NZ$25-40k · 设计经典 ★★</div>
+          <a href="https://matisse.co.nz/camaleonda-sofa/" target="_blank">Matisse NZ</a>
+        </article>
+        <article class="candidate kept">
+          <h4>🇳🇿 Florence Knoll Leather Sofa</h4>
+          <div class="c-meta">Florence Knoll · 1954 真品</div>
+          <div class="c-price">NZ$9,500 · 投资级 ★★★</div>
+          <div class="c-note">Mr Bigg 现货 · 包豪斯 + 美式现代鼻祖</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-florence-knoll-leather-sofa-by-knoll-international" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate kept">
+          <h4>🇳🇿 Wegner Papa Bear vintage</h4>
+          <div class="c-meta">Wegner · 1951 早期 AP Stolen</div>
+          <div class="c-price">NZ$12-25k · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate kept">
+          <h4>🇳🇿 Hvidt & Mølgaard 'Ax' 一对</h4>
+          <div class="c-meta">Hvidt & Mølgaard · 1947 · Fritz Hansen</div>
+          <div class="c-price">NZ$7,500 一对 · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/pair-of-hvidt-molgaard-nielsen-ax-lounge-chair-by-fritz-hansen" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate kept">
+          <h4>🇳🇿 Afra & Tobia Scarpa Model 771 咖啡桌</h4>
+          <div class="c-meta">Scarpa · 1964 · Cassina</div>
+          <div class="c-price">NZ$2,950 · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/coveted-afra-and-tobia-scarpa-model-771-coffee-table-by-cassina" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate alt">
+          <h4>Achille Castiglioni Arco 落地灯</h4>
+          <div class="c-meta">Castiglioni · 1962 · Flos</div>
+          <div class="c-price">NZ$5-7k · 设计经典 ★★</div>
+          <a href="https://ecc.co.nz/" target="_blank">ECC NZ</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Living ============ -->
+  <section class="room-section" id="living">
+    <div class="room-header">
+      <h2>Living 起居室 / 媒体室</h2>
+      <span class="meta">4.3 × 6.9 m 标称 · 29.7 ㎡</span>
+    </div>
+    <div class="room-content">
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_11_1732626.jpg"><img src="房产资料/现场照片/房源_11_1732626.jpg" loading="lazy"></a>
+      </div>
+      <p>从 Lounge 或 Dining 进入，比 Lounge 略小，更日常。staging 显示双窗朝南 + 矮天花，<strong>floor plan 西墙有壁炉墙 + 电视位</strong>。建议<strong>可天天用的中古沙发</strong>（不挑剔好坐）+ 单椅一对 + 圆茶几。</p>
+
+      <h3>候选单品</h3>
+      <div class="candidate-grid">
+        <article class="candidate kept">
+          <h4>🇳🇿 Ole Wanscher "Senator" 沙发</h4>
+          <div class="c-meta">Wanscher · 1951 · Poul Jeppesen</div>
+          <div class="c-price">NZ$5,750 · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-ole-wanscher-senator-sofa-by-poul-jeppesen" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate kept">
+          <h4>🇳🇿 Grete Jalk Model 118 沙发</h4>
+          <div class="c-meta">Jalk · 1964 · France & Søn</div>
           <div class="c-price">NZ$6,250 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 跟书房深木镶板完美呼应。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/sharp-gunni-omann-model-76-executive-desk-by-omann-jun" target="_blank">Mr Bigg 现货</a>
+          <a href="https://www.mrbigglesworthy.co.nz/product/refined-grete-jalk-model-118-sofa-by-france-son" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate alt">
+          <h4>Louis Poulsen PH 5</h4>
+          <div class="c-meta">Henningsen · 1958 · Louis Poulsen</div>
+          <div class="c-price">NZ$1.5-2k · 设计经典 ★★</div>
+          <a href="https://cultdesign.co.nz/collections/louis-poulsen" target="_blank">Cult Design</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Study ============ -->
+  <section class="room-section" id="study">
+    <div class="room-header">
+      <h2>Study 书房</h2>
+      <span class="meta">4.2 × 3.3 m 标称 · 13.9 ㎡</span>
+    </div>
+    <div class="room-content">
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_15_1732630.jpg"><img src="房产资料/现场照片/房源_15_1732630.jpg" loading="lazy"></a>
+      </div>
+      <p>★ 隐藏宝藏。staging 显示<strong>整面深色木镶板 + 内置书柜 + 搁架</strong>（1940s 真材），房间本身就是中古风格底子。建议不再加书柜（已有），只投<strong>厚实书桌 + 阅读椅配脚凳 + 矮台灯</strong>三件。</p>
+
+      <h3>候选单品</h3>
+      <div class="candidate-grid">
+        <article class="candidate kept">
+          <h4>🇳🇿 Gunni Omann Model 76 Executive Desk</h4>
+          <div class="c-meta">Omann · 1960 · Omann Jun Denmark</div>
+          <div class="c-price">NZ$6,250 · 投资级 ★★★</div>
+          <div class="c-note">Mr Bigg 现货 · 跟深木镶板完美呼应</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/sharp-gunni-omann-model-76-executive-desk-by-omann-jun" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate alt">
           <h4>Pierre Jeanneret 钱迪加尔书桌</h4>
@@ -766,88 +350,46 @@
           <a href="https://www.1stdibs.com/creators/pierre-jeanneret/furniture/" target="_blank">1stDibs</a>
         </article>
         <article class="candidate kept">
-          <h4>🇳🇿 Wegner Papa Bear AP19 · 阅读椅</h4>
+          <h4>🇳🇿 Wegner Papa Bear · 阅读椅</h4>
           <div class="c-meta">Wegner · 1951 · PP Møbler</div>
           <div class="c-price">NZ$12-25k 原版 · 投资级 ★★★</div>
           <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
-        </article>
-        <article class="candidate kept">
-          <h4>🇳🇿 Hans Wegner Upright Cabinet</h4>
-          <div class="c-meta">Wegner · 1957 · Ry Mobler Denmark</div>
-          <div class="c-price">NZ$2,950 · 投资级 ★★★</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/refined-hans-wegner-upright-cabinet-by-ry-mobler" target="_blank">Mr Bigg 现货</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ Master Bedroom 调研中 ============ -->
+  <!-- ============ Master ============ -->
   <section class="room-section" id="master">
     <div class="room-header" style="background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%)">
-      <h2>主卧 Master Bedroom <span class="room-status researching">调研</span></h2>
-      <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m · 候选床调研中</span>
+      <h2>Master 主卧 <span class="room-status researching">调研中</span></h2>
+      <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m</span>
     </div>
     <div class="room-content">
-
-      <svg viewBox="0 0 540 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="450" height="400" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <rect x="40" y="300" width="200" height="140" fill="#A8C295" stroke="#1a1a1a" stroke-width="3"/>
-        <text x="140" y="375" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="13" font-weight="500" fill="#1a1a1a">Walk-in</text>
-        <text x="140" y="395" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#4a4a4a">2.0 × 1.4 m</text>
-        <line x1="240" y1="345" x2="240" y2="410" stroke="#fff" stroke-width="6"/>
-        <path d="M 240 345 A 50 50 0 0 1 240 410" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="380" y1="40" x2="450" y2="40" stroke="#fff" stroke-width="7"/>
-        <path d="M 380 40 A 70 70 0 0 0 450 40" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="415" y="30" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#4a4a4a">入口</text>
-        <line x1="130" y1="40" x2="320" y2="40" stroke="#fff" stroke-width="6"/>
-        <line x1="130" y1="36" x2="320" y2="36" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="130" y1="44" x2="320" y2="44" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="225" y="28" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#4a4a4a">窗 · 远眺</text>
-        <text x="335" y="180" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="22" font-weight="500" fill="#1a1a1a">Master</text>
-        <text x="335" y="207" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" fill="#4a4a4a">主卧 · 18 ㎡</text>
-        <line x1="40" y1="22" x2="490" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="265" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b">4500 mm</text>
-        <line x1="22" y1="40" x2="22" y2="440" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="14" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6b6b" transform="rotate(-90 14 240)">4000 mm</text>
-      </svg>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_20_1732635.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_20_1732635.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_20_1732635.jpg"><img src="房产资料/现场照片/房源_20_1732635.jpg" loading="lazy"></a>
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_17_1732632.jpg"><img src="房产资料/现场照片/房源_17_1732632.jpg" loading="lazy"></a>
       </div>
-
-      <p>4.5 × 4.0 m 主卧 + Walk-in 衣帽间嵌在角。staging 显示<strong>大窗远眺 + 弧形木质床头柜 + 浅亚麻床品</strong>。床是核心投资，<strong>已在 Studio Italia 看过两款 Poliform 候选</strong>，建议再去 Matisse 对比 Maxalto 高端线和 Vintage Art Deco 床头。</p>
+      <p>4.5×4.0 主卧 + Walk-in 衣帽间嵌在角。staging 显示<strong>大窗远眺 + 弧形木质床头柜 + 浅亚麻床品</strong>。床是核心投资。</p>
 
       <h3>已看候选 · Poliform @ Studio Italia</h3>
       <div class="candidate-grid">
         <article class="candidate alt">
           <h4>Poliform Kelly Bed (1800)</h4>
           <div class="c-meta">Emmanuel Gallina · 圆润 boucle</div>
-          <div class="c-meta">W 1970 × D 2300 × H 1000 mm · Micene Peltro / Pessuart Oak</div>
+          <div class="c-meta">W 1970 × D 2300 × H 1000 mm</div>
           <div class="c-price">NZ$ 16,990</div>
-          <div class="c-note">
-            <strong>适配 4.5×4.0：</strong>留 1.1m 床头床尾 ✓ 舒展<br>
-            <strong>风格：</strong>温暖现代，曲线呼应房子拱门<br>
-            <strong>5 年保值：</strong>-35-45%（设计师较年轻）
-          </div>
+          <div class="c-note"><strong>适配 4.5×4.0：</strong>留 1.1m 床头床尾 ✓<br><strong>5 年保值：</strong>-35-45%</div>
           <a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia</a>
-          <a href="https://www.poliform.it/en/products/beds/kelly/" target="_blank">Poliform 官方</a>
         </article>
-
         <article class="candidate alt">
           <h4>Poliform Yume Bed (1800)</h4>
           <div class="c-meta">Jean-Marie Massaud · 建筑感 + 皮包边</div>
-          <div class="c-meta">L 2880 × D 2160 × H 950 mm · Brest Sabbia + Hide Fango · 不含床垫</div>
+          <div class="c-meta">L 2880 × D 2160 × H 950 mm · 不含床垫</div>
           <div class="c-price">NZ$ 18,330 + 床垫</div>
-          <div class="c-note">
-            <strong>适配 4.5×4.0：</strong>留 0.81m 床头床尾 ⚠ 偏紧<br>
-            <strong>风格：</strong>克制建筑感，更现代<br>
-            <strong>5 年保值：</strong>-25-35%（Massaud 经典款持续在产）
-          </div>
+          <div class="c-note"><strong>适配 4.5×4.0：</strong>留 0.81m 偏紧 ⚠<br><strong>5 年保值：</strong>-25-35%</div>
           <a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia</a>
-          <a href="https://www.poliform.it/en/products/beds/yume/" target="_blank">Poliform 官方</a>
         </article>
       </div>
 
@@ -856,166 +398,80 @@
         <article class="candidate kept">
           <h4>Maxalto Apta / Lutetia Bed</h4>
           <div class="c-meta">Antonio Citterio · B&B Italia 高端线</div>
-          <div class="c-price">NZ$ 价位接近 Poliform</div>
-          <div class="c-note">
-            Citterio 是顶级设计师（B&B、Maxalto 主笔），收藏稳定性 + 名气都高一档。<strong>跟 Poliform 同价位但更保值</strong>。
-          </div>
-          <a href="https://matisse.co.nz/" target="_blank">Matisse NZ</a>
-          <a href="https://www.maxalto.com/en/products/beds" target="_blank">Maxalto 官方</a>
+          <div class="c-price">价位接近 Poliform 但保值更好</div>
+          <div class="c-note">Citterio 顶级名气 + 收藏稳定性更高</div>
+          <a href="https://matisse.co.nz/" target="_blank">Matisse</a>
         </article>
-
         <article class="candidate kept">
           <h4>B&B Italia Husk Bed</h4>
           <div class="c-meta">Patricia Urquiola · 圆形包覆床头</div>
           <div class="c-price">NZ$ 同档</div>
-          <div class="c-note">
-            跟 Kelly 同视觉感觉（圆润）但<strong>Urquiola + B&B 品牌组合保值更稳</strong>。
-          </div>
-          <a href="https://matisse.co.nz/" target="_blank">Matisse NZ</a>
-          <a href="https://www.bebitalia.com/en/bedroom/beds/husk" target="_blank">B&B Italia 官方</a>
+          <div class="c-note">跟 Kelly 同感觉但品牌组合更保值</div>
+          <a href="https://matisse.co.nz/" target="_blank">Matisse</a>
         </article>
       </div>
 
       <h3>最保值路线 · Vintage Art Deco</h3>
       <article class="candidate kept">
         <h4>Vintage 法国 Art Deco 床头 (1930-40s)</h4>
-        <div class="c-meta">真品漆面或镶嵌 + 现代床架 + 高端亚麻床品</div>
+        <div class="c-meta">真品漆面/镶嵌 + 现代床架 + 高端亚麻</div>
         <div class="c-price">NZ$ 5-8k 总价</div>
-        <div class="c-note">
-          跟你 1940s 房子的拱门 + 镶板<strong>完美年代呼应</strong>。
-          总价 1/3 不到，且<strong>升值</strong>。Mr Bigg / Webb's 偶有，要碰。
-        </div>
+        <div class="c-note">跟你 1940s 房子拱门 + 镶板完美年代呼应。总价 1/3 不到，<strong>升值</strong>。</div>
         <a href="https://www.mrbigglesworthy.co.nz/shop-vintage" target="_blank">Mr Bigg</a>
         <a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's</a>
-        <a href="https://www.selency.com/" target="_blank">Selency 法国</a>
       </article>
-
-      <h3>候选床头柜 + 灯</h3>
-      <div class="plan-thumbs">
-        <a class="thumb placeholder">
-          <span class="thumb-label">Art Deco<br>双床头柜对</span>
-          <span class="thumb-role">床头柜</span>
-        </a>
-        <a class="thumb placeholder">
-          <span class="thumb-label">Jacques Adnet<br>皮缝边边桌</span>
-          <span class="thumb-role">边桌</span>
-        </a>
-        <a class="thumb placeholder">
-          <span class="thumb-label">Prouvé Potence<br>壁灯 一对</span>
-          <span class="thumb-role">壁灯</span>
-        </a>
-      </div>
 
       <div class="verdict">
         <span class="label">下一步</span>
-        今天既然在 Parnell，<strong>走 8 分钟到 Matisse 试 Maxalto Apta + B&B Husk</strong>，再回头对比这两个 Poliform。
-        拍照发回来，我加进这页对比卡。
+        既然在 Parnell，<strong>走 8 分钟到 Matisse 试 Maxalto Apta + B&B Husk</strong>，再回头对比 Poliform。
       </div>
     </div>
   </section>
 
-  <!-- ============ Bedroom 2 / 3 / 4 ============ -->
-  <section class="room-section" id="bedroom-2">
-    <div class="room-header pending">
+  <!-- ============ Bedrooms 2/3/4 ============ -->
+  <section class="room-section" id="bedrooms">
+    <div class="room-header">
       <h2>次卧 Bedroom 2 / 3 / 4</h2>
-      <span class="meta">3.5×5.5 · 4.5×3.1 · 3.7×1.9 m 标称 · 待实测</span>
+      <span class="meta">3.5×5.5 · 4.5×3.1 · 3.7×1.9 m</span>
     </div>
     <div class="room-content">
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:24px">
-
-        <svg viewBox="0 0 380 530" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#fff;display:block">
-          <rect x="40" y="40" width="300" height="470" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-          <line x1="40" y1="430" x2="40" y2="490" stroke="#fff" stroke-width="6"/>
-          <path d="M 40 430 A 50 50 0 0 0 90 480" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="130" y1="40" x2="250" y2="40" stroke="#fff" stroke-width="5"/>
-          <line x1="130" y1="36" x2="250" y2="36" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="130" y1="44" x2="250" y2="44" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="190" y="240" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="18" font-weight="500" fill="#1a1a1a">Bedroom 2</text>
-          <text x="190" y="262" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">3.5 × 5.5 m · 19.3 ㎡</text>
-          <line x1="40" y1="22" x2="340" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="190" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b">3500 mm</text>
-          <line x1="22" y1="40" x2="22" y2="510" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="14" y="275" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b" transform="rotate(-90 14 275)">5500 mm</text>
-        </svg>
-
-        <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#fff;display:block">
-          <rect x="40" y="40" width="400" height="290" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-          <line x1="40" y1="240" x2="40" y2="310" stroke="#fff" stroke-width="6"/>
-          <path d="M 40 240 A 55 55 0 0 0 95 295" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="40" x2="300" y2="40" stroke="#fff" stroke-width="5"/>
-          <line x1="180" y1="36" x2="300" y2="36" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="44" x2="300" y2="44" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="240" y="170" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="18" font-weight="500" fill="#1a1a1a">Bedroom 3</text>
-          <text x="240" y="192" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">4.5 × 3.1 m · 14.0 ㎡</text>
-          <line x1="40" y1="22" x2="440" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="240" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b">4500 mm</text>
-          <line x1="22" y1="40" x2="22" y2="330" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="14" y="185" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b" transform="rotate(-90 14 185)">3100 mm</text>
-        </svg>
-
-        <svg viewBox="0 0 410 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;background:#fff;display:block">
-          <rect x="40" y="40" width="330" height="170" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="5"/>
-          <line x1="40" y1="100" x2="40" y2="160" stroke="#fff" stroke-width="6"/>
-          <path d="M 40 100 A 45 45 0 0 0 85 145" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="40" x2="270" y2="40" stroke="#fff" stroke-width="5"/>
-          <line x1="180" y1="36" x2="270" y2="36" stroke="#1a1a1a" stroke-width="1.5"/>
-          <line x1="180" y1="44" x2="270" y2="44" stroke="#1a1a1a" stroke-width="1.5"/>
-          <text x="205" y="110" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14" font-weight="500" fill="#1a1a1a">Bedroom 4 / Dressing</text>
-          <text x="205" y="130" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#4a4a4a">3.7 × 1.9 m · 7.0 ㎡</text>
-          <text x="205" y="155" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#8b6f47">★ 太窄不宜床 · 建议衣帽间</text>
-          <line x1="40" y1="22" x2="370" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="205" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b">3700 mm</text>
-          <line x1="22" y1="40" x2="22" y2="210" stroke="#6b6b6b" stroke-width="0.5"/>
-          <text x="14" y="125" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b" transform="rotate(-90 14 125)">1900</text>
-        </svg>
-
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_16_1732631.jpg"><img src="房产资料/现场照片/房源_16_1732631.jpg" loading="lazy"></a>
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_22_1732637.jpg"><img src="房产资料/现场照片/房源_22_1732637.jpg" loading="lazy"></a>
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_21_1732636.jpg"><img src="房产资料/现场照片/房源_21_1732636.jpg" loading="lazy"></a>
       </div>
-
-      <h3>Staging 实景照片</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 24px">
-        <a class="thumb" data-full="房产资料/现场照片/房源_16_1732631.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_16_1732631.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-        <a class="thumb" data-full="房产资料/现场照片/房源_22_1732637.jpg" style="display:block;height:150px;overflow:hidden;border-radius:4px;cursor:zoom-in;background:#eee;border:none">
-          <img src="房产资料/现场照片/房源_22_1732637.jpg" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
-        </a>
-      </div>
-
-      <h3>什么家具合适</h3>
       <ul style="line-height:1.7">
-        <li><strong>Bedroom 2</strong>（3.5×5.5）：长方形，最适合客房。床头靠短边墙（北 / 远端），留 3-4m 长度给衣柜 + 工作角。</li>
-        <li><strong>Bedroom 3</strong>（4.5×3.1）：近方形小卧。1.5m 双床中央，两侧床头柜，对面墙 Vintage 五斗柜。</li>
-        <li><strong>Bedroom 4</strong>（3.7×1.9）：太窄了，<strong>不建议放床</strong>。改 Walk-in 二号 / dressing room / 小书房。</li>
+        <li><strong>Bedroom 2</strong>（3.5×5.5）：长方形客房。床头靠短墙，留长度给衣柜 + 工作角。</li>
+        <li><strong>Bedroom 3</strong>（4.5×3.1）：近方形小卧。1.5m 双床中央，两侧床头柜。</li>
+        <li><strong>Bedroom 4</strong>（3.7×1.9）：<strong>太窄不建议放床</strong>，改 Walk-in 二号 / dressing room / 小书房。</li>
       </ul>
 
       <h3>候选单品（次卧通用）</h3>
       <div class="candidate-grid">
         <article class="candidate kept">
-          <h4>🇳🇿 Borge Mogensen "China" Chest of Drawers</h4>
-          <div class="c-meta">Borge Mogensen · 1960s · FDB Mobler</div>
+          <h4>🇳🇿 Borge Mogensen China Chest of Drawers</h4>
+          <div class="c-meta">Mogensen · 1960s · FDB Mobler</div>
           <div class="c-price">NZ$7,950 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 丹麦 60s 五斗柜传家级。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/refined-borge-mogensen-china-model-chest-of-drawers-by-cm-madsen-for-fdb-mobler" target="_blank">Mr Bigg 现货</a>
+          <a href="https://www.mrbigglesworthy.co.nz/product/refined-borge-mogensen-china-model-chest-of-drawers-by-cm-madsen-for-fdb-mobler" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate kept">
-          <h4>🇳🇿 Linear Mid-Century Danish Teak Chest</h4>
-          <div class="c-meta">丹麦 · 1960s · 真品</div>
+          <h4>🇳🇿 Vintage 丹麦柚木五斗柜</h4>
+          <div class="c-meta">丹麦 1960s · 真品</div>
           <div class="c-price">NZ$2,250 · 经典 ★★</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/linear-mid-century-danish-teak-chest-of-drawers" target="_blank">Mr Bigg 现货</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Arne Jacobsen Series 7 · 单椅</h4>
-          <div class="c-meta">Jacobsen · 1955 · Fritz Hansen</div>
-          <div class="c-price">NZ$1.5-2k · 设计经典 ★★</div>
-          <a href="https://cultdesign.co.nz/collections/fritz-hansen" target="_blank">Cult Design NZ</a>
+          <a href="https://www.mrbigglesworthy.co.nz/product/linear-mid-century-danish-teak-chest-of-drawers" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate kept">
           <h4>🇳🇿 Poul Cadovius System Cado 墙柜</h4>
-          <div class="c-meta">Cadovius · 1960s · Royal System Denmark</div>
-          <div class="c-price">NZ$2,250-5,950 (单/三 Bay) · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · 模块化墙柜传家级。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/poul-cadovius-system-cado-single-bay-wall-unit-by-royal-system" target="_blank">Mr Bigg 现货</a>
+          <div class="c-meta">Cadovius · 1960s · Royal System</div>
+          <div class="c-price">NZ$2,250-5,950 · 投资级 ★★★</div>
+          <a href="https://www.mrbigglesworthy.co.nz/product/poul-cadovius-system-cado-single-bay-wall-unit-by-royal-system" target="_blank">Mr Bigg</a>
+        </article>
+        <article class="candidate alt">
+          <h4>Arne Jacobsen Series 7 单椅</h4>
+          <div class="c-meta">Jacobsen · 1955 · Fritz Hansen</div>
+          <div class="c-price">NZ$1.5-2k · 设计经典 ★★</div>
+          <a href="https://cultdesign.co.nz/collections/fritz-hansen" target="_blank">Cult Design</a>
         </article>
       </div>
     </div>
@@ -1023,227 +479,149 @@
 
   <!-- ============ Pool House ============ -->
   <section class="room-section" id="pool-house">
-    <div class="room-header pending">
-      <h2>Pool House Living 独立泳池房</h2>
-      <span class="meta">独立建筑 · Living + Toilet · 待实测</span>
+    <div class="room-header">
+      <h2>Pool House 独立泳池房</h2>
+      <span class="meta">独立建筑 · Living + Toilet</span>
     </div>
     <div class="room-content">
-
-      <svg viewBox="0 0 450 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto 20px">
-        <rect x="40" y="40" width="370" height="380" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="5"/>
-        <rect x="280" y="40" width="130" height="120" fill="#A8C295" stroke="#1a1a1a" stroke-width="3"/>
-        <text x="345" y="95" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" font-weight="500" fill="#1a1a1a">Toilet</text>
-        <text x="345" y="115" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#4a4a4a">独立卫</text>
-        <line x1="280" y1="125" x2="280" y2="160" stroke="#fff" stroke-width="5"/>
-        <path d="M 280 125 A 35 35 0 0 1 280 160" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="180" y1="420" x2="270" y2="420" stroke="#fff" stroke-width="7"/>
-        <path d="M 180 420 A 55 55 0 0 0 270 420" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="225" y="445" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#4a4a4a">入口（朝泳池）</text>
-        <line x1="80" y1="200" x2="80" y2="320" stroke="#fff" stroke-width="6"/>
-        <line x1="76" y1="200" x2="76" y2="320" stroke="#1a1a1a" stroke-width="1.5"/>
-        <line x1="84" y1="200" x2="84" y2="320" stroke="#1a1a1a" stroke-width="1.5"/>
-        <text x="60" y="260" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#4a4a4a" transform="rotate(-90 60 260)">大窗 看泳池</text>
-        <text x="155" y="265" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="20" font-weight="500" fill="#1a1a1a">Pool House</text>
-        <text x="155" y="290" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#4a4a4a">Living 区</text>
-        <line x1="40" y1="22" x2="410" y2="22" stroke="#6b6b6b" stroke-width="0.5"/>
-        <text x="225" y="14" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6b6b">独立建筑</text>
-      </svg>
-
-      <h3>什么家具合适</h3>
-      <p>独立泳池房=<strong>日落酒吧 + 阅读 + 临时客房</strong>三用。可以放最随性、最有故事的家具：<strong>Pierre Paulin Tongue/Mushroom 椅</strong> / <strong>Vintage Peacock/Papasan 藤椅</strong> / <strong>NZ 当代陶艺 / 木雕作品</strong>。</p>
+      <h3>Staging 实景</h3>
+      <div class="staging-grid">
+        <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_24_1732639.jpg"><img src="房产资料/现场照片/房源_24_1732639.jpg" loading="lazy"></a>
+      </div>
+      <p>独立小屋 = <strong>日落酒吧 + 阅读 + 临时客房</strong>三用。staging 显示<strong>外露木梁天花 + 混凝土砌块墙</strong>的工业风底子，可以放最随性、最有故事的家具。</p>
 
       <h3>候选单品</h3>
       <div class="candidate-grid">
         <article class="candidate kept">
           <h4>🇳🇿 David Trubridge "Sling" Recliner</h4>
-          <div class="c-meta">David Trubridge · 2002 · NZ 本土</div>
+          <div class="c-meta">Trubridge · 2002 · NZ 本土 icon</div>
           <div class="c-price">NZ$2,450 · NZ 设计经典 ★★</div>
-          <div class="c-note">Mr Bigg 现货 · NZ 本土设计 icon，独立泳池房文化定位。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-sling-recliner-by-david-trubridge" target="_blank">Mr Bigg 现货</a>
+          <a href="https://www.mrbigglesworthy.co.nz/product/iconic-sling-recliner-by-david-trubridge" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate kept">
           <h4>🇳🇿 NZ Curved Plywood Rocking Chair</h4>
           <div class="c-meta">NZ · 1940s · 早期 Cylinder Ply</div>
           <div class="c-price">NZ$1,850 · 投资级 ★★★</div>
-          <div class="c-note">Mr Bigg 现货 · NZ 早期摇椅，与 1940s 房子年代呼应。</div>
-          <a href="https://www.mrbigglesworthy.co.nz/product/innovative-early-nz-plywood-rocking-chair" target="_blank">Mr Bigg 现货</a>
+          <a href="https://www.mrbigglesworthy.co.nz/product/innovative-early-nz-plywood-rocking-chair" target="_blank">Mr Bigg</a>
         </article>
         <article class="candidate alt">
           <h4>Pierre Paulin "Tongue" F577</h4>
           <div class="c-meta">Paulin · 1967 · Artifort</div>
           <div class="c-price">NZ$5-9k · 设计经典 ★★</div>
-          <a href="https://www.artifort.com/" target="_blank">Artifort 官方</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ 泳池甲板 / 户外 ============ -->
-  <section class="room-section" id="deck">
-    <div class="room-header pending">
-      <h2>泳池甲板 / 户外</h2>
-      <span class="meta">西向砖砌 + 木甲板 · 待实测</span>
-    </div>
-    <div class="room-content">
-      <p>砖砌泳池甲板与白色钢架雨棚已成型。户外件选<strong>耐候</strong>且有签名设计的。</p>
-
-      <h3>候选家具方向</h3>
-      <div class="plan-thumbs">
-        <a class="thumb placeholder">
-          <span class="thumb-label">Schultz 1966<br>Knoll 户外</span>
-          <span class="thumb-role">户外椅</span>
-        </a>
-        <a class="thumb placeholder">
-          <span class="thumb-label">Vintage 柚木<br>Steamer Deck</span>
-          <span class="thumb-role">甲板椅</span>
-        </a>
-        <a class="thumb placeholder">
-          <span class="thumb-label">Tolix Marais A<br>1934 法国</span>
-          <span class="thumb-role">户外早餐椅</span>
-        </a>
-      </div>
-
-      <h3>候选单品</h3>
-      <div class="candidate-grid">
-        <article class="candidate alt">
-          <h4>Knoll Schultz "1966 Collection"</h4>
-          <div class="c-meta">Richard Schultz · 1966 · Knoll</div>
-          <div class="c-price">NZ$1.5-3k/件 · 设计经典 ★★</div>
-          <a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia NZ</a>
-        </article>
-        <article class="candidate alt">
-          <h4>Tolix Marais A · 户外铁椅</h4>
-          <div class="c-meta">Xavier Pauchard · 1934 · 法国</div>
-          <div class="c-price">NZ$300-600/把 · 设计经典 ★★</div>
-        </article>
-        <article class="candidate kept">
-          <h4>Dawson & Co Tribu · 高端户外</h4>
-          <div class="c-meta">Tribu (Belgium) · Dedon (Germany)</div>
-          <div class="c-price">价位高 · 当代</div>
-          <a href="https://www.dawsonandco.nz/" target="_blank">Dawson & Co NZ</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 通用资源：奥克兰渠道地图 ============ -->
+  <!-- ============ 通用资源 ============ -->
   <h2 id="channels" style="margin-top:80px">奥克兰渠道地图</h2>
-  <p style="color:var(--muted)">按 4 类列出，🌟 标顶级。所有店都集中在 Parnell / Grafton / Eden Terrace / Newmarket / Morningside 5 个区。</p>
+  <p style="color:var(--muted)">按 4 类列出，🌟 标顶级。集中在 Parnell / Grafton / Eden Terrace / Newmarket / Morningside 5 个区。</p>
 
   <h3>中古真品（vintage 1930-1980 真品）</h3>
   <table class="map-table">
     <tr><th>店</th><th>地址</th><th>专长</th><th>链接</th></tr>
     <tr><td>🌟 <strong>Mr Bigglesworthy / Good Form</strong></td><td>86 Newton Rd, Eden Terrace</td><td>顶级丹麦 mid-century 修复 · ~110 件现货</td><td><a href="https://www.mrbigglesworthy.co.nz/" target="_blank">mrbigglesworthy.co.nz</a></td></tr>
-    <tr><td><strong>The Vintage Shop</strong></td><td>Auckland</td><td>大量丹麦 mid-century · Andersen / Moller / Juhl</td><td><a href="https://thevintageshop.co.nz/" target="_blank">thevintageshop.co.nz</a></td></tr>
+    <tr><td><strong>The Vintage Shop</strong></td><td>Auckland</td><td>大量丹麦 mid-century</td><td><a href="https://thevintageshop.co.nz/" target="_blank">thevintageshop.co.nz</a></td></tr>
     <tr><td><strong>Karakter</strong></td><td>Auckland</td><td>欧美 mid-century 精选</td><td>—</td></tr>
-    <tr><td><strong>Junk & Disorderly</strong></td><td>Auckland · 1991 至今</td><td>混合 vintage / retro / 工业 · 价位友好</td><td><a href="https://junkndisorderly.co.nz/" target="_blank">junkndisorderly.co.nz</a></td></tr>
+    <tr><td><strong>Junk & Disorderly</strong></td><td>Auckland · 1991 至今</td><td>混合 vintage / retro / 工业</td><td><a href="https://junkndisorderly.co.nz/" target="_blank">junkndisorderly.co.nz</a></td></tr>
     <tr><td><strong>Function Inform</strong></td><td>Auckland</td><td>中古家具 + 灯 + 音响</td><td><a href="https://functioninform.co.nz/" target="_blank">functioninform.co.nz</a></td></tr>
-    <tr><td><strong>Plots & Pickles</strong></td><td>Auckland · 在线</td><td>Vintage / Retro 在线店</td><td><a href="https://plotsandpickles.com/" target="_blank">plotsandpickles.com</a></td></tr>
-    <tr><td><strong>Vitrine</strong></td><td>Morningside</td><td>法国 + 欧洲早期 20 世纪 · 700㎡ 仓库</td><td><a href="https://www.vitrine.co.nz/" target="_blank">vitrine.co.nz</a></td></tr>
-    <tr><td><strong>European Antiques</strong></td><td>Auckland</td><td>意大利 / 比利时 / 法国设计师边几</td><td>—</td></tr>
-    <tr><td><strong>Matakana Old School</strong></td><td>Matakana · 1h 北上</td><td>120 年校舍内 vintage + 工业 + 灯</td><td>—</td></tr>
-    <tr><td><strong>Trade Me Antiques</strong></td><td>NZ 全国 · 在线</td><td>自助淘货 · 需验真</td><td><a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">trademe.co.nz</a></td></tr>
+    <tr><td><strong>Plots & Pickles</strong></td><td>在线</td><td>Vintage / Retro</td><td><a href="https://plotsandpickles.com/" target="_blank">plotsandpickles.com</a></td></tr>
+    <tr><td><strong>Vitrine</strong></td><td>Morningside</td><td>法国 + 欧洲早期 20 世纪</td><td><a href="https://www.vitrine.co.nz/" target="_blank">vitrine.co.nz</a></td></tr>
+    <tr><td><strong>Matakana Old School</strong></td><td>Matakana · 1h 北上</td><td>校舍 vintage + 工业 + 灯</td><td>—</td></tr>
+    <tr><td><strong>Trade Me Antiques</strong></td><td>NZ 全国在线</td><td>自助淘货</td><td><a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">trademe.co.nz</a></td></tr>
   </table>
 
   <h3>设计经典代理（原厂 / 授权重制）</h3>
   <table class="map-table">
     <tr><th>店</th><th>地址</th><th>代理品牌</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Matisse</strong></td><td>130 St Georges Bay Rd, Parnell</td><td><strong>B&B Italia · Maxalto · Cassina · Moroso · Herman Miller · Rimadesio · Arclinea · Agape · Antonio Lupi · Nemo · Fabbian</strong></td><td><a href="https://matisse.co.nz/" target="_blank">matisse.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>Studio Italia</strong></td><td>25 Nugent St, Grafton</td><td><strong>Poliform · Flexform · Living Divani · Kettal · Poltrona Frau · Arflex · Zanotta · Knoll</strong>（Saarinen Tulip）· Molteni · Lualdi</td><td><a href="https://www.studioitalia.co.nz/" target="_blank">studioitalia.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>Cult Design</strong></td><td>73 The Strand, Parnell</td><td><strong>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen · &Tradition</strong></td><td><a href="https://cultdesign.co.nz/" target="_blank">cultdesign.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>ECC</strong></td><td>39 Nugent St, Grafton</td><td><strong>Flos · DCW Éditions · Vitra(?)</strong> · 多品牌灯具 + 家具</td><td><a href="https://ecc.co.nz/" target="_blank">ecc.co.nz</a></td></tr>
-    <tr><td><strong>Dawson & Co</strong></td><td>Parnell + Botany</td><td>Tribu · Timothy Oulton · Dedon · Tolv · Natadora · 高端户外</td><td><a href="https://www.dawsonandco.nz/" target="_blank">dawsonandco.nz</a></td></tr>
-    <tr><td><strong>Domo</strong></td><td>1a Shipwright Lane, Parnell</td><td>多意大利品牌</td><td><a href="https://domo.co.nz/" target="_blank">domo.co.nz</a></td></tr>
-    <tr><td><strong>Ultimate Living</strong></td><td>Newmarket</td><td>Cattelan Italia · Nicoline · Lago · Himolla · Eforma</td><td><a href="https://ultimateliving.co.nz/" target="_blank">ultimateliving.co.nz</a></td></tr>
-    <tr><td><strong>Good Form</strong></td><td>86 Newton Rd, Eden Terrace（与 Mr Bigg 同店）</td><td>现代经典灯 + 家具 + 家居饰品</td><td><a href="https://www.goodform.co.nz/" target="_blank">goodform.co.nz</a></td></tr>
-    <tr><td><strong>Cuchi</strong></td><td>55 The Strand Parnell + 65 Boston Rd Grafton</td><td>工业风沙发 + 天然纤维家具</td><td><a href="https://cuchi.co.nz/" target="_blank">cuchi.co.nz</a></td></tr>
-    <tr><td><strong>Bauhaus</strong></td><td>Shipwright Lane Parnell + Richmond Rd Grey Lynn</td><td>极简当代</td><td><a href="https://www.bauhaus.co.nz/" target="_blank">bauhaus.co.nz</a></td></tr>
-    <tr><td><strong>Urbano Interiors</strong></td><td>6 Polaris Place, Botany</td><td>古典到当代豪华</td><td><a href="https://www.urbanointeriors.co.nz/" target="_blank">urbanointeriors.co.nz</a></td></tr>
+    <tr><td>🌟 <strong>Matisse</strong></td><td>130 St Georges Bay Rd, Parnell</td><td>B&B Italia · Maxalto · Cassina · Moroso · Herman Miller · Arclinea</td><td><a href="https://matisse.co.nz/" target="_blank">matisse.co.nz</a></td></tr>
+    <tr><td>🌟 <strong>Studio Italia</strong></td><td>25 Nugent St, Grafton</td><td>Poliform · Flexform · Living Divani · Knoll · Molteni · Poltrona Frau</td><td><a href="https://www.studioitalia.co.nz/" target="_blank">studioitalia.co.nz</a></td></tr>
+    <tr><td>🌟 <strong>Cult Design</strong></td><td>73 The Strand, Parnell</td><td>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen · &Tradition</td><td><a href="https://cultdesign.co.nz/" target="_blank">cultdesign.co.nz</a></td></tr>
+    <tr><td>🌟 <strong>ECC</strong></td><td>39 Nugent St, Grafton</td><td>Flos · DCW Éditions · 多品牌灯具</td><td><a href="https://ecc.co.nz/" target="_blank">ecc.co.nz</a></td></tr>
+    <tr><td><strong>Dawson & Co</strong></td><td>Parnell + Botany</td><td>Tribu · Dedon · 高端户外</td><td><a href="https://www.dawsonandco.nz/" target="_blank">dawsonandco.nz</a></td></tr>
+    <tr><td><strong>Domo</strong></td><td>Parnell</td><td>多意大利品牌</td><td><a href="https://domo.co.nz/" target="_blank">domo.co.nz</a></td></tr>
+    <tr><td><strong>Good Form</strong></td><td>Eden Terrace（与 Mr Bigg 同店）</td><td>现代经典灯 + 家具</td><td><a href="https://www.goodform.co.nz/" target="_blank">goodform.co.nz</a></td></tr>
   </table>
 
-  <h3 id="nz-designers">NZ 当代设计师 / 品牌</h3>
+  <h3>NZ 当代设计师 / 品牌</h3>
   <table class="map-table">
-    <tr><th>设计师/品牌</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td><strong>Tim Webber Design</strong></td><td>12 Nugent St, Grafton</td><td>实木桌 + 沙发 + 床 · 当代经典</td><td><a href="https://timwebberdesign.com/" target="_blank">timwebberdesign.com</a></td></tr>
-    <tr><td><strong>Simon James</strong></td><td>Newmarket</td><td>自有品牌 + Vitra / HAY / Muuto 代理</td><td><a href="https://simonjames.co.nz/" target="_blank">simonjames.co.nz</a></td></tr>
-    <tr><td><strong>David Trubridge</strong></td><td>Hawke's Bay 起源</td><td>木质灯具 (Coral / Kina) + 椅 · NZ icon</td><td><a href="https://davidtrubridge.com/" target="_blank">davidtrubridge.com</a></td></tr>
-    <tr><td><strong>Douglas + Bec</strong></td><td>Auckland + Melbourne</td><td>父女工作室 · 工艺感</td><td><a href="https://douglasandbec.com/" target="_blank">douglasandbec.com</a></td></tr>
-    <tr><td><strong>David Shaw</strong></td><td>Auckland · 自 1981</td><td>二代家族工作室 · 当代欧式</td><td><a href="https://www.davidshaw.co.nz/" target="_blank">davidshaw.co.nz</a></td></tr>
-    <tr><td><strong>Kovacs Design</strong></td><td>Auckland · 50 年</td><td>定制家具</td><td><a href="https://kovacs.co.nz/" target="_blank">kovacs.co.nz</a></td></tr>
-    <tr><td><strong>Forma</strong></td><td>Auckland</td><td>NZ 手工 + 欧式</td><td><a href="https://forma.co.nz/" target="_blank">forma.co.nz</a></td></tr>
-    <tr><td><strong>Trenzseater</strong></td><td>Auckland</td><td>定制到订单</td><td><a href="https://trenzseater.com/" target="_blank">trenzseater.com</a></td></tr>
-    <tr><td><strong>Woodwrights</strong></td><td>NZ</td><td>NZ 木匠 · 传家级手工</td><td><a href="https://woodwrights.co.nz/" target="_blank">woodwrights.co.nz</a></td></tr>
-    <tr><td><strong>Resident</strong></td><td>Auckland</td><td>当代设计师品牌（Simon James 集团）</td><td><a href="https://resident.co.nz/" target="_blank">resident.co.nz</a></td></tr>
+    <tr><th>设计师</th><th>地址</th><th>专长</th><th>链接</th></tr>
+    <tr><td><strong>Tim Webber Design</strong></td><td>12 Nugent St, Grafton</td><td>实木 + 当代经典</td><td><a href="https://timwebberdesign.com/" target="_blank">timwebberdesign.com</a></td></tr>
+    <tr><td><strong>Simon James</strong></td><td>Newmarket</td><td>自有品牌 + Vitra/HAY/Muuto</td><td><a href="https://simonjames.co.nz/" target="_blank">simonjames.co.nz</a></td></tr>
+    <tr><td><strong>David Trubridge</strong></td><td>Hawke's Bay</td><td>木质灯具 (Coral / Kina)</td><td><a href="https://davidtrubridge.com/" target="_blank">davidtrubridge.com</a></td></tr>
+    <tr><td><strong>Douglas + Bec</strong></td><td>Auckland</td><td>父女工作室</td><td><a href="https://douglasandbec.com/" target="_blank">douglasandbec.com</a></td></tr>
+    <tr><td><strong>David Shaw</strong></td><td>Auckland</td><td>二代家族 · 当代欧式</td><td><a href="https://www.davidshaw.co.nz/" target="_blank">davidshaw.co.nz</a></td></tr>
+    <tr><td><strong>Resident</strong></td><td>Auckland</td><td>当代设计师品牌</td><td><a href="https://resident.co.nz/" target="_blank">resident.co.nz</a></td></tr>
   </table>
 
-  <h3>Consignment 寄售 / 二手优品</h3>
+  <h3>Consignment 寄售</h3>
   <table class="map-table">
     <tr><th>店</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Consignment Furniture</strong></td><td>Auckland</td><td>NZ 唯一 designer 二手买卖店</td><td><a href="https://consignment.co.nz/" target="_blank">consignment.co.nz</a></td></tr>
-    <tr><td><strong>Wistle & Co</strong></td><td>Kingsland</td><td>寄售 + 翻新 + 自制</td><td><a href="https://wistleandco.nz/" target="_blank">wistleandco.nz</a></td></tr>
+    <tr><td>🌟 <strong>Consignment Furniture</strong></td><td>Auckland</td><td>NZ 唯一 designer 二手店</td><td><a href="https://consignment.co.nz/" target="_blank">consignment.co.nz</a></td></tr>
+    <tr><td><strong>Wistle & Co</strong></td><td>Kingsland</td><td>寄售 + 翻新</td><td><a href="https://wistleandco.nz/" target="_blank">wistleandco.nz</a></td></tr>
   </table>
 
-  <h2 id="auctions" style="margin-top:48px">🌟 拍卖行（建议订邮件通知）</h2>
+  <h2 id="auctions" style="margin-top:48px">🌟 拍卖行（订邮件通知）</h2>
   <table class="map-table">
-    <tr><th>拍卖行</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Webb's Auctions</strong></td><td>Mount Eden</td><td>季度 Premium <strong>Design</strong> Sale · NZ 顶级中古主战场</td><td><a href="https://www.webbs.co.nz/decorative-arts" target="_blank">webbs.co.nz/decorative-arts</a></td></tr>
-    <tr><td>🌟 <strong>Cordy's</strong></td><td>Mount Eden / Remuera 办公</td><td>月度 Decorative + Fine Art · 周一 Estate</td><td><a href="https://www.cordys.co.nz/" target="_blank">cordys.co.nz</a></td></tr>
-    <tr><td><strong>Art+Object</strong></td><td>Auckland</td><td>20th Century Design 专场 + 现当代艺术</td><td><a href="https://artandobject.co.nz/" target="_blank">artandobject.co.nz</a></td></tr>
-    <tr><td><strong>Dunbar Sloane</strong></td><td>NZ · 自 1919 家族经营</td><td>NZ Premier 拍卖 · 古董 + 珠宝 + 艺术</td><td><a href="https://www.dunbarsloane.co.nz/" target="_blank">dunbarsloane.co.nz</a></td></tr>
+    <tr><th>拍卖行</th><th>专长</th><th>链接</th></tr>
+    <tr><td>🌟 <strong>Webb's Auctions</strong></td><td>季度 Premium <strong>Design</strong> Sale · NZ 顶级中古主战场</td><td><a href="https://www.webbs.co.nz/decorative-arts" target="_blank">webbs.co.nz</a></td></tr>
+    <tr><td>🌟 <strong>Cordy's</strong></td><td>月度 Decorative + Fine Art · 周一 Estate</td><td><a href="https://www.cordys.co.nz/" target="_blank">cordys.co.nz</a></td></tr>
+    <tr><td><strong>Art+Object</strong></td><td>20th Century Design 专场</td><td><a href="https://artandobject.co.nz/" target="_blank">artandobject.co.nz</a></td></tr>
+    <tr><td><strong>Dunbar Sloane</strong></td><td>自 1919 家族 · NZ Premier 拍卖</td><td><a href="https://www.dunbarsloane.co.nz/" target="_blank">dunbarsloane.co.nz</a></td></tr>
   </table>
 
   <h2 id="international" style="margin-top:48px">国际平台 ship to AKL</h2>
   <table class="map-table">
     <tr><th>平台</th><th>覆盖</th><th>链接</th></tr>
-    <tr><td><strong>1stDibs</strong></td><td>全球顶级中古 + 设计经典聚合</td><td><a href="https://www.1stdibs.com/" target="_blank">1stdibs.com</a></td></tr>
-    <tr><td><strong>Pamono</strong></td><td>欧洲中古聚合 · 欧元定价</td><td><a href="https://www.pamono.com/" target="_blank">pamono.com</a></td></tr>
+    <tr><td><strong>1stDibs</strong></td><td>全球顶级中古聚合</td><td><a href="https://www.1stdibs.com/" target="_blank">1stdibs.com</a></td></tr>
+    <tr><td><strong>Pamono</strong></td><td>欧洲中古聚合</td><td><a href="https://www.pamono.com/" target="_blank">pamono.com</a></td></tr>
     <tr><td><strong>Selency</strong></td><td>法国 Art Deco + mid-century</td><td><a href="https://www.selency.com/" target="_blank">selency.com</a></td></tr>
-    <tr><td><strong>Catawiki</strong></td><td>荷兰拍卖 · 频次高</td><td><a href="https://www.catawiki.com/" target="_blank">catawiki.com</a></td></tr>
-    <tr><td><strong>Wright Auctions</strong></td><td>芝加哥 mid-century 顶级</td><td><a href="https://www.wright20.com/" target="_blank">wright20.com</a></td></tr>
-    <tr><td><strong>Lauritz</strong></td><td>丹麦本土拍卖 · Wegner / Mogensen 源头</td><td><a href="https://www.lauritz.com/en/" target="_blank">lauritz.com</a></td></tr>
+    <tr><td><strong>Catawiki</strong></td><td>荷兰拍卖</td><td><a href="https://www.catawiki.com/" target="_blank">catawiki.com</a></td></tr>
+    <tr><td><strong>Wright Auctions</strong></td><td>芝加哥 mid-century</td><td><a href="https://www.wright20.com/" target="_blank">wright20.com</a></td></tr>
+    <tr><td><strong>Lauritz</strong></td><td>丹麦本土拍卖</td><td><a href="https://www.lauritz.com/en/" target="_blank">lauritz.com</a></td></tr>
     <tr><td><strong>Bukowskis</strong></td><td>瑞典 · 北欧家具源头</td><td><a href="https://www.bukowskis.com/en" target="_blank">bukowskis.com</a></td></tr>
   </table>
 
   <h2 id="provenance" style="margin-top:48px">验真 + 保养</h2>
-  <div class="room" style="background:#fff;padding:24px;border-radius:4px;box-shadow:var(--shadow);margin:18px 0">
-    <div class="pick"><strong>签名 / 标签 / 序列号</strong> <em>真品都有。要求卖家拍照：Fritz Hansen 椅底铜牌、Cassina 编号、Knoll 蚀刻、Carl Hansen 内部烙印</em></div>
-    <div class="pick"><strong>出处证明 Provenance</strong> <em>原始购买单据 / 家族传承 / 拍卖行记录都加分</em></div>
-    <div class="pick"><strong>修复历史</strong> <em>问明 reupholstery / refinish 何时由谁做 — 不影响真品身份但影响收藏价值</em></div>
-    <div class="pick"><strong>木质保养</strong> <em>柚木年 1-2 次柚木油，避免阳光直晒；皮革 6 个月养护一次</em></div>
-    <div class="pick"><strong>保险</strong> <em>单件超 NZ$10k 建议加 Vero / NZI 艺术品险种</em></div>
+  <div style="background:#fff;padding:24px;border-radius:4px;box-shadow:var(--shadow);margin:18px 0">
+    <p><strong>签名 / 标签 / 序列号</strong> — 真品都有。要求卖家拍照：Fritz Hansen 椅底铜牌、Cassina 编号、Knoll 蚀刻、Carl Hansen 内部烙印</p>
+    <p><strong>出处证明 Provenance</strong> — 原始购买单据 / 家族传承 / 拍卖行记录都加分</p>
+    <p><strong>修复历史</strong> — 问明 reupholstery / refinish 何时由谁做</p>
+    <p><strong>木质保养</strong> — 柚木年 1-2 次柚木油，避免阳光直晒；皮革 6 个月养护一次</p>
+    <p><strong>保险</strong> — 单件超 NZ$10k 建议加 Vero / NZI 艺术品险种</p>
   </div>
 
-  <h2 style="margin-top:48px">购买顺序建议</h2>
-  <div class="room" style="background:#fff;padding:24px;border-radius:4px;box-shadow:var(--shadow);margin:18px 0">
-    <div class="pick"><strong>第 1 周末</strong> <em>扫店 Nugent St 三家（ECC / Studio Italia / Tim Webber）+ Parnell 两家（Cult / Matisse）· 现场试坐 Y Chair / Series 7 / Camaleonda</em></div>
-    <div class="pick"><strong>第 2 周末</strong> <em>Mr Bigg / Good Form 看现货（Newton Rd Eden Terrace）· 注册 Webb's + Cordy's 邮件订阅 Design Sale 目录</em></div>
-    <div class="pick"><strong>第 3-4 周</strong> <em>定下沙发（最大单笔，决定 Lounge 调性）· 同时在 1stDibs / Lauritz 看 Jeanneret / Papa Bear / Mogensen 餐桌</em></div>
-    <div class="pick"><strong>第 1-2 月</strong> <em>餐桌 + 餐椅整组下定 · 餐椅推荐先订成套 6 把（不用等 vintage 凑齐）</em></div>
-    <div class="pick"><strong>第 3-6 月</strong> <em>单椅 / 咖啡桌 / 灯具慢慢淘 vintage 真品 · 拍卖等机会</em></div>
+  <h2 style="margin-top:48px">购买顺序</h2>
+  <div style="background:#fff;padding:24px;border-radius:4px;box-shadow:var(--shadow);margin:18px 0">
+    <p><strong>第 1 周末</strong> — Nugent St 三家（ECC / Studio Italia / Tim Webber）+ Parnell 两家（Cult / Matisse）· 现场试坐 Y Chair / Series 7 / Camaleonda</p>
+    <p><strong>第 2 周末</strong> — Mr Bigg / Good Form 看现货 · 注册 Webb's + Cordy's 邮件订阅</p>
+    <p><strong>第 3-4 周</strong> — 定下沙发（最大单笔）· 1stDibs / Lauritz 看 Jeanneret / Papa Bear / Mogensen</p>
+    <p><strong>第 1-2 月</strong> — 餐桌 + 餐椅整组下定 · 餐椅推荐先订成套 6 把</p>
+    <p><strong>第 3-6 月</strong> — 单椅 / 咖啡桌 / 灯具慢慢淘 vintage · 拍卖等机会</p>
   </div>
-
-  <!-- Lightbox -->
-  <div class="lb" id="lb">
-    <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
-    <img id="lbImg" alt="">
-  </div>
-
-  <script>
-    const lb = document.getElementById('lb');
-    const lbImg = document.getElementById('lbImg');
-    document.querySelectorAll('.thumb[data-full]').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        lbImg.src = el.dataset.full;
-        lb.classList.add('open');
-      });
-    });
-    document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
-    lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
-    document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
-  </script>
 
 </main>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.thumb[data-full]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      lbImg.src = el.dataset.full;
+      lb.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+  lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
+</script>
 
 <footer>
   <p>106 Victoria Avenue, Remuera · 家具规划项目 · 价格区间为 2026-05 NZD 参考值 · 单品库存以经销商当前页面为准</p>
