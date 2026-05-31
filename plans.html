@@ -15,14 +15,12 @@
   .toc li{font-size:.92rem}
   .toc a{display:block;padding:6px 10px;border-radius:3px;color:var(--ink);border:none}
   .toc a:hover{background:var(--paper);color:var(--gold)}
-  .toc .status{font-size:.72rem;color:var(--muted);margin-left:.4em}
 
   .room-section{margin:40px 0 64px;scroll-margin-top:80px}
   .room-header{
     background:#1a1a1a;color:#faf8f3;padding:24px 32px;border-radius:4px 4px 0 0;
     display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;
   }
-  .room-header.measured{background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%)}
   .room-header h2{font-family:"Cormorant Garamond",serif;font-weight:500;color:#faf8f3;border:none;margin:0;padding:0;font-size:1.8rem}
   .room-header .meta{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7;font-family:"JetBrains Mono",monospace}
   .room-content{background:#fff;padding:24px 28px 28px;border-radius:0 0 4px 4px;box-shadow:var(--shadow)}
@@ -47,9 +45,6 @@
   .candidate a{display:inline-block;font-size:.76rem;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--ink);margin-top:6px;margin-right:5px}
   .candidate a:hover{border-color:var(--gold);color:var(--gold)}
 
-  .room-status{display:inline-block;font-size:.7rem;letter-spacing:.12em;padding:3px 10px;border-radius:99px;text-transform:uppercase;margin-left:.6em;font-family:-apple-system,sans-serif}
-  .room-status.measured{background:var(--gold);color:#fff}
-  .room-status.researching{background:#1a1a1a;color:#faf8f3}
 
   .plan-card{background:var(--paper);border-left:4px solid var(--gold);padding:20px 24px;margin:16px 0;border-radius:0 4px 4px 0}
   .plan-card.plan-a{border-left-color:#1a1a1a}
@@ -113,12 +108,12 @@
   <div class="toc">
     <h3>跳转</h3>
     <ul>
-      <li><a href="#kitchen-dining"><strong>Kitchen / Dining</strong> <span class="status">实测 + 3 方案</span></a></li>
+      <li><a href="#kitchen-dining">Kitchen / Dining</a></li>
       <li><a href="#dining">Dining 正式餐厅</a></li>
       <li><a href="#lounge">Lounge 主客厅</a></li>
       <li><a href="#living">Living 起居室</a></li>
       <li><a href="#study">Study 书房</a></li>
-      <li><a href="#master"><strong>Master 主卧</strong> <span class="status">候选床调研中</span></a></li>
+      <li><a href="#master">Master 主卧</a></li>
       <li><a href="#bedrooms">次卧 2 / 3 / 4</a></li>
       <li><a href="#pool-house">Pool House 独立泳池房</a></li>
       <li><a href="#channels">奥克兰渠道地图</a></li>
@@ -127,8 +122,8 @@
 
   <!-- ============ Kitchen / Dining ============ -->
   <section class="room-section" id="kitchen-dining">
-    <div class="room-header measured">
-      <h2>Kitchen / Dining 开放餐厅 <span class="room-status measured">实测</span></h2>
+    <div class="room-header">
+      <h2>Kitchen / Dining 开放餐厅 </h2>
       <span class="meta">餐桌区 4000 × 3800 mm · 总 4.0 × 7.6 m</span>
     </div>
     <div class="room-content">
@@ -139,6 +134,19 @@
         </a>
         <div class="cap">📐 早餐桌北端 · 中部中岛 · 西墙 L 橱柜含水槽 · 南墙底柜含灶台烤箱 · 东侧通 deck</div>
       </div>
+
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 280 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="200" height="380" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <line x1="40" y1="240" x2="240" y2="240" stroke="#6b6253" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="140" y="150" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" font-weight="500" fill="#1a1a1a">餐桌区</text>
+  <text x="140" y="170" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#6b6253">实测 4 × 3.8 m</text>
+  <rect x="60" y="225" width="160" height="30" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="140" y="245" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#1a1a1a">中岛吧台（固定）</text>
+  <text x="140" y="350" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" font-weight="500" fill="#1a1a1a">厨房工作区</text>
+  <text x="140" y="370" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#6b6253">含 L 橱柜 · 水槽 · 灶台</text>
+  <text x="140" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4000 mm</text>
+  <text x="22" y="250" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 250)">7600 mm</text>
+</svg></div>
 
       <h3>Staging 实景照片（3 个视角）</h3>
       <div class="staging-grid">
@@ -190,6 +198,14 @@
       <span class="meta">4.7 × 4.1 m 标称</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="235" height="205" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="157" y="160" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" font-weight="500" fill="#1a1a1a">Dining 正式餐厅</text>
+  <text x="157" y="180" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#6b6253">4.7 × 4.1 m · 19.3 ㎡</text>
+  <text x="157" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4700 mm</text>
+  <text x="22" y="162" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 162)">4100 mm</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_10_1732625.jpg"><img src="房产资料/现场照片/房源_10_1732625.jpg" loading="lazy"></a>
@@ -235,6 +251,16 @@
       <span class="meta">5.2 × 6.8 m 标称 · 35.4 ㎡</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="240" height="320" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="120" y="60" width="80" height="14" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="160" y="71" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#1a1a1a">壁炉</text>
+  <text x="160" y="210" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="20" font-weight="500" fill="#1a1a1a">Lounge</text>
+  <text x="160" y="232" text-anchor="middle" font-family="-apple-system" font-size="11" fill="#6b6253">5.2 × 6.8 m · 35.4 ㎡</text>
+  <text x="160" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">5200 mm</text>
+  <text x="22" y="218" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 218)">6800 mm</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_09_1732623.jpg"><img src="房产资料/现场照片/房源_09_1732623.jpg" loading="lazy"></a>
@@ -291,6 +317,16 @@
       <span class="meta">4.3 × 6.9 m 标称 · 29.7 ㎡</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 290 425" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="215" height="325" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="40" y="180" width="14" height="80" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="65" y="225" font-family="-apple-system" font-size="9" fill="#1a1a1a">壁炉墙</text>
+  <text x="148" y="210" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="20" font-weight="500" fill="#1a1a1a">Living</text>
+  <text x="148" y="232" text-anchor="middle" font-family="-apple-system" font-size="11" fill="#6b6253">4.3 × 6.9 m · 29.7 ㎡</text>
+  <text x="148" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4300 mm</text>
+  <text x="22" y="222" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 222)">6900 mm</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_11_1732626.jpg"><img src="房产资料/现场照片/房源_11_1732626.jpg" loading="lazy"></a>
@@ -328,6 +364,17 @@
       <span class="meta">4.2 × 3.3 m 标称 · 13.9 ㎡</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 290 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="210" height="165" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="40" y="60" width="14" height="165" fill="#5C4A38" stroke="#1a1a1a" stroke-width="1"/>
+  <rect x="236" y="60" width="14" height="165" fill="#5C4A38" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="145" y="138" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" font-weight="500" fill="#1a1a1a">Study 书房</text>
+  <text x="145" y="158" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#6b6253">4.2 × 3.3 m · 13.9 ㎡</text>
+  <text x="145" y="180" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#8b6f47">★ 两侧深木镶板 + 内置书柜（已有）</text>
+  <text x="145" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4200 mm</text>
+  <text x="22" y="142" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 142)">3300 mm</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_15_1732630.jpg"><img src="房产资料/现场照片/房源_15_1732630.jpg" loading="lazy"></a>
@@ -361,11 +408,22 @@
 
   <!-- ============ Master ============ -->
   <section class="room-section" id="master">
-    <div class="room-header" style="background:linear-gradient(135deg,#1a1a1a 0%,#3a2f24 100%)">
-      <h2>Master 主卧 <span class="room-status researching">调研中</span></h2>
+    <div class="room-header">
+      <h2>Master 主卧 </h2>
       <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 310 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="40" y="60" width="225" height="200" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="40" y="190" width="100" height="70" fill="#A8C295" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="90" y="222" text-anchor="middle" font-family="-apple-system" font-size="10" font-weight="500" fill="#1a1a1a">Walk-in</text>
+  <text x="90" y="237" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">2.0×1.4m</text>
+  <text x="200" y="135" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" font-weight="500" fill="#1a1a1a">Master</text>
+  <text x="200" y="155" text-anchor="middle" font-family="-apple-system" font-size="10" fill="#6b6253">4.5 × 4.0 m · 18 ㎡</text>
+  <text x="152" y="48" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253">4500 mm</text>
+  <text x="22" y="162" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6b6253" transform="rotate(-90 22 162)">4000 mm</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_20_1732635.jpg"><img src="房产资料/现场照片/房源_20_1732635.jpg" loading="lazy"></a>
@@ -437,6 +495,28 @@
       <span class="meta">3.5×5.5 · 4.5×3.1 · 3.7×1.9 m</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px"><svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="30" y="40" width="140" height="220" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="100" y="135" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" font-weight="500" fill="#1a1a1a">Bedroom 2</text>
+  <text x="100" y="155" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">3.5 × 5.5 m</text>
+  <text x="100" y="170" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">19.3 ㎡</text>
+  <text x="100" y="28" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253">3500 mm</text>
+  <text x="14" y="150" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253" transform="rotate(-90 14 150)">5500 mm</text>
+</svg><svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="30" y="40" width="200" height="140" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="130" y="100" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" font-weight="500" fill="#1a1a1a">Bedroom 3</text>
+  <text x="130" y="120" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.5 × 3.1 m · 14 ㎡</text>
+  <text x="130" y="28" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253">4500 mm</text>
+  <text x="14" y="110" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253" transform="rotate(-90 14 110)">3100 mm</text>
+</svg><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="30" y="40" width="160" height="80" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="3"/>
+  <text x="110" y="78" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" font-weight="500" fill="#1a1a1a">Bedroom 4</text>
+  <text x="110" y="92" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">3.7 × 1.9 m</text>
+  <text x="110" y="105" text-anchor="middle" font-family="-apple-system" font-size="7" fill="#8b6f47">★ 太窄 · 建议改 dressing room</text>
+  <text x="110" y="28" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253">3700 mm</text>
+  <text x="14" y="78" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#6b6253" transform="rotate(-90 14 78)">1900</text>
+</svg></div></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_16_1732631.jpg"><img src="房产资料/现场照片/房源_16_1732631.jpg" loading="lazy"></a>
@@ -486,6 +566,15 @@
       <span class="meta">独立建筑 · Living + Toilet</span>
     </div>
     <div class="room-content">
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（家具后续动态加）</div><svg viewBox="0 0 230 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto">
+  <rect x="30" y="40" width="170" height="180" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="130" y="40" width="70" height="60" fill="#A8C295" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="165" y="68" text-anchor="middle" font-family="-apple-system" font-size="10" font-weight="500" fill="#1a1a1a">Toilet</text>
+  <text x="80" y="135" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" font-weight="500" fill="#1a1a1a">Pool House</text>
+  <text x="80" y="152" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">Living + Toilet</text>
+  <text x="80" y="168" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">独立建筑</text>
+</svg></div>
+
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_24_1732639.jpg"><img src="房产资料/现场照片/房源_24_1732639.jpg" loading="lazy"></a>
@@ -521,67 +610,67 @@
 
   <h3>中古真品（vintage 1930-1980 真品）</h3>
   <table class="map-table">
-    <tr><th>店</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Mr Bigglesworthy / Good Form</strong></td><td>86 Newton Rd, Eden Terrace</td><td>顶级丹麦 mid-century 修复 · ~110 件现货</td><td><a href="https://www.mrbigglesworthy.co.nz/" target="_blank">mrbigglesworthy.co.nz</a></td></tr>
-    <tr><td><strong>The Vintage Shop</strong></td><td>Auckland</td><td>大量丹麦 mid-century</td><td><a href="https://thevintageshop.co.nz/" target="_blank">thevintageshop.co.nz</a></td></tr>
+    <tr><th>店</th><th>地址</th><th>专长</th></tr>
+    <tr><td>🌟 <strong><a href="https://www.mrbigglesworthy.co.nz/" target="_blank">Mr Bigglesworthy / Good Form</a></strong></td><td>86 Newton Rd, Eden Terrace</td><td>顶级丹麦 mid-century 修复 · ~110 件现货</td></tr>
+    <tr><td><strong><a href="https://thevintageshop.co.nz/" target="_blank">The Vintage Shop</a></strong></td><td>Auckland</td><td>大量丹麦 mid-century</td></tr>
     <tr><td><strong>Karakter</strong></td><td>Auckland</td><td>欧美 mid-century 精选</td><td>—</td></tr>
-    <tr><td><strong>Junk & Disorderly</strong></td><td>Auckland · 1991 至今</td><td>混合 vintage / retro / 工业</td><td><a href="https://junkndisorderly.co.nz/" target="_blank">junkndisorderly.co.nz</a></td></tr>
-    <tr><td><strong>Function Inform</strong></td><td>Auckland</td><td>中古家具 + 灯 + 音响</td><td><a href="https://functioninform.co.nz/" target="_blank">functioninform.co.nz</a></td></tr>
-    <tr><td><strong>Plots & Pickles</strong></td><td>在线</td><td>Vintage / Retro</td><td><a href="https://plotsandpickles.com/" target="_blank">plotsandpickles.com</a></td></tr>
-    <tr><td><strong>Vitrine</strong></td><td>Morningside</td><td>法国 + 欧洲早期 20 世纪</td><td><a href="https://www.vitrine.co.nz/" target="_blank">vitrine.co.nz</a></td></tr>
+    <tr><td><strong><a href="https://junkndisorderly.co.nz/" target="_blank">Junk & Disorderly</a></strong></td><td>Auckland · 1991 至今</td><td>混合 vintage / retro / 工业</td></tr>
+    <tr><td><strong><a href="https://functioninform.co.nz/" target="_blank">Function Inform</a></strong></td><td>Auckland</td><td>中古家具 + 灯 + 音响</td></tr>
+    <tr><td><strong><a href="https://plotsandpickles.com/" target="_blank">Plots & Pickles</a></strong></td><td>在线</td><td>Vintage / Retro</td></tr>
+    <tr><td><strong><a href="https://www.vitrine.co.nz/" target="_blank">Vitrine</a></strong></td><td>Morningside</td><td>法国 + 欧洲早期 20 世纪</td></tr>
     <tr><td><strong>Matakana Old School</strong></td><td>Matakana · 1h 北上</td><td>校舍 vintage + 工业 + 灯</td><td>—</td></tr>
-    <tr><td><strong>Trade Me Antiques</strong></td><td>NZ 全国在线</td><td>自助淘货</td><td><a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">trademe.co.nz</a></td></tr>
+    <tr><td><strong><a href="https://www.trademe.co.nz/a/marketplace/antiques-collectables" target="_blank">Trade Me Antiques</a></strong></td><td>NZ 全国在线</td><td>自助淘货</td></tr>
   </table>
 
   <h3>设计经典代理（原厂 / 授权重制）</h3>
   <table class="map-table">
-    <tr><th>店</th><th>地址</th><th>代理品牌</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Matisse</strong></td><td>130 St Georges Bay Rd, Parnell</td><td>B&B Italia · Maxalto · Cassina · Moroso · Herman Miller · Arclinea</td><td><a href="https://matisse.co.nz/" target="_blank">matisse.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>Studio Italia</strong></td><td>25 Nugent St, Grafton</td><td>Poliform · Flexform · Living Divani · Knoll · Molteni · Poltrona Frau</td><td><a href="https://www.studioitalia.co.nz/" target="_blank">studioitalia.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>Cult Design</strong></td><td>73 The Strand, Parnell</td><td>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen · &Tradition</td><td><a href="https://cultdesign.co.nz/" target="_blank">cultdesign.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>ECC</strong></td><td>39 Nugent St, Grafton</td><td>Flos · DCW Éditions · 多品牌灯具</td><td><a href="https://ecc.co.nz/" target="_blank">ecc.co.nz</a></td></tr>
-    <tr><td><strong>Dawson & Co</strong></td><td>Parnell + Botany</td><td>Tribu · Dedon · 高端户外</td><td><a href="https://www.dawsonandco.nz/" target="_blank">dawsonandco.nz</a></td></tr>
-    <tr><td><strong>Domo</strong></td><td>Parnell</td><td>多意大利品牌</td><td><a href="https://domo.co.nz/" target="_blank">domo.co.nz</a></td></tr>
-    <tr><td><strong>Good Form</strong></td><td>Eden Terrace（与 Mr Bigg 同店）</td><td>现代经典灯 + 家具</td><td><a href="https://www.goodform.co.nz/" target="_blank">goodform.co.nz</a></td></tr>
+    <tr><th>店</th><th>地址</th><th>代理品牌</th></tr>
+    <tr><td>🌟 <strong><a href="https://matisse.co.nz/" target="_blank">Matisse</a></strong></td><td>130 St Georges Bay Rd, Parnell</td><td>B&B Italia · Maxalto · Cassina · Moroso · Herman Miller · Arclinea</td></tr>
+    <tr><td>🌟 <strong><a href="https://www.studioitalia.co.nz/" target="_blank">Studio Italia</a></strong></td><td>25 Nugent St, Grafton</td><td>Poliform · Flexform · Living Divani · Knoll · Molteni · Poltrona Frau</td></tr>
+    <tr><td>🌟 <strong><a href="https://cultdesign.co.nz/" target="_blank">Cult Design</a></strong></td><td>73 The Strand, Parnell</td><td>Fritz Hansen · Carl Hansen · HAY · Louis Poulsen · &Tradition</td></tr>
+    <tr><td>🌟 <strong><a href="https://ecc.co.nz/" target="_blank">ECC</a></strong></td><td>39 Nugent St, Grafton</td><td>Flos · DCW Éditions · 多品牌灯具</td></tr>
+    <tr><td><strong><a href="https://www.dawsonandco.nz/" target="_blank">Dawson & Co</a></strong></td><td>Parnell + Botany</td><td>Tribu · Dedon · 高端户外</td></tr>
+    <tr><td><strong><a href="https://domo.co.nz/" target="_blank">Domo</a></strong></td><td>Parnell</td><td>多意大利品牌</td></tr>
+    <tr><td><strong><a href="https://www.goodform.co.nz/" target="_blank">Good Form</a></strong></td><td>Eden Terrace（与 Mr Bigg 同店）</td><td>现代经典灯 + 家具</td></tr>
   </table>
 
   <h3>NZ 当代设计师 / 品牌</h3>
   <table class="map-table">
-    <tr><th>设计师</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td><strong>Tim Webber Design</strong></td><td>12 Nugent St, Grafton</td><td>实木 + 当代经典</td><td><a href="https://timwebberdesign.com/" target="_blank">timwebberdesign.com</a></td></tr>
-    <tr><td><strong>Simon James</strong></td><td>Newmarket</td><td>自有品牌 + Vitra/HAY/Muuto</td><td><a href="https://simonjames.co.nz/" target="_blank">simonjames.co.nz</a></td></tr>
-    <tr><td><strong>David Trubridge</strong></td><td>Hawke's Bay</td><td>木质灯具 (Coral / Kina)</td><td><a href="https://davidtrubridge.com/" target="_blank">davidtrubridge.com</a></td></tr>
-    <tr><td><strong>Douglas + Bec</strong></td><td>Auckland</td><td>父女工作室</td><td><a href="https://douglasandbec.com/" target="_blank">douglasandbec.com</a></td></tr>
-    <tr><td><strong>David Shaw</strong></td><td>Auckland</td><td>二代家族 · 当代欧式</td><td><a href="https://www.davidshaw.co.nz/" target="_blank">davidshaw.co.nz</a></td></tr>
-    <tr><td><strong>Resident</strong></td><td>Auckland</td><td>当代设计师品牌</td><td><a href="https://resident.co.nz/" target="_blank">resident.co.nz</a></td></tr>
+    <tr><th>设计师</th><th>地址</th><th>专长</th></tr>
+    <tr><td><strong><a href="https://timwebberdesign.com/" target="_blank">Tim Webber Design</a></strong></td><td>12 Nugent St, Grafton</td><td>实木 + 当代经典</td></tr>
+    <tr><td><strong><a href="https://simonjames.co.nz/" target="_blank">Simon James</a></strong></td><td>Newmarket</td><td>自有品牌 + Vitra/HAY/Muuto</td></tr>
+    <tr><td><strong><a href="https://davidtrubridge.com/" target="_blank">David Trubridge</a></strong></td><td>Hawke's Bay</td><td>木质灯具 (Coral / Kina)</td></tr>
+    <tr><td><strong><a href="https://douglasandbec.com/" target="_blank">Douglas + Bec</a></strong></td><td>Auckland</td><td>父女工作室</td></tr>
+    <tr><td><strong><a href="https://www.davidshaw.co.nz/" target="_blank">David Shaw</a></strong></td><td>Auckland</td><td>二代家族 · 当代欧式</td></tr>
+    <tr><td><strong><a href="https://resident.co.nz/" target="_blank">Resident</a></strong></td><td>Auckland</td><td>当代设计师品牌</td></tr>
   </table>
 
   <h3>Consignment 寄售</h3>
   <table class="map-table">
-    <tr><th>店</th><th>地址</th><th>专长</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Consignment Furniture</strong></td><td>Auckland</td><td>NZ 唯一 designer 二手店</td><td><a href="https://consignment.co.nz/" target="_blank">consignment.co.nz</a></td></tr>
-    <tr><td><strong>Wistle & Co</strong></td><td>Kingsland</td><td>寄售 + 翻新</td><td><a href="https://wistleandco.nz/" target="_blank">wistleandco.nz</a></td></tr>
+    <tr><th>店</th><th>地址</th><th>专长</th></tr>
+    <tr><td>🌟 <strong><a href="https://consignment.co.nz/" target="_blank">Consignment Furniture</a></strong></td><td>Auckland</td><td>NZ 唯一 designer 二手店</td></tr>
+    <tr><td><strong><a href="https://wistleandco.nz/" target="_blank">Wistle & Co</a></strong></td><td>Kingsland</td><td>寄售 + 翻新</td></tr>
   </table>
 
   <h2 id="auctions" style="margin-top:48px">🌟 拍卖行（订邮件通知）</h2>
   <table class="map-table">
-    <tr><th>拍卖行</th><th>专长</th><th>链接</th></tr>
-    <tr><td>🌟 <strong>Webb's Auctions</strong></td><td>季度 Premium <strong>Design</strong> Sale · NZ 顶级中古主战场</td><td><a href="https://www.webbs.co.nz/decorative-arts" target="_blank">webbs.co.nz</a></td></tr>
-    <tr><td>🌟 <strong>Cordy's</strong></td><td>月度 Decorative + Fine Art · 周一 Estate</td><td><a href="https://www.cordys.co.nz/" target="_blank">cordys.co.nz</a></td></tr>
-    <tr><td><strong>Art+Object</strong></td><td>20th Century Design 专场</td><td><a href="https://artandobject.co.nz/" target="_blank">artandobject.co.nz</a></td></tr>
-    <tr><td><strong>Dunbar Sloane</strong></td><td>自 1919 家族 · NZ Premier 拍卖</td><td><a href="https://www.dunbarsloane.co.nz/" target="_blank">dunbarsloane.co.nz</a></td></tr>
+    <tr><th>拍卖行</th><th>专长</th></tr>
+    <tr><td>🌟 <strong><a href="https://www.webbs.co.nz/decorative-arts" target="_blank">Webb's Auctions</a></strong></td><td>季度 Premium <strong>Design</strong> Sale · NZ 顶级中古主战场</td></tr>
+    <tr><td>🌟 <strong><a href="https://www.cordys.co.nz/" target="_blank">Cordy's</a></strong></td><td>月度 Decorative + Fine Art · 周一 Estate</td></tr>
+    <tr><td><strong><a href="https://artandobject.co.nz/" target="_blank">Art+Object</a></strong></td><td>20th Century Design 专场</td></tr>
+    <tr><td><strong><a href="https://www.dunbarsloane.co.nz/" target="_blank">Dunbar Sloane</a></strong></td><td>自 1919 家族 · NZ Premier 拍卖</td></tr>
   </table>
 
   <h2 id="international" style="margin-top:48px">国际平台 ship to AKL</h2>
   <table class="map-table">
-    <tr><th>平台</th><th>覆盖</th><th>链接</th></tr>
-    <tr><td><strong>1stDibs</strong></td><td>全球顶级中古聚合</td><td><a href="https://www.1stdibs.com/" target="_blank">1stdibs.com</a></td></tr>
-    <tr><td><strong>Pamono</strong></td><td>欧洲中古聚合</td><td><a href="https://www.pamono.com/" target="_blank">pamono.com</a></td></tr>
-    <tr><td><strong>Selency</strong></td><td>法国 Art Deco + mid-century</td><td><a href="https://www.selency.com/" target="_blank">selency.com</a></td></tr>
-    <tr><td><strong>Catawiki</strong></td><td>荷兰拍卖</td><td><a href="https://www.catawiki.com/" target="_blank">catawiki.com</a></td></tr>
-    <tr><td><strong>Wright Auctions</strong></td><td>芝加哥 mid-century</td><td><a href="https://www.wright20.com/" target="_blank">wright20.com</a></td></tr>
-    <tr><td><strong>Lauritz</strong></td><td>丹麦本土拍卖</td><td><a href="https://www.lauritz.com/en/" target="_blank">lauritz.com</a></td></tr>
-    <tr><td><strong>Bukowskis</strong></td><td>瑞典 · 北欧家具源头</td><td><a href="https://www.bukowskis.com/en" target="_blank">bukowskis.com</a></td></tr>
+    <tr><th>平台</th><th>覆盖</th></tr>
+    <tr><td><strong><a href="https://www.1stdibs.com/" target="_blank">1stDibs</a></strong></td><td>全球顶级中古聚合</td></tr>
+    <tr><td><strong><a href="https://www.pamono.com/" target="_blank">Pamono</a></strong></td><td>欧洲中古聚合</td></tr>
+    <tr><td><strong><a href="https://www.selency.com/" target="_blank">Selency</a></strong></td><td>法国 Art Deco + mid-century</td></tr>
+    <tr><td><strong><a href="https://www.catawiki.com/" target="_blank">Catawiki</a></strong></td><td>荷兰拍卖</td></tr>
+    <tr><td><strong><a href="https://www.wright20.com/" target="_blank">Wright Auctions</a></strong></td><td>芝加哥 mid-century</td></tr>
+    <tr><td><strong><a href="https://www.lauritz.com/en/" target="_blank">Lauritz</a></strong></td><td>丹麦本土拍卖</td></tr>
+    <tr><td><strong><a href="https://www.bukowskis.com/en" target="_blank">Bukowskis</a></strong></td><td>瑞典 · 北欧家具源头</td></tr>
   </table>
 
   <h2 id="provenance" style="margin-top:48px">验真 + 保养</h2>
