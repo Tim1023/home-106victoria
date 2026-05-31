@@ -70,6 +70,19 @@
   .map-table th{background:var(--paper);font-weight:500;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
   .map-table tr:last-child td{border-bottom:none}
 
+
+  .svg-room{display:block;max-width:340px;margin:0 auto;background:#fff;border-radius:3px}
+  .svg-room .walls rect{fill:#C5D8B2;stroke:#1a1a1a;stroke-width:3}
+  .svg-room .fixtures rect{fill:#E8E2D0;stroke:#1a1a1a;stroke-width:1}
+  .svg-room .fixtures .panel{fill:#5C4A38}
+  .svg-room .fixtures .walkin{fill:#A8C295;stroke-width:2}
+  .svg-room .furniture{opacity:.9}
+  .svg-room .label{font-family:"Cormorant Garamond",serif;font-size:14px;fill:#1a1a1a}
+  .svg-room .meta{font-family:-apple-system,sans-serif;font-size:10px;fill:#6b6253}
+  .svg-room .dim{font-family:"JetBrains Mono",monospace;font-size:9px;fill:#6b6253}
+  .svg-room .door{stroke:#fff;stroke-width:5}
+  .svg-room .door-arc{fill:none;stroke:#1a1a1a;stroke-width:0.8}
+
   .lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
   .lb.open{display:flex}
   .lb img{max-width:100%;max-height:100%;object-fit:contain}
@@ -78,133 +91,6 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <g id="fp">
-      <!-- Pool House (左) -->
-      <rect x="40" y="80" width="280" height="380" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <rect x="230" y="80" width="90" height="80" fill="#A8C295" stroke="#1a1a1a" stroke-width="1.5"/>
-      <text x="180" y="270" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a">Pool House</text>
-      <text x="180" y="288" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">Living + Toilet</text>
-      <text x="275" y="125" text-anchor="middle" font-family="-apple-system" font-size="9">Toilet</text>
-
-      <!-- Kitchen/Dining (主建筑左上) 4×7.6 纵向 -->
-      <rect x="430" y="80" width="200" height="380" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <!-- L 橱柜：西墙整条 + 南墙 -->
-      <rect x="430" y="80" width="18" height="350" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="0.8"/>
-      <rect x="430" y="430" width="170" height="30" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="0.8"/>
-      <!-- 纵向中岛 -->
-      <rect x="500" y="240" width="55" height="180" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="1.2"/>
-      <!-- 灶台 4 圆点 -->
-      <circle cx="456" cy="440" r="2" fill="#1a1a1a"/>
-      <circle cx="466" cy="440" r="2" fill="#1a1a1a"/>
-      <circle cx="456" cy="450" r="2" fill="#1a1a1a"/>
-      <circle cx="466" cy="450" r="2" fill="#1a1a1a"/>
-      <!-- 水槽 -->
-      <circle cx="443" cy="380" r="7" fill="#fff" stroke="#1a1a1a" stroke-width="0.6"/>
-      <!-- 早餐桌北端 -->
-      <rect x="510" y="110" width="60" height="35" fill="#fff" stroke="#1a1a1a" stroke-width="0.6" rx="3"/>
-      <!-- 标签 -->
-      <text x="530" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Kitchen/Dining</text>
-      <text x="530" y="215" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.0 × 7.6 m</text>
-      <!-- 东侧大开口（通 deck）-->
-      <line x1="630" y1="100" x2="630" y2="320" stroke="#fff" stroke-width="3"/>
-
-      <!-- Deck 户外 -->
-      <rect x="630" y="80" width="450" height="240" fill="#D9D9D9" stroke="#1a1a1a" stroke-width="2"/>
-      <!-- 户外餐桌 -->
-      <rect x="930" y="160" width="100" height="60" fill="#fff" stroke="#1a1a1a" stroke-width="0.6" rx="3"/>
-      <text x="855" y="120" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#6b6253">Deck（户外）</text>
-
-      <!-- Dining -->
-      <rect x="630" y="320" width="230" height="210" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <circle cx="745" cy="425" r="32" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
-      <text x="745" y="500" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Dining</text>
-      <text x="745" y="515" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.7 × 4.1 m</text>
-
-      <!-- Living -->
-      <rect x="860" y="320" width="220" height="350" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="970" y="490" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Living</text>
-      <text x="970" y="505" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.3 × 6.9 m</text>
-
-      <!-- Laundry -->
-      <rect x="430" y="460" width="170" height="120" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="515" y="520" text-anchor="middle" font-family="-apple-system" font-size="10">Laundry</text>
-      <text x="515" y="535" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">3.0 × 2.1 m</text>
-
-      <!-- Study -->
-      <rect x="430" y="580" width="220" height="180" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <!-- 深木镶板两侧 -->
-      <rect x="430" y="580" width="10" height="180" fill="#5C4A38"/>
-      <rect x="640" y="580" width="10" height="180" fill="#5C4A38"/>
-      <text x="540" y="670" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Study</text>
-      <text x="540" y="685" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.2 × 3.3 m</text>
-
-      <!-- Entry/St/楼梯 -->
-      <rect x="650" y="580" width="150" height="200" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="725" y="675" text-anchor="middle" font-family="-apple-system" font-size="10">Entry</text>
-      <text x="725" y="690" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">St. + 楼梯</text>
-
-      <!-- Lounge -->
-      <rect x="800" y="700" width="290" height="380" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <!-- 北墙门通 Entry -->
-      <line x1="870" y1="700" x2="940" y2="700" stroke="#fff" stroke-width="5"/>
-      <path d="M 870 700 A 35 35 0 0 1 905 735" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
-      <text x="945" y="890" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#1a1a1a">Lounge</text>
-      <text x="945" y="905" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">5.2 × 6.8 m</text>
-
-      <!-- Garage -->
-      <rect x="700" y="1080" width="340" height="180" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="870" y="1170" text-anchor="middle" font-family="-apple-system" font-size="10">Garage</text>
-      <text x="870" y="1185" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">6.4 × 6.8 m</text>
-
-      <!-- ==================== 二楼 (右侧) ==================== -->
-      <text x="1450" y="290" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" font-style="italic" fill="#8b6f47">二楼</text>
-
-      <!-- Bathroom 1 (2.2×3.6) -->
-      <rect x="1180" y="320" width="100" height="180" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <ellipse cx="1230" cy="420" rx="30" ry="18" fill="#fff" stroke="#1a1a1a" stroke-width="0.6"/>
-      <text x="1230" y="360" text-anchor="middle" font-family="-apple-system" font-size="9">Bathroom</text>
-      <text x="1230" y="372" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">2.2×3.6</text>
-
-      <!-- Master -->
-      <rect x="1280" y="320" width="225" height="200" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1390" y="410" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#1a1a1a">Master</text>
-      <text x="1390" y="425" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.5 × 4.0 m</text>
-
-      <!-- Bathroom 2 (2.0×2.5) -->
-      <rect x="1505" y="320" width="100" height="125" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1555" y="380" text-anchor="middle" font-family="-apple-system" font-size="9">Bath</text>
-      <text x="1555" y="392" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">2.0×2.5</text>
-
-      <!-- Walk In -->
-      <rect x="1505" y="445" width="100" height="75" fill="#A8C295" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1555" y="478" text-anchor="middle" font-family="-apple-system" font-size="9" font-weight="500">Walk In</text>
-      <text x="1555" y="491" text-anchor="middle" font-family="-apple-system" font-size="8">2.0×1.4</text>
-
-      <!-- Bedroom 2 (3.5×5.5) -->
-      <rect x="1605" y="320" width="175" height="275" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1693" y="450" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Bedroom 2</text>
-      <text x="1693" y="465" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">3.5 × 5.5 m</text>
-
-      <!-- Hallway 2.9×3.4 -->
-      <rect x="1505" y="630" width="100" height="170" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1555" y="720" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">2.9×3.4</text>
-      <text x="1555" y="735" text-anchor="middle" font-family="-apple-system" font-size="7" fill="#6b6253">通道</text>
-
-      <!-- Bedroom 3 (4.5×3.1) -->
-      <rect x="1280" y="630" width="225" height="155" fill="#C5D8B2" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1390" y="700" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Bedroom 3</text>
-      <text x="1390" y="715" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">4.5 × 3.1 m</text>
-
-      <!-- Bedroom 4 (3.7×1.9) 太窄 -->
-      <rect x="1605" y="630" width="185" height="95" fill="#E8E2D0" stroke="#1a1a1a" stroke-width="2"/>
-      <text x="1698" y="670" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a">Bedroom 4</text>
-      <text x="1698" y="685" text-anchor="middle" font-family="-apple-system" font-size="8" fill="#6b6253">3.7 × 1.9 m</text>
-      <text x="1698" y="700" text-anchor="middle" font-family="-apple-system" font-size="7" fill="#8b6f47">★ 太窄</text>
-    </g>
-  </defs>
-</svg>
 
 
 <nav class="nav">
@@ -231,8 +117,10 @@
 
   <h2>完整 Floor Plan</h2>
   <div class="fp-zoom">
-    <svg viewBox="0 0 1820 1290" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;display:block;margin:0 auto;background:#fff;border-radius:4px"><use href="#fp"/></svg>
-    <div class="cap">📐 整体布局图（SVG 重画版）· 每个房间下方 SVG 是这张图的对应裁剪</div>
+    <a class="thumb" data-full="assets/floor-plans/full-floor-plan.jpg" style="border:none">
+      <img src="assets/floor-plans/full-floor-plan.jpg" alt="106 Victoria Avenue 完整 floor plan">
+    </a>
+    <div class="cap">📐 Sotheby's 官方完整布局（点击放大）· 下方各房间为独立 SVG 含家具图层</div>
   </div>
 
   <div class="toc">
@@ -260,7 +148,38 @@
     </div>
     <div class="room-content">
 
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="420 70 220 410" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 300 460" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="200" height="380"/>
+  </g>
+  <g class="fixtures">
+    <!-- L 橱柜 -->
+    <rect x="40" y="50" width="18" height="350"/>
+    <rect x="40" y="400" width="160" height="30"/>
+    <!-- 纵向中岛 -->
+    <rect x="110" y="200" width="50" height="170" stroke-width="1.5"/>
+    <!-- 灶台 4 圆点 -->
+    <circle cx="80" cy="410" r="2" fill="#1a1a1a"/>
+    <circle cx="90" cy="410" r="2" fill="#1a1a1a"/>
+    <circle cx="80" cy="420" r="2" fill="#1a1a1a"/>
+    <circle cx="90" cy="420" r="2" fill="#1a1a1a"/>
+    <!-- 水槽 -->
+    <circle cx="49" cy="360" r="7" fill="#fff" stroke="#1a1a1a" stroke-width="0.6"/>
+    <!-- 早餐桌北端 -->
+    <rect x="125" y="80" width="55" height="32" rx="3" fill="#fff" stroke-width="0.8"/>
+    <!-- 东侧大开口 -->
+    <line x1="240" y1="100" x2="240" y2="370" class="door"/>
+  </g>
+  <g class="labels">
+    <text class="label" x="140" y="160" text-anchor="middle" font-weight="500">Kitchen / Dining</text>
+    <text class="meta" x="140" y="178" text-anchor="middle">4.0 × 7.6 m</text>
+    <text class="dim" x="140" y="38" text-anchor="middle">4000 mm</text>
+    <text class="dim" x="22" y="240" text-anchor="middle" transform="rotate(-90 22 240)">7600 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景照片（3 个视角）</h3>
       <div class="staging-grid">
@@ -281,7 +200,25 @@
       <span class="meta">4.7 × 4.1 m 标称</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="620 310 250 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="235" height="205"/>
+  </g>
+  <g class="fixtures">
+    <!-- 两侧开口 -->
+    <line x1="40" y1="115" x2="40" y2="160" class="door"/>
+    <line x1="275" y1="115" x2="275" y2="160" class="door"/>
+  </g>
+  <g class="labels">
+    <text class="label" x="157" y="140" text-anchor="middle" font-weight="500">Dining</text>
+    <text class="meta" x="157" y="158" text-anchor="middle">4.7 × 4.1 m · 过道型</text>
+    <text class="dim" x="157" y="38" text-anchor="middle">4700 mm</text>
+    <text class="dim" x="22" y="152" text-anchor="middle" transform="rotate(-90 22 152)">4100 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -324,7 +261,26 @@
       <span class="meta">5.2 × 6.8 m 标称 · 35.4 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="790 690 310 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 340 400" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="260" height="340"/>
+  </g>
+  <g class="fixtures">
+    <!-- 北墙门通 Entry -->
+    <line x1="120" y1="50" x2="200" y2="50" class="door"/>
+    <path d="M 120 50 A 40 40 0 0 1 160 90" class="door-arc"/>
+    <text class="meta" x="160" y="100" text-anchor="middle">门 · 通 Entry</text>
+  </g>
+  <g class="labels">
+    <text class="label" x="170" y="210" text-anchor="middle" font-weight="500">Lounge</text>
+    <text class="meta" x="170" y="228" text-anchor="middle">5.2 × 6.8 m · 35.4 ㎡</text>
+    <text class="dim" x="170" y="38" text-anchor="middle">5200 mm</text>
+    <text class="dim" x="22" y="220" text-anchor="middle" transform="rotate(-90 22 220)">6800 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -376,7 +332,23 @@
       <span class="meta">4.3 × 6.9 m 标称 · 29.7 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="850 310 240 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 405" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="215" height="345"/>
+  </g>
+  <g class="fixtures">
+
+  </g>
+  <g class="labels">
+    <text class="label" x="147" y="210" text-anchor="middle" font-weight="500">Living</text>
+    <text class="meta" x="147" y="228" text-anchor="middle">4.3 × 6.9 m · 29.7 ㎡</text>
+    <text class="dim" x="147" y="38" text-anchor="middle">4300 mm</text>
+    <text class="dim" x="22" y="222" text-anchor="middle" transform="rotate(-90 22 222)">6900 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -412,7 +384,26 @@
       <span class="meta">4.2 × 3.3 m 标称 · 13.9 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="420 570 240 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 235" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="210" height="165"/>
+  </g>
+  <g class="fixtures">
+    <!-- 两侧深木镶板 -->
+    <rect class="panel" x="40" y="50" width="10" height="165" stroke="#1a1a1a" stroke-width="1"/>
+    <rect class="panel" x="240" y="50" width="10" height="165" stroke="#1a1a1a" stroke-width="1"/>
+    <text class="meta" x="145" y="180" text-anchor="middle" fill="#8b6f47">★ 两侧深木镶板 + 内置书柜</text>
+  </g>
+  <g class="labels">
+    <text class="label" x="145" y="130" text-anchor="middle" font-weight="500">Study 书房</text>
+    <text class="meta" x="145" y="148" text-anchor="middle">4.2 × 3.3 m · 13.9 ㎡</text>
+    <text class="dim" x="145" y="38" text-anchor="middle">4200 mm</text>
+    <text class="dim" x="22" y="132" text-anchor="middle" transform="rotate(-90 22 132)">3300 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -449,7 +440,26 @@
       <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="1270 310 350 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="225" height="200"/>
+  </g>
+  <g class="fixtures">
+    <!-- Walk-in 嵌在西南角 -->
+    <rect class="walkin" x="40" y="180" width="100" height="70"/>
+    <text class="meta" x="90" y="215" text-anchor="middle" font-weight="500">Walk In</text>
+    <text class="meta" x="90" y="228" text-anchor="middle">2.0 × 1.4</text>
+  </g>
+  <g class="labels">
+    <text class="label" x="200" y="135" text-anchor="middle" font-weight="500">Master</text>
+    <text class="meta" x="200" y="153" text-anchor="middle">4.5 × 4.0 m · 18 ㎡</text>
+    <text class="dim" x="152" y="38" text-anchor="middle">4500 mm</text>
+    <text class="dim" x="22" y="150" text-anchor="middle" transform="rotate(-90 22 150)">4000 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -514,7 +524,23 @@
       <span class="meta">3.5 × 5.5 m · 19.3 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="1595 310 200 295" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 210 330" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="140" height="275"/>
+  </g>
+  <g class="fixtures">
+
+  </g>
+  <g class="labels">
+    <text class="label" x="110" y="170" text-anchor="middle" font-weight="500">Bedroom 2</text>
+    <text class="meta" x="110" y="188" text-anchor="middle">3.5 × 5.5 m · 19.3 ㎡</text>
+    <text class="dim" x="110" y="38" text-anchor="middle">3500 mm</text>
+    <text class="dim" x="22" y="187" text-anchor="middle" transform="rotate(-90 22 187)">5500 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_16_1732631.jpg"><img src="房产资料/现场照片/房源_16_1732631.jpg" loading="lazy"></a>
@@ -530,7 +556,23 @@
       <span class="meta">4.5 × 3.1 m · 14.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="1270 620 245 175" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 220" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="210" height="155"/>
+  </g>
+  <g class="fixtures">
+
+  </g>
+  <g class="labels">
+    <text class="label" x="145" y="125" text-anchor="middle" font-weight="500">Bedroom 3</text>
+    <text class="meta" x="145" y="143" text-anchor="middle">4.5 × 3.1 m · 14.0 ㎡</text>
+    <text class="dim" x="145" y="38" text-anchor="middle">4500 mm</text>
+    <text class="dim" x="22" y="128" text-anchor="middle" transform="rotate(-90 22 128)">3100 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_22_1732637.jpg"><img src="房产资料/现场照片/房源_22_1732637.jpg" loading="lazy"></a>
@@ -546,7 +588,23 @@
       <span class="meta">3.7 × 1.9 m · 7.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="1595 620 205 115" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 250 160" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="180" height="95"/>
+  </g>
+  <g class="fixtures">
+    <text class="meta" x="130" y="125" text-anchor="middle" fill="#8b6f47">★ 太窄 · 建议改 dressing room</text>
+  </g>
+  <g class="labels">
+    <text class="label" x="130" y="100" text-anchor="middle" font-weight="500">Bedroom 4</text>
+    <text class="meta" x="130" y="118" text-anchor="middle">3.7 × 1.9 m · 7.0 ㎡</text>
+    <text class="dim" x="130" y="38" text-anchor="middle">3700 mm</text>
+    <text class="dim" x="22" y="98" text-anchor="middle" transform="rotate(-90 22 98)">1900 mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_21_1732636.jpg"><img src="房产资料/现场照片/房源_21_1732636.jpg" loading="lazy"></a>
@@ -594,7 +652,25 @@
       <span class="meta">独立建筑 · Living + Toilet</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · 取自整体 floor plan</div><svg viewBox="30 70 300 410" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;background:#fff;border-radius:3px"><use href="#fp"/></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图（含家具图层 · 后续动态加）</div><svg class="svg-room" viewBox="0 0 290 280" xmlns="http://www.w3.org/2000/svg" data-room>
+  <g class="walls">
+    <rect x="40" y="50" width="230" height="210"/>
+  </g>
+  <g class="fixtures">
+    <!-- Toilet 隔间 -->
+    <rect class="walkin" x="180" y="50" width="90" height="80"/>
+    <text class="meta" x="225" y="92" text-anchor="middle" font-weight="500">Toilet</text>
+  </g>
+  <g class="labels">
+    <text class="label" x="125" y="170" text-anchor="middle" font-weight="500">Pool House</text>
+    <text class="meta" x="125" y="188" text-anchor="middle">Living + Toilet · 独立建筑</text>
+    <text class="dim" x="155" y="38" text-anchor="middle">- mm</text>
+    <text class="dim" x="22" y="155" text-anchor="middle" transform="rotate(-90 22 155)">- mm</text>
+  </g>
+  <g class="furniture" data-furniture>
+    <!-- 后续选定家具后在此添加 -->
+  </g>
+</svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
