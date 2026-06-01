@@ -79,6 +79,60 @@
   .lb.open{display:flex}
   .lb img{max-width:100%;max-height:100%;object-fit:contain}
   .lb-close{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;border:none;background:none}
+
+  /* ===== 动态家具试摆 (Phase 2) ===== */
+  .furn-tray{background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:12px 14px;margin:-6px 0 20px}
+  .furn-tray-head{font-size:.8rem;color:var(--muted);letter-spacing:.04em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .furn-tray-items{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .tray-item{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--rule);border-radius:99px;padding:5px 12px;font-family:inherit;font-size:.82rem;color:var(--ink);cursor:pointer;transition:border-color .15s,color .15s}
+  .tray-item:hover,.tray-item:focus-visible{border-color:var(--gold);color:var(--gold);outline:none}
+  .tray-item .ti-icon{font-size:.95rem;line-height:1}
+  .tray-item .ti-dim{color:var(--muted);font-family:"JetBrains Mono",monospace;font-size:.72rem}
+  .tray-item .ti-src{color:#b8860b;font-size:.64rem;border:1px solid #e3d3a3;border-radius:99px;padding:0 5px;line-height:1.5}
+  .furn-tray-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .furn-tray-actions button{background:#fff;border:1px solid var(--rule);border-radius:99px;padding:4px 12px;font-family:inherit;font-size:.78rem;color:var(--ink);cursor:pointer}
+  .furn-tray-actions button:hover{border-color:var(--gold);color:var(--gold)}
+  .furn-reset{margin-left:auto;background:#fff;border:1px solid var(--rule);border-radius:99px;padding:3px 11px;font-family:inherit;font-size:.74rem;color:var(--muted);cursor:pointer}
+  .furn-reset:hover{border-color:#b03a2e;color:#b03a2e}
+  .furn-hint{color:var(--muted);font-size:.72rem;flex:1 1 100%}
+  .svg-room .furn{cursor:grab;touch-action:none}
+  .svg-room .furn:active{cursor:grabbing}
+  .furn-body{fill:rgba(139,111,71,.5);stroke:#1a1a1a;stroke-width:1.5;transition:fill .12s,stroke .12s}
+  .furn-label{font-family:"Cormorant Garamond",serif;font-size:12px;fill:#1a1a1a;pointer-events:none;paint-order:stroke;stroke:#fffffff0;stroke-width:3}
+  .furn.selected .furn-body{stroke:#8b6f47;stroke-width:2.5}
+  .furn:focus-visible{outline:none}
+  .furn:focus-visible .furn-body{stroke:#8b6f47;stroke-width:2.5}
+  .furn.bad .furn-body{fill:rgba(176,58,46,.42);stroke:#b03a2e}
+  .furn-gaps{pointer-events:none}
+  .gap-line{stroke:#6b6253;stroke-width:.8;stroke-dasharray:3 2;opacity:.7}
+  .gap-text{font-family:"JetBrains Mono",monospace;font-size:9px;paint-order:stroke;stroke:#faf8f3;stroke-width:2.5}
+  .gap-ok{fill:#5a7d4f}.gap-warn{fill:#b8860b}.gap-bad{fill:#b03a2e}
+  @media(prefers-reduced-motion:reduce){.furn-body{transition:none}}
+  body.furn-hidden .furniture{display:none}
+
+  /* ===== 整屋交互平面图 (Phase 3) ===== */
+  .house-plan{position:relative;background:#fff;border-radius:4px;box-shadow:var(--shadow);padding:16px 18px;margin:14px 0 12px}
+  .house-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+  .house-tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .house-tab{background:#fff;border:1px solid var(--rule);border-radius:99px;padding:5px 14px;font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--ink);cursor:pointer;transition:all .15s}
+  .house-tab:hover{border-color:var(--gold);color:var(--gold)}
+  .house-tab.active{background:#1a1a1a;color:#faf8f3;border-color:#1a1a1a}
+  .house-furn-toggle{margin-left:auto;font-size:.82rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+  .house-furn-toggle input{cursor:pointer}
+  .house-stage{background:#fcfaf5;border:1px solid #ece4d2;border-radius:4px;padding:10px}
+  .house-svg{display:block;width:100%;max-height:62vh;margin:0 auto}
+  .house-room{cursor:pointer}
+  .house-room .walls rect{transition:fill .15s,stroke .15s}
+  .house-room:hover .walls rect,.house-room:focus-visible .walls rect{fill:#dfe7dc;stroke:#8b6f47;stroke-width:3.5}
+  .house-room:focus-visible{outline:none}
+  .house-ph rect{fill:#eceae3;stroke:#cfc7b5;stroke-width:1.5;stroke-dasharray:5 4}
+  .house-ph text{font-family:"JetBrains Mono",monospace;font-size:11px;fill:#9b927f}
+  .house-tip{position:absolute;z-index:5;pointer-events:none;background:#1a1a1a;color:#faf8f3;font-size:.78rem;padding:4px 9px;border-radius:4px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .house-note{color:var(--muted);font-size:.74rem;margin-top:8px;line-height:1.45}
+  .fp-official{margin:0 0 22px}
+  .fp-official>summary{cursor:pointer;color:var(--muted);font-size:.85rem;padding:8px 0;list-style:revert}
+  .fp-official>summary:hover{color:var(--gold)}
+  .fp-official .fp-zoom{margin-top:10px}
 </style>
 </head>
 <body>
@@ -108,12 +162,19 @@
   </p>
 
   <h2>完整 Floor Plan</h2>
-  <div class="fp-zoom">
-    <a class="thumb" data-full="assets/floor-plans/full-floor-plan.jpg" style="border:none">
-      <img src="assets/floor-plans/full-floor-plan.jpg" alt="106 Victoria Avenue 完整 floor plan">
-    </a>
-    <div class="cap">📐 Sotheby's 官方完整布局（点击放大）· 下方各房间为独立 SVG 含家具图层</div>
-  </div>
+
+  <!-- 整屋交互平面图（Phase 3）：JS 渲染；若 JS 失败，下方官方 jpg 仍可用 -->
+  <div id="house-plan" class="house-plan"></div>
+
+  <details class="fp-official">
+    <summary>📐 Sotheby's 官方原图（approximate · 点击展开 / 放大）</summary>
+    <div class="fp-zoom">
+      <a class="thumb" data-full="assets/floor-plans/full-floor-plan.jpg" style="border:none">
+        <img src="assets/floor-plans/full-floor-plan.jpg" alt="106 Victoria Avenue 完整 floor plan">
+      </a>
+      <div class="cap">Sotheby's 官方完整布局（FOR VISUAL PURPOSE ONLY）· 上方交互图为按真实相对位置的示意拼合</div>
+    </div>
+  </details>
 
   <div class="toc">
     <h3>跳转</h3>
@@ -140,7 +201,7 @@
     </div>
     <div class="room-content">
 
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 310 526" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="240" height="456" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="215" width="30" height="240" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="35" y="455" width="150" height="30" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="125" y="251" width="48" height="168" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="155" y="23" text-anchor="middle">4.0 m</text><text x="23" y="263" text-anchor="middle" transform="rotate(-90 23 263)">7.6 m</text></g><g class="labels"><text x="155" y="263" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Kitchen / Dining</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="kitchen-dining" viewBox="0 0 310 526" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="240" height="456" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="215" width="30" height="240" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="35" y="455" width="150" height="30" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="125" y="251" width="48" height="168" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="155" y="23" text-anchor="middle">4.0 m</text><text x="23" y="263" text-anchor="middle" transform="rotate(-90 23 263)">7.6 m</text></g><g class="labels"><text x="155" y="263" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Kitchen / Dining</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景照片（3 个视角）</h3>
       <div class="staging-grid">
@@ -161,7 +222,7 @@
       <span class="meta">4.7 × 4.1 m 标称</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 352 316" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="282" height="246" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="83" y1="281" x2="137" y2="281" stroke="#fff" stroke-width="5"/><path d="M83,281 A54,54 0 0,0 137,227" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="125" x2="35" y2="179" stroke="#fff" stroke-width="5"/><path d="M35,125 A54,54 0 0,1 89,179" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="176" y="23" text-anchor="middle">4.7 m</text><text x="23" y="158" text-anchor="middle" transform="rotate(-90 23 158)">4.1 m</text></g><g class="labels"><text x="176" y="158" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Dining</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="dining" viewBox="0 0 352 316" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="282" height="246" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="83" y1="281" x2="137" y2="281" stroke="#fff" stroke-width="5"/><path d="M83,281 A54,54 0 0,0 137,227" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="125" x2="35" y2="179" stroke="#fff" stroke-width="5"/><path d="M35,125 A54,54 0 0,1 89,179" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="176" y="23" text-anchor="middle">4.7 m</text><text x="23" y="158" text-anchor="middle" transform="rotate(-90 23 158)">4.1 m</text></g><g class="labels"><text x="176" y="158" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Dining</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -204,7 +265,7 @@
       <span class="meta">5.2 × 6.8 m 标称 · 35.4 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 382 478" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="312" height="408" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="137" y1="35" x2="234" y2="35" stroke="#fff" stroke-width="6"/><line x1="137" y1="32" x2="234" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="137" y1="38" x2="234" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="35" y1="219" x2="35" y2="264" stroke="#fff" stroke-width="5"/><path d="M35,219 A46,46 0 0,1 81,264" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="73" x2="347" y2="119" stroke="#fff" stroke-width="5"/><path d="M347,73 A46,46 0 0,0 301,119" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="155" x2="347" y2="243" stroke="#fff" stroke-width="5"/><path d="M347,155 A88,88 0 0,0 259,243" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="301" x2="347" y2="390" stroke="#fff" stroke-width="5"/><path d="M347,301 A89,89 0 0,0 258,390" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="191" y="23" text-anchor="middle">5.2 m</text><text x="23" y="239" text-anchor="middle" transform="rotate(-90 23 239)">6.8 m</text></g><g class="labels"><text x="191" y="239" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="22" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Lounge</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="lounge" viewBox="0 0 382 478" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="312" height="408" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="137" y1="35" x2="234" y2="35" stroke="#fff" stroke-width="6"/><line x1="137" y1="32" x2="234" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="137" y1="38" x2="234" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="35" y1="219" x2="35" y2="264" stroke="#fff" stroke-width="5"/><path d="M35,219 A46,46 0 0,1 81,264" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="73" x2="347" y2="119" stroke="#fff" stroke-width="5"/><path d="M347,73 A46,46 0 0,0 301,119" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="155" x2="347" y2="243" stroke="#fff" stroke-width="5"/><path d="M347,155 A88,88 0 0,0 259,243" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="347" y1="301" x2="347" y2="390" stroke="#fff" stroke-width="5"/><path d="M347,301 A89,89 0 0,0 258,390" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="191" y="23" text-anchor="middle">5.2 m</text><text x="23" y="239" text-anchor="middle" transform="rotate(-90 23 239)">6.8 m</text></g><g class="labels"><text x="191" y="239" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="22" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Lounge</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -256,7 +317,7 @@
       <span class="meta">4.3 × 6.9 m 标称 · 29.7 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 328 484" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="258" height="414" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="94" y1="35" x2="231" y2="35" stroke="#fff" stroke-width="6"/><line x1="94" y1="32" x2="231" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="94" y1="38" x2="231" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="132" y1="449" x2="226" y2="449" stroke="#fff" stroke-width="6"/><line x1="132" y1="446" x2="226" y2="446" stroke="#1a1a1a" stroke-width="1.5"/><line x1="132" y1="452" x2="226" y2="452" stroke="#1a1a1a" stroke-width="1.5"/><line x1="35" y1="363" x2="35" y2="403" stroke="#fff" stroke-width="5"/><path d="M35,363 A40,40 0 0,1 75,403" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="293" y1="154" x2="293" y2="317" stroke="#fff" stroke-width="6"/><line x1="290" y1="154" x2="290" y2="317" stroke="#1a1a1a" stroke-width="1.5"/><line x1="296" y1="154" x2="296" y2="317" stroke="#1a1a1a" stroke-width="1.5"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="164" y="23" text-anchor="middle">4.3 m</text><text x="23" y="242" text-anchor="middle" transform="rotate(-90 23 242)">6.9 m</text></g><g class="labels"><text x="164" y="242" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Living</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="living" viewBox="0 0 328 484" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="258" height="414" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="94" y1="35" x2="231" y2="35" stroke="#fff" stroke-width="6"/><line x1="94" y1="32" x2="231" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="94" y1="38" x2="231" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="132" y1="449" x2="226" y2="449" stroke="#fff" stroke-width="6"/><line x1="132" y1="446" x2="226" y2="446" stroke="#1a1a1a" stroke-width="1.5"/><line x1="132" y1="452" x2="226" y2="452" stroke="#1a1a1a" stroke-width="1.5"/><line x1="35" y1="363" x2="35" y2="403" stroke="#fff" stroke-width="5"/><path d="M35,363 A40,40 0 0,1 75,403" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="293" y1="154" x2="293" y2="317" stroke="#fff" stroke-width="6"/><line x1="290" y1="154" x2="290" y2="317" stroke="#1a1a1a" stroke-width="1.5"/><line x1="296" y1="154" x2="296" y2="317" stroke="#1a1a1a" stroke-width="1.5"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="164" y="23" text-anchor="middle">4.3 m</text><text x="23" y="242" text-anchor="middle" transform="rotate(-90 23 242)">6.9 m</text></g><g class="labels"><text x="164" y="242" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Living</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -292,7 +353,7 @@
       <span class="meta">4.2 × 3.3 m 标称 · 13.9 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 322 268" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="252" height="198" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="278" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"><line x1="64" y1="35" x2="122" y2="35" stroke="#fff" stroke-width="5"/><path d="M64,35 A58,58 0 0,1 122,93" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="160" y1="35" x2="244" y2="35" stroke="#fff" stroke-width="5"/><path d="M160,35 A85,85 0 0,1 244,120" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="161" y="23" text-anchor="middle">4.2 m</text><text x="23" y="134" text-anchor="middle" transform="rotate(-90 23 134)">3.3 m</text></g><g class="labels"><text x="161" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Study</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="study" viewBox="0 0 322 268" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="252" height="198" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="278" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"><line x1="64" y1="35" x2="122" y2="35" stroke="#fff" stroke-width="5"/><path d="M64,35 A58,58 0 0,1 122,93" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="160" y1="35" x2="244" y2="35" stroke="#fff" stroke-width="5"/><path d="M160,35 A85,85 0 0,1 244,120" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="161" y="23" text-anchor="middle">4.2 m</text><text x="23" y="134" text-anchor="middle" transform="rotate(-90 23 134)">3.3 m</text></g><g class="labels"><text x="161" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Study</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -326,10 +387,10 @@
   <section class="room-section" id="master">
     <div class="room-header">
       <h2>Master 主卧 </h2>
-      <span class="meta">4.5 × 4.0 m + Walk-in 2.0 × 1.4 m</span>
+      <span class="meta">3.5 × 5.5 m + 卫浴 2.0 × 2.5 + Walk-in 2.0 × 1.4 m</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 580 310" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="275" y="35" width="270" height="240" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/><rect x="155" y="191" width="120" height="84" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/><rect x="35" y="35" width="120" height="150" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/></g><g class="openings"><line x1="364" y1="35" x2="477" y2="35" stroke="#fff" stroke-width="6"/><line x1="364" y1="32" x2="477" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="364" y1="38" x2="477" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="382" y1="275" x2="427" y2="275" stroke="#fff" stroke-width="5"/><path d="M382,275 A44,44 0 0,0 427,231" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="467" y1="35" x2="521" y2="35" stroke="#fff" stroke-width="5"/><path d="M467,35 A54,54 0 0,1 521,89" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="410" y="23" text-anchor="middle">4.5 m</text><text x="263" y="155" text-anchor="middle" transform="rotate(-90 263 155)">4.0 m</text><text x="215" y="231" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Walk-in</text><text x="215" y="245" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 1.4</text><text x="95" y="108" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Bathroom</text><text x="95" y="122" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 2.5</text></g><g class="labels"><text x="410" y="155" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Master</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="master" viewBox="0 0 580 310" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="275" y="35" width="270" height="240" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/><rect x="155" y="191" width="120" height="84" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/><rect x="35" y="35" width="120" height="150" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/></g><g class="openings"><line x1="364" y1="35" x2="477" y2="35" stroke="#fff" stroke-width="6"/><line x1="364" y1="32" x2="477" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="364" y1="38" x2="477" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="382" y1="275" x2="427" y2="275" stroke="#fff" stroke-width="5"/><path d="M382,275 A44,44 0 0,0 427,231" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="467" y1="35" x2="521" y2="35" stroke="#fff" stroke-width="5"/><path d="M467,35 A54,54 0 0,1 521,89" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="410" y="23" text-anchor="middle">4.5 m</text><text x="263" y="155" text-anchor="middle" transform="rotate(-90 263 155)">4.0 m</text><text x="215" y="231" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Walk-in</text><text x="215" y="245" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 1.4</text><text x="95" y="108" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Bathroom</text><text x="95" y="122" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 2.5</text></g><g class="labels"><text x="410" y="155" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Master</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -391,10 +452,10 @@
   <section class="room-section" id="bedroom-2">
     <div class="room-header">
       <h2>Bedroom 2</h2>
-      <span class="meta">3.5 × 5.5 m · 19.3 ㎡</span>
+      <span class="meta">4.5 × 4.0 m · 18 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 280 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="210" height="330" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="140" y="23" text-anchor="middle">3.5 m</text><text x="23" y="200" text-anchor="middle" transform="rotate(-90 23 200)">5.5 m</text></g><g class="labels"><text x="140" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 2</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="bedroom-2" viewBox="0 0 280 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="210" height="330" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="140" y="23" text-anchor="middle">3.5 m</text><text x="23" y="200" text-anchor="middle" transform="rotate(-90 23 200)">5.5 m</text></g><g class="labels"><text x="140" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 2</text></g><g class="furniture"></g></svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_16_1732631.jpg"><img src="房产资料/现场照片/房源_16_1732631.jpg" loading="lazy"></a>
@@ -410,7 +471,7 @@
       <span class="meta">4.5 × 3.1 m · 14.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 340 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="270" height="186" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="54" y1="221" x2="113" y2="221" stroke="#fff" stroke-width="5"/><path d="M54,221 A59,59 0 0,0 113,162" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="170" y="23" text-anchor="middle">4.5 m</text><text x="23" y="128" text-anchor="middle" transform="rotate(-90 23 128)">3.1 m</text></g><g class="labels"><text x="170" y="128" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 3</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="bedroom-3" viewBox="0 0 340 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="270" height="186" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"><line x1="54" y1="221" x2="113" y2="221" stroke="#fff" stroke-width="5"/><path d="M54,221 A59,59 0 0,0 113,162" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="170" y="23" text-anchor="middle">4.5 m</text><text x="23" y="128" text-anchor="middle" transform="rotate(-90 23 128)">3.1 m</text></g><g class="labels"><text x="170" y="128" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 3</text></g><g class="furniture"></g></svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_22_1732637.jpg"><img src="房产资料/现场照片/房源_22_1732637.jpg" loading="lazy"></a>
@@ -426,7 +487,7 @@
       <span class="meta">3.7 × 1.9 m · 7.0 ㎡</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 292 184" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="222" height="114" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="146" y="23" text-anchor="middle">3.7 m</text><text x="23" y="92" text-anchor="middle" transform="rotate(-90 23 92)">1.9 m</text></g><g class="labels"><text x="146" y="92" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 4</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="bedroom-4" viewBox="0 0 292 184" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="222" height="114" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="openings"></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="146" y="23" text-anchor="middle">3.7 m</text><text x="23" y="92" text-anchor="middle" transform="rotate(-90 23 92)">1.9 m</text></g><g class="labels"><text x="146" y="92" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Bedroom 4</text></g><g class="furniture"></g></svg></div>
       <h3>Staging 实景</h3>
       <div class="staging-grid">
         <a class="thumb staging-thumb" data-full="房产资料/现场照片/房源_21_1732636.jpg"><img src="房产资料/现场照片/房源_21_1732636.jpg" loading="lazy"></a>
@@ -474,7 +535,7 @@
       <span class="meta">独立建筑 · Living + Toilet</span>
     </div>
     <div class="room-content">
-      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" viewBox="0 0 370 490" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="300" height="420" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/><rect x="215" y="35" width="120" height="90" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/></g><g class="openings"><line x1="58" y1="35" x2="201" y2="35" stroke="#fff" stroke-width="6"/><line x1="58" y1="32" x2="201" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="58" y1="38" x2="201" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="259" y1="35" x2="294" y2="35" stroke="#fff" stroke-width="5"/><path d="M259,35 A35,35 0 0,1 294,70" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="99" x2="35" y2="155" stroke="#fff" stroke-width="5"/><path d="M35,99 A56,56 0 0,1 91,155" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="231" x2="35" y2="325" stroke="#fff" stroke-width="6"/><line x1="32" y1="231" x2="32" y2="325" stroke="#1a1a1a" stroke-width="1.5"/><line x1="38" y1="231" x2="38" y2="325" stroke="#1a1a1a" stroke-width="1.5"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="185" y="23" text-anchor="middle">5.0 m</text><text x="23" y="245" text-anchor="middle" transform="rotate(-90 23 245)">7.0 m</text><text x="275" y="78" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Toilet</text><text x="275" y="92" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 1.5</text></g><g class="labels"><text x="185" y="245" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="21" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Pool House</text></g><g class="furniture"></g></svg></div>
+      <div style="background:#fcfaf5;border:1px solid #d9d1bf;border-radius:4px;padding:14px;margin:14px 0 18px;text-align:center"><div style="font-size:.8rem;color:#6b6253;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase">HTML 布局图 · SVG 矢量</div><svg class="svg-room" data-room-id="pool-house" viewBox="0 0 370 490" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><g class="walls"><rect x="35" y="35" width="300" height="420" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/><rect x="215" y="35" width="120" height="90" fill="#b5c5b3" stroke="#1a1a1a" stroke-width="2"/></g><g class="openings"><line x1="58" y1="35" x2="201" y2="35" stroke="#fff" stroke-width="6"/><line x1="58" y1="32" x2="201" y2="32" stroke="#1a1a1a" stroke-width="1.5"/><line x1="58" y1="38" x2="201" y2="38" stroke="#1a1a1a" stroke-width="1.5"/><line x1="259" y1="35" x2="294" y2="35" stroke="#fff" stroke-width="5"/><path d="M259,35 A35,35 0 0,1 294,70" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="99" x2="35" y2="155" stroke="#fff" stroke-width="5"/><path d="M35,99 A56,56 0 0,1 91,155" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="35" y1="231" x2="35" y2="325" stroke="#fff" stroke-width="6"/><line x1="32" y1="231" x2="32" y2="325" stroke="#1a1a1a" stroke-width="1.5"/><line x1="38" y1="231" x2="38" y2="325" stroke="#1a1a1a" stroke-width="1.5"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="185" y="23" text-anchor="middle">5.0 m</text><text x="23" y="245" text-anchor="middle" transform="rotate(-90 23 245)">7.0 m</text><text x="275" y="78" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#1a1a1a" font-weight="500">Toilet</text><text x="275" y="92" text-anchor="middle" font-family="-apple-system" font-size="9" fill="#6b6253">2.0 × 1.5</text></g><g class="labels"><text x="185" y="245" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="21" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Pool House</text></g><g class="furniture"></g></svg></div>
 
       <h3>Staging 实景</h3>
       <div class="staging-grid">
@@ -601,17 +662,27 @@
 <script>
   const lb = document.getElementById('lb');
   const lbImg = document.getElementById('lbImg');
-  document.querySelectorAll('.thumb[data-full]').forEach(el => {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      lbImg.src = el.dataset.full;
-      lb.classList.add('open');
-    });
+  // 事件委托：覆盖将来由 JS 动态插入的 .thumb（Phase 3 整屋交互平面图）
+  document.addEventListener('click', e => {
+    const el = e.target.closest('.thumb[data-full]');
+    if (!el) return;
+    e.preventDefault();
+    lbImg.src = el.dataset.full;
+    lb.classList.add('open');
   });
   document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
   lb.addEventListener('click', e => { if(e.target===lb) lb.classList.remove('open'); });
   document.addEventListener('keydown', e => { if(e.key==='Escape') lb.classList.remove('open'); });
 </script>
+
+<!-- 动态房间布局工具 · 数据驱动渲染（Phase 1）。顺序：数据 → 渲染器 → 启动器 -->
+<script src="assets/js/rooms-data.js?v=4"></script>
+<script src="assets/js/furniture-data.js?v=4"></script>
+<script src="assets/js/floor-layout.js?v=4"></script>
+<script src="assets/js/renderer.js?v=4"></script>
+<script src="assets/js/interactions.js?v=4"></script>
+<script src="assets/js/floor-plan.js?v=4"></script>
+<script src="assets/js/boot.js?v=4"></script>
 
 <footer>
   <p>106 Victoria Avenue, Remuera · 家具规划项目 · 价格区间为 2026-05 NZD 参考值 · 单品库存以经销商当前页面为准</p>

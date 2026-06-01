@@ -16,3 +16,6 @@ __pycache__/
 # 编辑器
 .idea/
 .vscode/
+
+# 临时校准工具（floor plan 几何修正用，完工后删除）
+calibrate.html
