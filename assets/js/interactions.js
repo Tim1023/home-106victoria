@@ -12,7 +12,7 @@
 (function (root) {
   'use strict';
 
-  var LS_KEY = 'v106_furniture_v1';
+  var LS_KEY = 'v106_furniture_v2';   // v2：全屋改为 NZ 现货精选 + defaultPos 默认布局（旧 v1 拖拽记录作废）
   var EPS = 0.4;                 // px 容差（贴靠不算压）
   var NUDGE_MM = 10, NUDGE_BIG_MM = 100;
   var GAP_OK = 1000, GAP_WARN = 700;   // mm 阈值：≥1.0m 绿 / 0.7–1.0m 黄 / <0.7m 红
@@ -293,9 +293,20 @@
   }
   function restore(svg) {
     var roomId = svg.dataset.roomId, room = rooms()[roomId]; if (!room) return;
-    var list = loadStore().rooms[roomId]; if (!list || !list.length) return;
     var items = furnitureOf(roomId);
-    list.forEach(function (rec) {
+    var list = loadStore().rooms[roomId];
+    if (!list || !list.length) {                              // 无用户记录 → 按 defaultPos 首次自动布局
+      items.forEach(function (item) {
+        if (!item.defaultPos) return;
+        var poses = item.defaultPos.length !== undefined ? item.defaultPos : [item.defaultPos];
+        poses.forEach(function (dp) {
+          var x = room.body.x + mmToPx(dp.xMm), y = room.body.y + mmToPx(dp.yMm);
+          placeItem(svg, item, x, y, dp.rot || 0, false);
+        });
+      });
+      return;
+    }
+    list.forEach(function (rec) {                             // 有用户记录 → 恢复用户摆放
       var item = items.filter(function (i) { return i.id === rec.id; })[0];
       if (!item) return;
       var x = room.body.x + mmToPx(rec.xMm), y = room.body.y + mmToPx(rec.yMm);
@@ -303,11 +314,12 @@
     });
   }
   function clearRoom(svg) {
-    if (!root.confirm || root.confirm('清空本房间已摆放的家具？')) {
+    if (!root.confirm || root.confirm('恢复本房间默认布局？（将清除你的手动调整）')) {
       var fl = svg.querySelector('.furniture'); if (fl) fl.textContent = '';
       clearGaps(svg);
       if (selectedFurn && selectedFurn.closest('svg.svg-room') === svg) selectedFurn = null;
       var store = loadStore(); delete store.rooms[svg.dataset.roomId]; saveStore(store);
+      restore(svg);                                            // 清除后重新摆回 defaultPos 默认布局
     }
   }
 
@@ -328,7 +340,7 @@
     head.className = 'furn-tray-head';
     head.innerHTML = '<span>试摆家具 · 点击放入房间中心，再拖动摆放</span>';
     var reset = document.createElement('button');
-    reset.type = 'button'; reset.className = 'furn-reset'; reset.textContent = '重置本房';
+    reset.type = 'button'; reset.className = 'furn-reset'; reset.textContent = '恢复默认布局';
     reset.addEventListener('click', function () { clearRoom(svg); });
     head.appendChild(reset);
 
