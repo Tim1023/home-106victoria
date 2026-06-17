@@ -14,7 +14,9 @@
 
   var TYPES = {
     bed:             { w: 1700, d: 2100, icon: '🛏' },
+    bench:           { w: 1100, d: 400, icon: '▭' },
     coffee_table:    { w: 1200, d: 600, icon: '▭' },
+    console:         { w: 1200, d: 350, icon: '🗄' },
     daybed:          { w: 1900, d: 800, icon: '🛋' },
     desk:            { w: 1600, d: 750, icon: '🖥' },
     dining_chair:    { w: 520, d: 520, icon: '🪑' },
@@ -72,6 +74,12 @@
       {"id": "shelf-vitsoe", "label": "Vitsoe 606 模块书架", "type": "shelf", "w": 1880, "d": 350, "link": "https://www.vitsoe.com/us/606", "defaultPos": {"xMm": 300, "yMm": 2950, "rot": 0}},
       {"id": "floor-lamp-arco", "label": "Arco 大理石落地灯", "type": "floor_lamp", "w": 500, "d": 500, "link": "https://ecc.co.nz/lighting/indoor-lighting/floor-lamps/arco-floor-lamp", "defaultPos": {"xMm": 3500, "yMm": 2750, "rot": 0}},
       {"id": "table-lamp-atollo", "label": "Atollo 台灯", "type": "table_lamp", "w": 250, "d": 250, "link": "https://ecc.co.nz/lighting/indoor-lighting/table-lamps/atollo-table-lamp", "defaultPos": {"xMm": 2700, "yMm": 250, "rot": 0}}
+    ],
+    'foyer': [
+      {"id": "console", "label": "Florence Knoll 条案 / 中古玫瑰木条案", "type": "console", "w": 1200, "d": 350, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 825, "yMm": 2775, "rot": 90}},
+      {"id": "bench", "label": "Wegner 长凳 / 中古柚木玄关凳", "type": "bench", "w": 1100, "d": 400, "link": "https://cultdesign.co.nz", "defaultPos": {"xMm": -350, "yMm": 2850, "rot": 90}},
+      {"id": "floor-lamp", "label": "Akari 1A 纸落地灯", "type": "floor_lamp", "w": 350, "d": 350, "link": "https://www.finnishdesignshop.com/en-nz/product/akari-25n-floor-lamp", "defaultPos": {"xMm": 600, "yMm": 3550, "rot": 0}},
+      {"id": "pendant", "label": "Flos / Le Klint 入户吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://ecc.co.nz/", "defaultPos": {"xMm": 750, "yMm": 2950, "rot": 0}}
     ],
     'master': [
       {"id": "bed", "label": "Nelson Thin Edge 窄边床", "type": "bed", "w": 1900, "d": 2150, "link": "https://matisse.co.nz/nelson-thin-edge-bed/", "defaultPos": {"xMm": 800, "yMm": 100, "rot": 0}},
