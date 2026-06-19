@@ -156,34 +156,34 @@
       label: 'Foyer',
       labelSize: 13,
       labelPos: { x: 170, y: 255 },
-      outline: { x: 35, y: 35, w: 228, h: 312 },
-      body: { x: 35, y: 35, w: 228, h: 312 },
+      outline: { x: 35, y: 35, w: 230, h: 314 },
+      body: { x: 35, y: 35, w: 230, h: 314 },
       subRooms: [
-        { x: 35, y: 35, w: 62, h: 70, label: 'Store' },
-        { x: 165, y: 35, w: 73, h: 82, label: 'Store' }
+        { x: 35, y: 87, w: 75, h: 74, label: 'Store' },
+        { x: 173, y: 35, w: 92, h: 64, label: 'Store' }
       ],
       fixtures: [
-        { x: 35, y: 105, w: 62, h: 242, kind: 'stairs' }
+        { x: 35, y: 161, w: 75, h: 186, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 2050, widthMm: 1000 },
-        { wall: 'S', offsetMm: 150, widthMm: 500, rect: { x: 35, y: 35, w: 62, h: 70 } },
-        { wall: 'S', offsetMm: 250, widthMm: 600, rect: { x: 165, y: 35, w: 73, h: 82 } },
-        { wall: 'N', offsetMm: 2050, widthMm: 800 },
-        { wall: 'E', offsetMm: 3450, widthMm: 900 }
+        { wall: 'S', offsetMm: 2490, widthMm: 750 },
+        { wall: 'N', offsetMm: 350, widthMm: 600, rect: { x: 35, y: 87, w: 75, h: 74 } },
+        { wall: 'S', offsetMm: 300, widthMm: 900, rect: { x: 173, y: 35, w: 92, h: 64 } },
+        { wall: 'E', offsetMm: 2700, widthMm: 1100 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 1050, widthMm: 600 }
+        { wall: 'W', offsetMm: 0, widthMm: 860 },
+        { wall: 'N', offsetMm: 350, widthMm: 1900 }
       ],
       dims: [
         { x: 149, y: 23, text: '3.8 m' },
-        { x: 23, y: 191, text: '5.2 m', rot: -90 },
-        { x: 66, y: 74, text: 'Store', serif: true, size: 8 },
-        { x: 201, y: 80, text: 'Store', serif: true, size: 8 },
-        { x: 66, y: 232, text: '楼梯', serif: true, size: 9 },
-        { x: 130, y: 130, text: '↑客厅', small: true, size: 8 },
-        { x: 120, y: 50, text: '过道', small: true, size: 8 },
-        { x: 180, y: 338, text: 'Entry', small: true, size: 9 }
+        { x: 23, y: 192, text: '5.2 m', rot: -90 },
+        { x: 72, y: 128, text: 'Store', serif: true, size: 8 },
+        { x: 219, y: 70, text: 'Store', serif: true, size: 8 },
+        { x: 72, y: 258, text: '楼梯', serif: true, size: 9 },
+        { x: 219, y: 118, text: '↑客厅', small: true, size: 7 },
+        { x: 60, y: 58, text: '过道', small: true, size: 8 },
+        { x: 200, y: 340, text: 'Entry', small: true, size: 9 }
       ]
     },
 
