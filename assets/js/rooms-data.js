@@ -146,41 +146,44 @@
     },
 
     /* foyer：入户玄关。按 Study(4.2m=214px)/Lounge(5.2m=268px) 标定 ≈51px/m，实测约 3.8 × 5.2 m。
-       布局(中介图)：弧形楼梯在左下角(SW)贴 Study 墙、"St." 标注；过道开口在左上(NW)。
-       右上(NE/中偏右)挤着一个 Store 储物间(封闭子空间)与通往客厅(Living)的双开门——双开门在储物间南墙、
-       朝入户厅开(⌄)。南墙偏东为入户门(Entry)，正对储物间；东墙下段通 Lounge。东侧为开放入户厅
-       (条案+大圆镜贴东墙，见 房源_07)。尺寸为按中介图标定的近似值(图本身标 approximate)。 */
+       布局(中介图 + Tim 确认)：弧形楼梯在左下(SW)贴 Study 墙；楼梯上端下方藏一间储物间 Store1(NW)，
+       门朝左上的过道开口。右上(NE)另有储物间 Store2(正对南面入户门 Entry)，紧挨它的是通客厅(Living)的门。
+       南墙偏东入户门(Entry)；东墙下段通 Lounge；东/中为开放入户厅(条案+大圆镜贴东墙，见 房源_07)。
+       尺寸为按中介图标定的近似值(图本身标 approximate)。 */
     'foyer': {
       id: 'foyer',
       name: '玄关 · 入户厅',
       label: 'Foyer',
-      labelSize: 14,
-      labelPos: { x: 175, y: 250 },
+      labelSize: 13,
+      labelPos: { x: 170, y: 255 },
       outline: { x: 35, y: 35, w: 228, h: 312 },
       body: { x: 35, y: 35, w: 228, h: 312 },
       subRooms: [
-        { x: 150, y: 35, w: 80, h: 85, label: 'Store' }
+        { x: 35, y: 35, w: 62, h: 70, label: 'Store' },
+        { x: 165, y: 35, w: 73, h: 82, label: 'Store' }
       ],
       fixtures: [
-        { x: 35, y: 115, w: 90, h: 232, kind: 'stairs' }
+        { x: 35, y: 105, w: 62, h: 242, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 1800, widthMm: 1000 },
-        { wall: 'S', offsetMm: 250, widthMm: 600, rect: { x: 150, y: 35, w: 80, h: 85 } },
-        { wall: 'S', offsetMm: 850, widthMm: 600, rect: { x: 150, y: 35, w: 80, h: 85 }, hinge: 'end' },
-        { wall: 'E', offsetMm: 3300, widthMm: 900 }
+        { wall: 'S', offsetMm: 2050, widthMm: 1000 },
+        { wall: 'S', offsetMm: 150, widthMm: 500, rect: { x: 35, y: 35, w: 62, h: 70 } },
+        { wall: 'S', offsetMm: 250, widthMm: 600, rect: { x: 165, y: 35, w: 73, h: 82 } },
+        { wall: 'N', offsetMm: 2050, widthMm: 800 },
+        { wall: 'E', offsetMm: 3450, widthMm: 900 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 200, widthMm: 700 }
+        { wall: 'N', offsetMm: 1050, widthMm: 600 }
       ],
       dims: [
         { x: 149, y: 23, text: '3.8 m' },
         { x: 23, y: 191, text: '5.2 m', rot: -90 },
-        { x: 190, y: 82, text: 'Store', serif: true, size: 9 },
-        { x: 82, y: 240, text: '楼梯', serif: true, size: 9 },
-        { x: 72, y: 64, text: '过道', small: true, size: 8 },
-        { x: 190, y: 138, text: '↑客厅', small: true, size: 8 },
-        { x: 175, y: 338, text: 'Entry', small: true, size: 9 }
+        { x: 66, y: 74, text: 'Store', serif: true, size: 8 },
+        { x: 201, y: 80, text: 'Store', serif: true, size: 8 },
+        { x: 66, y: 232, text: '楼梯', serif: true, size: 9 },
+        { x: 130, y: 130, text: '↑客厅', small: true, size: 8 },
+        { x: 120, y: 50, text: '过道', small: true, size: 8 },
+        { x: 180, y: 338, text: 'Entry', small: true, size: 9 }
       ]
     },
 
