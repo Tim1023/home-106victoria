@@ -98,6 +98,13 @@
            '<line x1="' + (f.x + f.w) + '" y1="' + f.y + '" x2="' + f.x + '" y2="' + (f.y + f.h) + '" stroke="#1a1a1a" stroke-width="0.8"/>';
     } else if (f.kind === 'toilet') {
       s += '<ellipse cx="' + n(cx) + '" cy="' + n(cy + f.h / 8) + '" rx="' + n(f.w / 3) + '" ry="' + n(f.h / 3) + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';
+    } else if (f.kind === 'stairs') {
+      var steps = Math.max(3, Math.round(f.h / 16));               // 踏步线（约每 16px 一级）
+      for (var i = 1; i < steps; i++) {
+        var yy = f.y + f.h * i / steps;
+        s += '<line x1="' + n(f.x) + '" y1="' + n(yy) + '" x2="' + n(f.x + f.w) + '" y2="' + n(yy) + '" stroke="#1a1a1a" stroke-width="0.8"/>';
+      }
+      s += '<path d="M' + n(cx) + ',' + n(f.y + f.h - 6) + ' L' + n(cx) + ',' + n(f.y + 6) + ' M' + n(cx - 4) + ',' + n(f.y + 12) + ' L' + n(cx) + ',' + n(f.y + 6) + ' L' + n(cx + 4) + ',' + n(f.y + 12) + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';   // 上行箭头
     }
     return s;
   }

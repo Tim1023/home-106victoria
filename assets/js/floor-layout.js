@@ -1,7 +1,7 @@
 /* 106 Victoria · 整屋平面布局表 (Phase 3)
  * window.FLOOR_LAYOUT：每个房间在整屋统一坐标系中的落点（body/content 左上角，单位 mm）。
  * 三个 tab 分组——因卧室区是二楼独立 wing、泳池房是 detached building，硬拼一张会误导：
- *   ground   一楼主屋：kitchen-dining / dining / living / study / lounge（+ Laundry/楼梯/Garage 灰块占位）
+ *   ground   一楼主屋：kitchen-dining / dining / living / study / lounge / foyer(玄关+楼梯)（+ Laundry/Garage 灰块占位）
  *   upstairs 二楼卧室：master(含 walk-in+bath) / bedroom-2 / bedroom-3 / bedroom-4（+ 家庭浴室/小卧 灰块）
  *   pool     泳池房：pool-house(含 toilet)
  * ⚠ offset 为人工从 full-floor-plan.jpg 目测的近似值（jpg 本身标注 approximate / FOR VISUAL PURPOSE ONLY），
@@ -21,11 +21,11 @@
           { id: 'dining',         x: 4500, y: 1500 },
           { id: 'living',         x: 9400, y: 1800 },
           { id: 'study',          x: 300,  y: 8200 },
-          { id: 'lounge',         x: 5000, y: 6000 }
+          { id: 'lounge',         x: 5000, y: 6000 },
+          { id: 'foyer',          x: 3200, y: 7400 }
         ],
         placeholders: [
           { x: 4500, y: 5800,  w: 3000, h: 2100, label: 'Laundry' },
-          { x: 4600, y: 8000,  w: 1400, h: 2600, label: '楼梯 / Entry' },
           { x: 5200, y: 13200, w: 6400, h: 6800, label: 'Garage' }
         ]
       },
