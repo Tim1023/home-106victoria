@@ -12,7 +12,7 @@
 (function (root) {
   'use strict';
 
-  var LS_KEY = 'v106_furniture_v3';   // v3：玄关定稿(3.8×5.2 + 楼梯西侧)，旧版拖拽记录会落到楼梯上，故作废重置
+  var LS_KEY = 'v106_furniture_v4';   // v4：玄关家具改为全部靠东墙(不堵楼梯)，重置旧默认/拖拽记录
   var EPS = 0.4;                 // px 容差（贴靠不算压）
   var NUDGE_MM = 10, NUDGE_BIG_MM = 100;
   var GAP_OK = 1000, GAP_WARN = 700;   // mm 阈值：≥1.0m 绿 / 0.7–1.0m 黄 / <0.7m 红
