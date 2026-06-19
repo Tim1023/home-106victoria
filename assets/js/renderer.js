@@ -58,7 +58,8 @@
     var hx = hingeStart ? sx : ex, hy = hingeStart ? sy : ey;   // 铰链端
     var fx = hingeStart ? ex : sx, fy = hingeStart ? ey : sy;   // 自由端(关门)
     var r = wid;
-    var ox = hx + g.nx * r, oy = hy + g.ny * r;                 // 自由端(开门，垂直入室)
+    var sgn = (d.swing === 'out') ? -1 : 1;                    // swing:'out' → 朝该 rect 外侧开（如客厅门内开向客厅）
+    var ox = hx + sgn * g.nx * r, oy = hy + sgn * g.ny * r;    // 自由端(开门，垂直于墙)
     var cross = (fx - hx) * (oy - hy) - (fy - hy) * (ox - hx);  // 叉积定 sweep（y 向下）
     var sweep = cross > 0 ? 0 : 1;
     return '<line x1="' + n(sx) + '" y1="' + n(sy) + '" x2="' + n(ex) + '" y2="' + n(ey) + '" stroke="#fff" stroke-width="5"/>' +
