@@ -135,6 +135,14 @@
     }).join('');
   }
 
+  // ---------- 内墙（不属于 outline 的结构墙，如楼梯右侧墙；画在 fixtures 之上 ----------
+  function buildInteriorWalls(room) {
+    return (room.walls || []).map(function (w) {
+      return '<line x1="' + n(w.x1) + '" y1="' + n(w.y1) + '" x2="' + n(w.x2) + '" y2="' + n(w.y2) +
+        '" stroke="#1a1a1a" stroke-width="' + (w.width || 3) + '" stroke-linecap="square"/>';
+    }).join('');
+  }
+
   // ---------- 尺寸标注 + 房名 ----------
   function buildDims(room) {
     return (room.dims || []).map(function (d) {
@@ -174,6 +182,7 @@
     if (!room.outline) return room.inner || '';   // 未迁移：回退旧字符串
     return '<g class="walls">' + buildWalls(room) + '</g>' +
       '<g class="fixtures">' + buildFixtures(room) + '</g>' +
+      '<g class="iwalls">' + buildInteriorWalls(room) + '</g>' +
       '<g class="openings">' + buildOpenings(room) + '</g>' +
       '<g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253">' + buildDims(room) + '</g>' +
       '<g class="labels">' + buildLabel(room) + '</g>' +
