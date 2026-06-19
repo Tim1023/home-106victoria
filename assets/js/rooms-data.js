@@ -146,32 +146,33 @@
     },
 
     /* foyer：入户玄关 + 转折楼梯。中介图中央竖向通道——按 Study(4.2m) 标定约 2.0 × 4.0 m。
-       楼梯靠西墙(贴 Study)是一段直跑 + 底部转折，"UP" 朝上；东侧 + 南端是入户地面(条案/圆镜/圆毯，见 房源_07)，
-       入户门(Entry)在南墙偏东。楼梯作 fixtures 障碍(不可摆家具)。尺寸为按中介图标定的近似值。 */
+       楼梯是贴西墙(Study 侧)的一段窄直跑(~0.8m 宽)，位于中部偏下：上方留小平台(St. 在此)、
+       下方是入户前厅(Entry 在南墙偏东)，东侧整条为开放过道(条案/圆镜/圆毯，见 房源_07)。
+       楼梯作 fixtures 障碍(不可摆家具)。尺寸为按中介图标定的近似值。 */
     'foyer': {
       id: 'foyer',
       name: '玄关 · 入户走廊',
       label: 'Foyer',
       labelSize: 12,
-      labelPos: { x: 126, y: 232 },
+      labelPos: { x: 120, y: 238 },
       outline: { x: 35, y: 35, w: 120, h: 240 },
       body: { x: 35, y: 35, w: 120, h: 240 },
       subRooms: [],
       fixtures: [
-        { x: 35, y: 50, w: 74, h: 175, kind: 'stairs' }
+        { x: 35, y: 125, w: 48, h: 90, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 1000, widthMm: 950 },
-        { wall: 'W', offsetMm: 3050, widthMm: 800 },
-        { wall: 'E', offsetMm: 1400, widthMm: 900 }
+        { wall: 'S', offsetMm: 1000, widthMm: 900 },
+        { wall: 'W', offsetMm: 600, widthMm: 800 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 300, widthMm: 500 }
+        { wall: 'N', offsetMm: 300, widthMm: 500 },
+        { wall: 'E', offsetMm: 1300, widthMm: 1100 }
       ],
       dims: [
         { x: 95, y: 23, text: '2.0 m' },
         { x: 23, y: 155, text: '4.0 m', rot: -90 },
-        { x: 72, y: 142, text: '楼梯', serif: true, size: 10 },
+        { x: 59, y: 172, text: '楼梯', serif: true, size: 9 },
         { x: 130, y: 268, text: 'Entry', small: true, size: 9 }
       ]
     },
