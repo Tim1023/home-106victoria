@@ -77,9 +77,9 @@
     ],
     'foyer': [
       {"id": "console", "label": "Warm Nordic Herringbone Tile 条案 (Soft Powder)", "type": "console", "w": 1000, "d": 350, "link": "https://www.goodform.co.nz/product/warm-nordic-sale-herringbone-tile-console-table-soft-powder", "defaultPos": {"xMm": 3158, "yMm": 3125, "rot": 90}},
-      {"id": "bench", "label": "Wegner 长凳 / 中古柚木玄关凳", "type": "bench", "w": 1100, "d": 400, "link": "https://cultdesign.co.nz", "defaultPos": {"xMm": 3083, "yMm": 4250, "rot": 90}},
-      {"id": "floor-lamp", "label": "Akari 1A 纸落地灯", "type": "floor_lamp", "w": 350, "d": 350, "link": "https://www.finnishdesignshop.com/en-nz/product/akari-25n-floor-lamp", "defaultPos": {"xMm": 2350, "yMm": 4650, "rot": 0}},
-      {"id": "pendant", "label": "Flos / Le Klint 入户吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://ecc.co.nz/", "defaultPos": {"xMm": 2200, "yMm": 3200, "rot": 0}}
+      {"id": "bench", "label": "中古柚木换鞋长凳 / 雕塑凳", "type": "bench", "w": 1100, "d": 400, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 1850, "yMm": 4350, "rot": 0}},
+      {"id": "floor-lamp", "label": "Akari 1A 纸落地灯", "type": "floor_lamp", "w": 350, "d": 350, "link": "https://www.finnishdesignshop.com/en-nz/product/akari-25n-floor-lamp", "defaultPos": {"xMm": 3400, "yMm": 3950, "rot": 0}},
+      {"id": "pendant", "label": "Trubridge Coral 楼梯井雕塑吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://davidtrubridge.com/", "defaultPos": {"xMm": 2300, "yMm": 3500, "rot": 0}}
     ],
     'master': [
       {"id": "bed", "label": "Nelson Thin Edge 窄边床", "type": "bed", "w": 1900, "d": 2150, "link": "https://matisse.co.nz/nelson-thin-edge-bed/", "defaultPos": {"xMm": 800, "yMm": 100, "rot": 0}},
