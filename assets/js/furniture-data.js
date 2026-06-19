@@ -76,8 +76,8 @@
       {"id": "table-lamp-atollo", "label": "Atollo 台灯", "type": "table_lamp", "w": 250, "d": 250, "link": "https://ecc.co.nz/lighting/indoor-lighting/table-lamps/atollo-table-lamp", "defaultPos": {"xMm": 2700, "yMm": 250, "rot": 0}}
     ],
     'foyer': [
-      {"id": "console", "label": "Warm Nordic Herringbone Tile 条案 (Soft Powder)", "type": "console", "w": 1000, "d": 350, "link": "https://www.goodform.co.nz/product/warm-nordic-sale-herringbone-tile-console-table-soft-powder", "defaultPos": {"xMm": 3158, "yMm": 3125, "rot": 90}},
-      {"id": "bench", "label": "中古柚木换鞋长凳 / 雕塑凳", "type": "bench", "w": 1100, "d": 400, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 3083, "yMm": 4250, "rot": 90}},
+      {"id": "console", "label": "Warm Nordic Herringbone Tile 条案 (Soft Powder)", "type": "console", "w": 1000, "d": 350, "link": "https://www.goodform.co.nz/product/warm-nordic-sale-herringbone-tile-console-table-soft-powder", "defaultPos": {"xMm": 965, "yMm": 2525, "rot": 90}},
+      {"id": "bench", "label": "中古柚木换鞋长凳 / 雕塑凳", "type": "bench", "w": 1100, "d": 400, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 3083, "yMm": 3150, "rot": 90}},
       {"id": "pendant", "label": "Trubridge Coral 楼梯井雕塑吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://davidtrubridge.com/", "defaultPos": {"xMm": 2300, "yMm": 3300, "rot": 0}}
     ],
     'master': [
