@@ -165,6 +165,9 @@
       fixtures: [
         { x: 35, y: 161, w: 75, h: 186, kind: 'stairs', flare: { w: 32, h: 72 } }
       ],
+      walls: [
+        { x1: 110, y1: 87, x2: 110, y2: 275 }
+      ],
       doors: [
         { wall: 'S', offsetMm: 2490, widthMm: 750 },
         { wall: 'N', offsetMm: 350, widthMm: 600, rect: { x: 35, y: 87, w: 75, h: 74 } },
