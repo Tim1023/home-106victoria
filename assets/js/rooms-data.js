@@ -145,35 +145,42 @@
       inner: '<g class="walls"><rect x="35" y="35" width="252" height="198" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="278" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"><line x1="64" y1="35" x2="122" y2="35" stroke="#fff" stroke-width="5"/><path d="M64,35 A58,58 0 0,1 122,93" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="160" y1="35" x2="244" y2="35" stroke="#fff" stroke-width="5"/><path d="M160,35 A85,85 0 0,1 244,120" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="161" y="23" text-anchor="middle">4.2 m</text><text x="23" y="134" text-anchor="middle" transform="rotate(-90 23 134)">3.3 m</text></g><g class="labels"><text x="161" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Study</text></g><g class="furniture"></g>'
     },
 
-    /* foyer：入户玄关 + 转折楼梯。中介图中央竖向通道——按 Study(4.2m) 标定约 2.0 × 4.0 m。
-       楼梯是贴西墙(Study 侧)的一段窄直跑(~0.8m 宽)，位于中部偏下：上方留小平台(St. 在此)、
-       下方是入户前厅(Entry 在南墙偏东)，东侧整条为开放过道(条案/圆镜/圆毯，见 房源_07)。
-       楼梯作 fixtures 障碍(不可摆家具)。尺寸为按中介图标定的近似值。 */
+    /* foyer：入户玄关。按 Study(4.2m=214px) / Lounge(5.2m=268px) 标定 ≈51px/m，实测约 3.8 × 5.2 m。
+       西侧一竖列(~1.2m 宽，贴 Study 墙)：上为 Storage 储物间(封闭子空间)、下为弧形楼梯(转折直跑，
+       占该列下段，作 fixtures 障碍)。东侧 ~2.6m 为开放入户厅(条案+大圆镜在东墙，见 房源_07)。
+       北墙：左为过道开口、中偏东为通往客厅(Living)的双开门；南墙偏东为入户门(Entry)；东墙下段通 Lounge。
+       尺寸为按中介图标定的近似值(图本身标 approximate)。 */
     'foyer': {
       id: 'foyer',
-      name: '玄关 · 入户走廊',
+      name: '玄关 · 入户厅',
       label: 'Foyer',
-      labelSize: 12,
-      labelPos: { x: 120, y: 238 },
-      outline: { x: 35, y: 35, w: 120, h: 240 },
-      body: { x: 35, y: 35, w: 120, h: 240 },
-      subRooms: [],
+      labelSize: 14,
+      labelPos: { x: 188, y: 205 },
+      outline: { x: 35, y: 35, w: 228, h: 312 },
+      body: { x: 35, y: 35, w: 228, h: 312 },
+      subRooms: [
+        { x: 35, y: 91, w: 73, h: 69, label: 'Store' }
+      ],
       fixtures: [
-        { x: 35, y: 125, w: 48, h: 90, kind: 'stairs' }
+        { x: 35, y: 160, w: 73, h: 187, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 1000, widthMm: 900 },
-        { wall: 'W', offsetMm: 600, widthMm: 800 }
+        { wall: 'S', offsetMm: 1500, widthMm: 1000 },
+        { wall: 'N', offsetMm: 1800, widthMm: 700 },
+        { wall: 'N', offsetMm: 2500, widthMm: 700, hinge: 'end' },
+        { wall: 'E', offsetMm: 2800, widthMm: 900 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 300, widthMm: 500 },
-        { wall: 'E', offsetMm: 1300, widthMm: 1100 }
+        { wall: 'N', offsetMm: 100, widthMm: 800 }
       ],
       dims: [
-        { x: 95, y: 23, text: '2.0 m' },
-        { x: 23, y: 155, text: '4.0 m', rot: -90 },
-        { x: 59, y: 172, text: '楼梯', serif: true, size: 9 },
-        { x: 130, y: 268, text: 'Entry', small: true, size: 9 }
+        { x: 149, y: 23, text: '3.8 m' },
+        { x: 23, y: 191, text: '5.2 m', rot: -90 },
+        { x: 71, y: 130, text: 'Store', serif: true, size: 9 },
+        { x: 71, y: 258, text: '楼梯', serif: true, size: 9 },
+        { x: 70, y: 64, text: '过道', small: true, size: 8 },
+        { x: 205, y: 50, text: '↗ 客厅', small: true, size: 8 },
+        { x: 160, y: 340, text: 'Entry', small: true, size: 9 }
       ]
     },
 
