@@ -145,34 +145,34 @@
       inner: '<g class="walls"><rect x="35" y="35" width="252" height="198" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="278" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"><line x1="64" y1="35" x2="122" y2="35" stroke="#fff" stroke-width="5"/><path d="M64,35 A58,58 0 0,1 122,93" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="160" y1="35" x2="244" y2="35" stroke="#fff" stroke-width="5"/><path d="M160,35 A85,85 0 0,1 244,120" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="161" y="23" text-anchor="middle">4.2 m</text><text x="23" y="134" text-anchor="middle" transform="rotate(-90 23 134)">3.3 m</text></g><g class="labels"><text x="161" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Study</text></g><g class="furniture"></g>'
     },
 
-    /* foyer：入户玄关 + 转折楼梯。中介图中央竖向通道——南端入户门(Entry)，北段为上二楼的楼梯(St./UP)，
-       东接 Lounge、西接 Study、上通 Living。staging 实景见 房源_07：入户门 + 弧形踏步 + 右墙条案 + 大圆镜 + 圆地毯。
-       楼梯作 fixtures 障碍(不可摆家具)；南段 ~1.6×2.1m 为可布置的玄关区。尺寸为按中介图目测的近似值。 */
+    /* foyer：入户玄关 + 转折楼梯。中介图中央竖向通道——按 Study(4.2m) 标定约 2.0 × 4.0 m。
+       楼梯靠西墙(贴 Study)是一段直跑 + 底部转折，"UP" 朝上；东侧 + 南端是入户地面(条案/圆镜/圆毯，见 房源_07)，
+       入户门(Entry)在南墙偏东。楼梯作 fixtures 障碍(不可摆家具)。尺寸为按中介图标定的近似值。 */
     'foyer': {
       id: 'foyer',
       name: '玄关 · 入户走廊',
       label: 'Foyer',
-      labelSize: 14,
-      labelPos: { x: 83, y: 215 },
-      outline: { x: 35, y: 35, w: 96, h: 240 },
-      body: { x: 35, y: 35, w: 96, h: 240 },
+      labelSize: 12,
+      labelPos: { x: 126, y: 232 },
+      outline: { x: 35, y: 35, w: 120, h: 240 },
+      body: { x: 35, y: 35, w: 120, h: 240 },
       subRooms: [],
       fixtures: [
-        { x: 35, y: 35, w: 96, h: 114, kind: 'stairs' }
+        { x: 35, y: 50, w: 74, h: 175, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 250, widthMm: 1000 },
-        { wall: 'W', offsetMm: 2900, widthMm: 800 },
-        { wall: 'E', offsetMm: 2700, widthMm: 1100 }
+        { wall: 'S', offsetMm: 1000, widthMm: 950 },
+        { wall: 'W', offsetMm: 3050, widthMm: 800 },
+        { wall: 'E', offsetMm: 1400, widthMm: 900 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 450, widthMm: 700 }
+        { wall: 'N', offsetMm: 300, widthMm: 500 }
       ],
       dims: [
-        { x: 83, y: 23, text: '1.6 m' },
+        { x: 95, y: 23, text: '2.0 m' },
         { x: 23, y: 155, text: '4.0 m', rot: -90 },
-        { x: 83, y: 96, text: '楼梯 ↑', serif: true, size: 11 },
-        { x: 83, y: 270, text: 'Entry', small: true, size: 9 }
+        { x: 72, y: 142, text: '楼梯', serif: true, size: 10 },
+        { x: 130, y: 268, text: 'Entry', small: true, size: 9 }
       ]
     },
 
