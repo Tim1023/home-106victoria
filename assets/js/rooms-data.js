@@ -163,7 +163,7 @@
         { x: 173, y: 35, w: 92, h: 64, label: 'Store' }
       ],
       fixtures: [
-        { x: 35, y: 161, w: 75, h: 186, kind: 'stairs' }
+        { x: 35, y: 161, w: 75, h: 186, kind: 'stairs', flare: { w: 32, h: 72 } }
       ],
       doors: [
         { wall: 'S', offsetMm: 2490, widthMm: 750 },
