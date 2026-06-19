@@ -59,10 +59,22 @@
     var fx = hingeStart ? ex : sx, fy = hingeStart ? ey : sy;   // 自由端(关门)
     var r = wid;
     var sgn = (d.swing === 'out') ? -1 : 1;                    // swing:'out' → 朝该 rect 外侧开（如客厅门内开向客厅）
-    var ox = hx + sgn * g.nx * r, oy = hy + sgn * g.ny * r;    // 自由端(开门，垂直于墙)
+    var inx = sgn * g.nx, iny = sgn * g.ny;                    // 开门朝向(swing 侧)单位法线
+    var gap = '<line x1="' + n(sx) + '" y1="' + n(sy) + '" x2="' + n(ex) + '" y2="' + n(ey) + '" stroke="#fff" stroke-width="5"/>';
+    if (d.fold === 'wall') {                                   // 内开、打开后整扇贴在 swing 侧墙面(沿墙折回)
+      var t = 4;                                               // 叶片离墙微偏移
+      var ax = hx + inx * t, ay = hy + iny * t;                // 靠墙叶片(铰链端)
+      var bx = (2 * hx - fx) + inx * t, by = (2 * hy - fy) + iny * t;  // 折回端：沿墙背向关门自由端
+      var crossF = (fx - hx) * (by - hy) - (fy - hy) * (bx - hx);
+      var sweepF = crossF > 0 ? 0 : 1;
+      return gap +
+        '<line x1="' + n(ax) + '" y1="' + n(ay) + '" x2="' + n(bx) + '" y2="' + n(by) + '" stroke="#1a1a1a" stroke-width="1.2"/>' +
+        '<path d="M' + n(fx) + ',' + n(fy) + ' A' + n(r) + ',' + n(r) + ' 0 0,' + sweepF + ' ' + n(bx) + ',' + n(by) + '" fill="none" stroke="#1a1a1a" stroke-width="0.6"/>';
+    }
+    var ox = hx + inx * r, oy = hy + iny * r;                  // 自由端(开门，垂直于墙)
     var cross = (fx - hx) * (oy - hy) - (fy - hy) * (ox - hx);  // 叉积定 sweep（y 向下）
     var sweep = cross > 0 ? 0 : 1;
-    return '<line x1="' + n(sx) + '" y1="' + n(sy) + '" x2="' + n(ex) + '" y2="' + n(ey) + '" stroke="#fff" stroke-width="5"/>' +
+    return gap +
       '<path d="M' + n(fx) + ',' + n(fy) + ' A' + n(r) + ',' + n(r) + ' 0 0,' + sweep + ' ' + n(ox) + ',' + n(oy) + '" fill="none" stroke="#1a1a1a" stroke-width="0.7"/>';
   }
 
