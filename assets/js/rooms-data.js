@@ -172,8 +172,8 @@
         { wall: 'S', offsetMm: 2490, widthMm: 750 },
         { wall: 'N', offsetMm: 350, widthMm: 600, rect: { x: 35, y: 87, w: 75, h: 74 } },
         { wall: 'S', offsetMm: 150, widthMm: 600, rect: { x: 173, y: 35, w: 92, h: 64 } },
-        { wall: 'E', offsetMm: 1270, widthMm: 675, swing: 'out', fold: 'wall' },
-        { wall: 'E', offsetMm: 1945, widthMm: 675, hinge: 'end', swing: 'out', fold: 'wall' }
+        { wall: 'E', offsetMm: 1270, widthMm: 675, swing: 'out', leaf: true },
+        { wall: 'E', offsetMm: 1945, widthMm: 675, hinge: 'end', swing: 'out', leaf: true }
       ],
       windows: [
         { wall: 'W', offsetMm: 0, widthMm: 860 },

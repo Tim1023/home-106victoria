@@ -74,7 +74,8 @@
     var ox = hx + inx * r, oy = hy + iny * r;                  // 自由端(开门，垂直于墙)
     var cross = (fx - hx) * (oy - hy) - (fy - hy) * (ox - hx);  // 叉积定 sweep（y 向下）
     var sweep = cross > 0 ? 0 : 1;
-    return gap +
+    var leafLine = d.leaf ? '<line x1="' + n(hx) + '" y1="' + n(hy) + '" x2="' + n(ox) + '" y2="' + n(oy) + '" stroke="#1a1a1a" stroke-width="1.1"/>' : '';   // 开启叶片(垂直入室)
+    return gap + leafLine +
       '<path d="M' + n(fx) + ',' + n(fy) + ' A' + n(r) + ',' + n(r) + ' 0 0,' + sweep + ' ' + n(ox) + ',' + n(oy) + '" fill="none" stroke="#1a1a1a" stroke-width="0.7"/>';
   }
 
