@@ -145,42 +145,45 @@
       inner: '<g class="walls"><rect x="35" y="35" width="252" height="198" fill="#c6d0c5" stroke="#1a1a1a" stroke-width="3"/></g><g class="fixtures"><rect x="35" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/><rect x="278" y="35" width="9" height="198" fill="#bdb39c" stroke="#1a1a1a" stroke-width="1"/></g><g class="openings"><line x1="64" y1="35" x2="122" y2="35" stroke="#fff" stroke-width="5"/><path d="M64,35 A58,58 0 0,1 122,93" fill="none" stroke="#1a1a1a" stroke-width="0.7"/><line x1="160" y1="35" x2="244" y2="35" stroke="#fff" stroke-width="5"/><path d="M160,35 A85,85 0 0,1 244,120" fill="none" stroke="#1a1a1a" stroke-width="0.7"/></g><g class="dims" font-family="JetBrains Mono,monospace" font-size="11" fill="#6b6253"><text x="161" y="23" text-anchor="middle">4.2 m</text><text x="23" y="134" text-anchor="middle" transform="rotate(-90 23 134)">3.3 m</text></g><g class="labels"><text x="161" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="14" fill="#1a1a1a" font-weight="500" style="paint-order:stroke;stroke:#fffffff0;stroke-width:3">Study</text></g><g class="furniture"></g>'
     },
 
-    /* foyer：入户玄关。按 Study(4.2m=214px) / Lounge(5.2m=268px) 标定 ≈51px/m，实测约 3.8 × 5.2 m。
-       西侧一竖列(~1.2m 宽，贴 Study 墙)：上为 Storage 储物间(封闭子空间)、下为弧形楼梯(转折直跑，
-       占该列下段，作 fixtures 障碍)。东侧 ~2.6m 为开放入户厅(条案+大圆镜在东墙，见 房源_07)。
-       北墙：左为过道开口、中偏东为通往客厅(Living)的双开门；南墙偏东为入户门(Entry)；东墙下段通 Lounge。
+    /* foyer：入户玄关。按 Study(4.2m=214px)/Lounge(5.2m=268px) 标定 ≈51px/m，实测约 3.8 × 5.2 m。
+       布局(中介图 + Tim 确认)：弧形楼梯在左下(SW)贴 Study 墙；楼梯上端下方藏一间储物间 Store1(NW)，
+       门朝左上的过道开口。右上(NE)另有储物间 Store2(正对南面入户门 Entry)，紧挨它的是通客厅(Living)的门。
+       南墙偏东入户门(Entry)；东墙下段通 Lounge；东/中为开放入户厅(条案+大圆镜贴东墙，见 房源_07)。
        尺寸为按中介图标定的近似值(图本身标 approximate)。 */
     'foyer': {
       id: 'foyer',
       name: '玄关 · 入户厅',
       label: 'Foyer',
-      labelSize: 14,
-      labelPos: { x: 188, y: 205 },
-      outline: { x: 35, y: 35, w: 228, h: 312 },
-      body: { x: 35, y: 35, w: 228, h: 312 },
+      labelSize: 13,
+      labelPos: { x: 170, y: 255 },
+      outline: { x: 35, y: 35, w: 230, h: 314 },
+      body: { x: 35, y: 35, w: 230, h: 314 },
       subRooms: [
-        { x: 35, y: 91, w: 73, h: 69, label: 'Store' }
+        { x: 35, y: 87, w: 75, h: 74, label: 'Store' },
+        { x: 173, y: 35, w: 92, h: 64, label: 'Store' }
       ],
       fixtures: [
-        { x: 35, y: 160, w: 73, h: 187, kind: 'stairs' }
+        { x: 35, y: 161, w: 75, h: 186, kind: 'stairs' }
       ],
       doors: [
-        { wall: 'S', offsetMm: 1500, widthMm: 1000 },
-        { wall: 'N', offsetMm: 1800, widthMm: 700 },
-        { wall: 'N', offsetMm: 2500, widthMm: 700, hinge: 'end' },
-        { wall: 'E', offsetMm: 2800, widthMm: 900 }
+        { wall: 'S', offsetMm: 2490, widthMm: 750 },
+        { wall: 'N', offsetMm: 350, widthMm: 600, rect: { x: 35, y: 87, w: 75, h: 74 } },
+        { wall: 'S', offsetMm: 300, widthMm: 900, rect: { x: 173, y: 35, w: 92, h: 64 } },
+        { wall: 'E', offsetMm: 2700, widthMm: 1100 }
       ],
       windows: [
-        { wall: 'N', offsetMm: 100, widthMm: 800 }
+        { wall: 'W', offsetMm: 0, widthMm: 860 },
+        { wall: 'N', offsetMm: 350, widthMm: 1900 }
       ],
       dims: [
         { x: 149, y: 23, text: '3.8 m' },
-        { x: 23, y: 191, text: '5.2 m', rot: -90 },
-        { x: 71, y: 130, text: 'Store', serif: true, size: 9 },
-        { x: 71, y: 258, text: '楼梯', serif: true, size: 9 },
-        { x: 70, y: 64, text: '过道', small: true, size: 8 },
-        { x: 205, y: 50, text: '↗ 客厅', small: true, size: 8 },
-        { x: 160, y: 340, text: 'Entry', small: true, size: 9 }
+        { x: 23, y: 192, text: '5.2 m', rot: -90 },
+        { x: 72, y: 128, text: 'Store', serif: true, size: 8 },
+        { x: 219, y: 70, text: 'Store', serif: true, size: 8 },
+        { x: 72, y: 258, text: '楼梯', serif: true, size: 9 },
+        { x: 219, y: 118, text: '↑客厅', small: true, size: 7 },
+        { x: 60, y: 58, text: '过道', small: true, size: 8 },
+        { x: 200, y: 340, text: 'Entry', small: true, size: 9 }
       ]
     },
 

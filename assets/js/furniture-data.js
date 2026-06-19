@@ -76,10 +76,10 @@
       {"id": "table-lamp-atollo", "label": "Atollo 台灯", "type": "table_lamp", "w": 250, "d": 250, "link": "https://ecc.co.nz/lighting/indoor-lighting/table-lamps/atollo-table-lamp", "defaultPos": {"xMm": 2700, "yMm": 250, "rot": 0}}
     ],
     'foyer': [
-      {"id": "console", "label": "Florence Knoll 条案 / 中古玫瑰木条案", "type": "console", "w": 1200, "d": 350, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 3025, "yMm": 2825, "rot": 90}},
-      {"id": "bench", "label": "Wegner 长凳 / 中古柚木玄关凳", "type": "bench", "w": 1100, "d": 400, "link": "https://cultdesign.co.nz", "defaultPos": {"xMm": 3050, "yMm": 1050, "rot": 90}},
-      {"id": "floor-lamp", "label": "Akari 1A 纸落地灯", "type": "floor_lamp", "w": 350, "d": 350, "link": "https://www.finnishdesignshop.com/en-nz/product/akari-25n-floor-lamp", "defaultPos": {"xMm": 3400, "yMm": 4500, "rot": 0}},
-      {"id": "pendant", "label": "Flos / Le Klint 入户吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://ecc.co.nz/", "defaultPos": {"xMm": 2400, "yMm": 2500, "rot": 0}}
+      {"id": "console", "label": "Florence Knoll 条案 / 中古玫瑰木条案", "type": "console", "w": 1200, "d": 350, "link": "https://www.mrbigglesworthy.co.nz/shop-vintage", "defaultPos": {"xMm": 3058, "yMm": 2625, "rot": 90}},
+      {"id": "bench", "label": "Wegner 长凳 / 中古柚木玄关凳", "type": "bench", "w": 1100, "d": 400, "link": "https://cultdesign.co.nz", "defaultPos": {"xMm": 3083, "yMm": 3950, "rot": 90}},
+      {"id": "floor-lamp", "label": "Akari 1A 纸落地灯", "type": "floor_lamp", "w": 350, "d": 350, "link": "https://www.finnishdesignshop.com/en-nz/product/akari-25n-floor-lamp", "defaultPos": {"xMm": 2800, "yMm": 4600, "rot": 0}},
+      {"id": "pendant", "label": "Flos / Le Klint 入户吊灯", "type": "pendant", "w": 100, "d": 100, "link": "https://ecc.co.nz/", "defaultPos": {"xMm": 2400, "yMm": 2800, "rot": 0}}
     ],
     'master': [
       {"id": "bed", "label": "Nelson Thin Edge 窄边床", "type": "bed", "w": 1900, "d": 2150, "link": "https://matisse.co.nz/nelson-thin-edge-bed/", "defaultPos": {"xMm": 800, "yMm": 100, "rot": 0}},
