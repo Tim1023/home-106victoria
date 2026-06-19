@@ -99,12 +99,18 @@
     } else if (f.kind === 'toilet') {
       s += '<ellipse cx="' + n(cx) + '" cy="' + n(cy + f.h / 8) + '" rx="' + n(f.w / 3) + '" ry="' + n(f.h / 3) + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';
     } else if (f.kind === 'stairs') {
-      var steps = Math.max(3, Math.round(f.h / 16));               // 踏步线（约每 16px 一级）
+      var steps = Math.max(4, Math.round(f.h / 16));               // 踏步线（约每 16px 一级）
+      var curved = 2;                                              // 底部 N 级为弧形（bullnose）踏步
       for (var i = 1; i < steps; i++) {
         var yy = f.y + f.h * i / steps;
-        s += '<line x1="' + n(f.x) + '" y1="' + n(yy) + '" x2="' + n(f.x + f.w) + '" y2="' + n(yy) + '" stroke="#1a1a1a" stroke-width="0.8"/>';
+        if (i >= steps - curved) {                                 // 底部弧形踏步：踏步沿向下(南)外凸
+          var bulge = (i - (steps - curved - 1)) * 7;
+          s += '<path d="M' + n(f.x) + ',' + n(yy) + ' Q' + n(f.x + f.w / 2) + ',' + n(yy + bulge) + ' ' + n(f.x + f.w) + ',' + n(yy) + '" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>';
+        } else {
+          s += '<line x1="' + n(f.x) + '" y1="' + n(yy) + '" x2="' + n(f.x + f.w) + '" y2="' + n(yy) + '" stroke="#1a1a1a" stroke-width="0.8"/>';
+        }
       }
-      s += '<path d="M' + n(cx) + ',' + n(f.y + f.h - 6) + ' L' + n(cx) + ',' + n(f.y + 6) + ' M' + n(cx - 4) + ',' + n(f.y + 12) + ' L' + n(cx) + ',' + n(f.y + 6) + ' L' + n(cx + 4) + ',' + n(f.y + 12) + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';   // 上行箭头
+      s += '<path d="M' + n(cx) + ',' + n(f.y + f.h * 0.6) + ' L' + n(cx) + ',' + n(f.y + 8) + ' M' + n(cx - 4) + ',' + n(f.y + 15) + ' L' + n(cx) + ',' + n(f.y + 8) + ' L' + n(cx + 4) + ',' + n(f.y + 15) + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';   // 上行箭头
     }
     return s;
   }
