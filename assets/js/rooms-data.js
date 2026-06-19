@@ -168,8 +168,9 @@
       doors: [
         { wall: 'S', offsetMm: 2490, widthMm: 750 },
         { wall: 'N', offsetMm: 350, widthMm: 600, rect: { x: 35, y: 87, w: 75, h: 74 } },
-        { wall: 'S', offsetMm: 300, widthMm: 900, rect: { x: 173, y: 35, w: 92, h: 64 } },
-        { wall: 'E', offsetMm: 2700, widthMm: 1100 }
+        { wall: 'S', offsetMm: 150, widthMm: 600, rect: { x: 173, y: 35, w: 92, h: 64 } },
+        { wall: 'E', offsetMm: 1270, widthMm: 675 },
+        { wall: 'E', offsetMm: 1945, widthMm: 675, hinge: 'end' }
       ],
       windows: [
         { wall: 'W', offsetMm: 0, widthMm: 860 },
@@ -181,7 +182,7 @@
         { x: 72, y: 128, text: 'Store', serif: true, size: 8 },
         { x: 219, y: 70, text: 'Store', serif: true, size: 8 },
         { x: 72, y: 258, text: '楼梯', serif: true, size: 9 },
-        { x: 219, y: 118, text: '↑客厅', small: true, size: 7 },
+        { x: 232, y: 150, text: '客厅→', small: true, size: 7 },
         { x: 60, y: 58, text: '过道', small: true, size: 8 },
         { x: 200, y: 340, text: 'Entry', small: true, size: 9 }
       ]
